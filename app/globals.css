@@ -38,3 +38,6 @@ ul {
   mask-image: radial-gradient(circle at 50% 20%, black 20%, transparent 65%);
   opacity: 0.18;
 }
+html, body {
+  overflow-x: hidden;
+}
