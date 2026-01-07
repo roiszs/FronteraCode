@@ -5,11 +5,13 @@ export default function Section({
   title,
   subtitle,
   children,
+  glow = false,
 }: {
   id?: string;
   title: string;
   subtitle?: string;
   children: ReactNode;
+  glow?: boolean;
 }) {
   return (
     <section id={id} className="scroll-mt-24 py-12 sm:py-14">
@@ -27,11 +29,15 @@ export default function Section({
           ) : null}
 
           {/* Línea sutil separadora */}
-          <div className="mt-6 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          <div
+            className="mt-6 h-px w-full bg-gradient-to-r from-transparent via-purple-500/40 to-transparent"
+            style={{ boxShadow: "0 0 16px rgba(177,77,255,0.35)" }}
+          />
+
         </div>
 
         {/* Contenido */}
-        <div className="mt-6">
+        <div className="mt-5">
           {children}
         </div>
       </div>

@@ -163,6 +163,7 @@ export default function Home() {
         id="servicios"
         title="Servicios"
         subtitle="Soluciones claras, sin complicaciones, orientadas a resultados."
+        glow
       >
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, idx) => (
