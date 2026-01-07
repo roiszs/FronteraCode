@@ -12,7 +12,7 @@ export default function Section({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className="py-20 sm:py-28">
+    <section id={id} className="scroll-mt-24 py-20 sm:py-28">
 
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-2xl">

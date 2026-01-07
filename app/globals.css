@@ -41,3 +41,14 @@ ul {
 html, body {
   overflow-x: hidden;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Respeta usuarios con "reduced motion" */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

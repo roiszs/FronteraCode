@@ -40,7 +40,7 @@ const projects = [
 
 export default function Home() {
   return (
-    <main id="top" className="min-h-screen bg-[#07060A] text-white">
+    <main id="top" className="scroll-mt-24 min-h-screen bg-[#07060A] text-white">
       <Navbar />
 
       {/* HERO */}
