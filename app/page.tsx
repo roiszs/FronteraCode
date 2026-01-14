@@ -127,7 +127,7 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 grid place-items-center text-center px-6">
                   <Image
-                    src="/brand/Logo1Oscuro.png"
+                    src="/brand/sinFondo.png"
                     alt="FronteraCode"
                     width={88}
                     height={88}

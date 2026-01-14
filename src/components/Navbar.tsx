@@ -21,7 +21,7 @@ export default function Navbar() {
           {/* Brand */}
           <a href="#top" className="flex items-center gap-3 min-w-[170px]">
             <Image
-              src="/brand/Logo1Oscuro.png"
+              src="/brand/sinFondo.png"
               alt="FronteraCode"
               width={34}
               height={34}
