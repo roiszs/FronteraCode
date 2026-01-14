@@ -145,10 +145,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <p className="mt-4 text-xs text-white/50">
-                Diseño minimalista con acento neón (coherente con tu identidad).
-                
-              </p>
+            
             </div>
             </Reveal>
           </div>
@@ -273,8 +270,7 @@ export default function Home() {
               </div>
             </div>
             <p className="mt-4 text-sm text-white/60 leading-relaxed">
-              Sugerencia: cuando tengas correo con dominio (ej. contacto@tudominio.com),
-              lo ponemos como remitente del formulario para que se vea más profesional.
+              
             </p>
           </div>
 

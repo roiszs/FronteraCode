@@ -53,6 +53,7 @@ export default function ContactForm() {
           <option>Sistema</option>
           <option>Dashboard / KPIs</option>
           <option>Automatización</option>
+          <option>Otro</option>
         </select>
         <textarea
           className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 outline-none focus:border-white/30"
@@ -87,8 +88,8 @@ export default function ContactForm() {
         )}
 
         <p className="text-xs text-white/50">
-          Siguiente paso: conectarlo a envío real por email (Resend) desde tu
-          dominio.
+          Contactanos en nuestras redes sociales.
+          
         </p>
       </div>
     </form>
