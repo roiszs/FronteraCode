@@ -1,70 +1,132 @@
 "use client";
 
 import { useState } from "react";
+import { Mail, MessageSquareText, Phone, User, Wrench } from "lucide-react";
+
+type Status = "idle" | "sending" | "sent" | "error";
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
-    "idle"
-  );
+  const [status, setStatus] = useState<Status>("idle");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("sending");
 
-    // Por ahora solo simula envío. Luego lo conectamos a /api/contact o Resend.
-    await new Promise((r) => setTimeout(r, 700));
+    try {
+      // Captura lista para cuando lo conectemos a /api/contact o Resend
+      const form = e.currentTarget;
+      const data = new FormData(form);
+      void data.get("name");
+      void data.get("contact");
+      void data.get("type");
+      void data.get("message");
 
-    setStatus("sent");
-    (e.currentTarget as HTMLFormElement).reset();
+      // Simulación de envío
+      await new Promise((r) => setTimeout(r, 700));
+
+      setStatus("sent");
+      form.reset();
+
+      // Opcional: regresar a idle después de unos segundos
+      setTimeout(() => setStatus("idle"), 3500);
+    } catch {
+      setStatus("error");
+    }
   }
+
+  const StatusBadge = () => {
+    if (status === "sending") {
+      return (
+        <span className="ml-2 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-2 py-1 text-xs text-white/70">
+          Enviando…
+        </span>
+      );
+    }
+    if (status === "sent") {
+      return (
+        <span className="ml-2 inline-flex items-center rounded-full border border-emerald-400/20 bg-emerald-500/10 px-2 py-1 text-xs text-emerald-200">
+          Enviado
+        </span>
+      );
+    }
+    if (status === "error") {
+      return (
+        <span className="ml-2 inline-flex items-center rounded-full border border-red-400/20 bg-red-500/10 px-2 py-1 text-xs text-red-200">
+          Error
+        </span>
+      );
+    }
+    return null;
+  };
 
   return (
     <form
       className="rounded-2xl border border-white/10 bg-white/5 p-6"
       onSubmit={handleSubmit}
     >
-      <div className="text-sm text-white/60">
-        Formulario {status === "sent" ? "· Enviado" : ""}
+      <div className="flex items-center text-sm text-white/60">
+        Formulario
+        <StatusBadge />
       </div>
 
       <div className="mt-4 grid gap-4">
-        <input
-          className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 outline-none focus:border-white/30"
-          placeholder="Nombre"
-          name="name"
-          required
-        />
-        <input
-          className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 outline-none focus:border-white/30"
-          placeholder="Email o teléfono"
-          name="contact"
-          required
-        />
-        <select
-          className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 outline-none focus:border-white/30"
-          name="type"
-          required
-          defaultValue=""
-        >
-          <option value="" disabled>
-            Tipo de proyecto
-          </option>
-          <option>Website / Landing</option>
-          <option>Sistema</option>
-          <option>Dashboard / KPIs</option>
-          <option>Automatización</option>
-          <option>Otro</option>
-        </select>
-        <textarea
-          className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 outline-none focus:border-white/30"
-          placeholder="Cuéntanos el objetivo y lo que necesitas"
-          name="message"
-          rows={5}
-          required
-        />
+        {/* Nombre */}
+        <div className="relative">
+          <User className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/35" />
+          <input
+            className="w-full rounded-xl border border-white/10 bg-black/30 pl-12 pr-4 py-3 outline-none focus:border-white/30 transition"
+            placeholder="Nombre"
+            name="name"
+            required
+          />
+        </div>
 
+        {/* Contacto */}
+        <div className="relative">
+          <Mail className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/35" />
+          <input
+            className="w-full rounded-xl border border-white/10 bg-black/30 pl-12 pr-4 py-3 outline-none focus:border-white/30 transition"
+            placeholder="Email o teléfono"
+            name="contact"
+            required
+          />
+        </div>
+
+        {/* Tipo */}
+        <div className="relative">
+          <Wrench className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/35" />
+          <select
+            className="w-full appearance-none rounded-xl border border-white/10 bg-black/30 pl-12 pr-4 py-3 outline-none focus:border-white/30 transition"
+            name="type"
+            required
+            defaultValue=""
+          >
+            <option value="" disabled>
+              Tipo de proyecto
+            </option>
+            <option>Website / Landing</option>
+            <option>Sistema</option>
+            <option>Dashboard / KPIs</option>
+            <option>Automatización</option>
+            <option>Otro</option>
+          </select>
+        </div>
+
+        {/* Mensaje */}
+        <div className="relative">
+          <MessageSquareText className="pointer-events-none absolute left-4 top-4 h-5 w-5 text-white/35" />
+          <textarea
+            className="w-full rounded-xl border border-white/10 bg-black/30 pl-12 pr-4 py-3 outline-none focus:border-white/30 transition"
+            placeholder="Cuéntanos el objetivo y lo que necesitas"
+            name="message"
+            rows={5}
+            required
+          />
+        </div>
+
+        {/* Submit */}
         <button
-          className="rounded-xl px-5 py-3 font-medium text-white disabled:opacity-60 transition hover:scale-[1.03] active:scale-[0.98]"
+          className="w-full rounded-xl px-5 py-3 font-medium text-white disabled:opacity-60 transition hover:scale-[1.02] active:scale-[0.99]"
           style={{
             background:
               "linear-gradient(90deg, rgba(177,77,255,0.9), rgba(255,79,216,0.9))",
@@ -76,21 +138,39 @@ export default function ContactForm() {
           {status === "sending" ? "Enviando..." : "Enviar"}
         </button>
 
+        {/* Feedback */}
         {status === "sent" && (
           <p className="text-sm text-white/70">
             Listo. Recibimos tu mensaje y te contactaremos pronto.
           </p>
         )}
+
         {status === "error" && (
-          <p className="text-sm text-red-300">
+          <p className="text-sm text-red-200">
             Ocurrió un error. Intenta de nuevo.
           </p>
         )}
 
-        <p className="text-xs text-white/50">
-          Contactanos en nuestras redes sociales.
-          
-        </p>
+        {/* Alternativas reales (en vez de “redes sociales”) */}
+        <div className="pt-2 grid gap-2 text-xs text-white/60">
+          <a
+            className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 hover:bg-white/10 transition"
+            href="https://wa.me/526567635652?text=Hola%20FronteraCode%2C%20quiero%20cotizar%20un%20proyecto."
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Phone className="h-4 w-4 text-white/50" />
+            WhatsApp directo (respuesta más rápida)
+          </a>
+
+          <a
+            className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 hover:bg-white/10 transition"
+            href="mailto:fronteracode@gmail.com?subject=Cotizaci%C3%B3n%20FronteraCode"
+          >
+            <Mail className="h-4 w-4 text-white/50" />
+            Email: fronteracode@gmail.com
+          </a>
+        </div>
       </div>
     </form>
   );
