@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { Menu, X, Mail, Phone } from "lucide-react";
 
 const nav = [
   { label: "Servicios", href: "#servicios" },
@@ -23,8 +24,8 @@ export default function Navbar() {
             <Image
               src="/brand/sinFondo.png"
               alt="FronteraCode"
-              width={95}
-              height={95}
+              width={40}
+              height={40}
               className="object-contain drop-shadow-[0_0_16px_rgba(177,77,255,0.35)]"
               priority
             />
@@ -34,7 +35,11 @@ export default function Navbar() {
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-white/70">
             {nav.map((i) => (
-              <a key={i.href} href={i.href} className="hover:text-white transition">
+              <a
+                key={i.href}
+                href={i.href}
+                className="relative hover:text-white transition after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-white/30 after:transition-all hover:after:w-full"
+              >
                 {i.label}
               </a>
             ))}
@@ -44,14 +49,15 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             {/* Desktop CTAs */}
             <a
-              className="hidden sm:inline-flex rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 transition"
+              className="hidden sm:inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 transition"
               href="mailto:fronteracode@gmail.com?subject=Cotizaci%C3%B3n%20FronteraCode"
             >
+              <Mail className="h-4 w-4 text-white/60" />
               Email
             </a>
 
             <a
-              className="hidden sm:inline-flex rounded-xl px-4 py-2 text-sm font-medium text-white transition hover:scale-[1.03] active:scale-[0.98]"
+              className="hidden sm:inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium text-white transition hover:scale-[1.03] active:scale-[0.98]"
               style={{
                 background:
                   "linear-gradient(90deg, rgba(177,77,255,0.9), rgba(255,79,216,0.9))",
@@ -61,18 +67,20 @@ export default function Navbar() {
               target="_blank"
               rel="noreferrer"
             >
+              <Phone className="h-4 w-4 text-white/90" />
               Agendar llamada
             </a>
 
             {/* Mobile menu button */}
             <button
               type="button"
-              className="lg:hidden inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/80 hover:bg-white/10 transition"
+              className="lg:hidden inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 p-2 text-white/80 hover:bg-white/10 transition"
               onClick={() => setOpen((v) => !v)}
               aria-label={open ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={open}
+              aria-controls="mobile-nav"
             >
-              {open ? "Cerrar" : "Menú"}
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
@@ -80,13 +88,16 @@ export default function Navbar() {
 
       {/* Mobile panel */}
       {open && (
-        <div className="lg:hidden border-t border-white/10 bg-black/70 backdrop-blur-md">
+        <div
+          id="mobile-nav"
+          className="lg:hidden border-t border-white/10 bg-black/70 backdrop-blur-md"
+        >
           <div className="mx-auto max-w-6xl px-4 sm:px-6 py-4 grid gap-2">
             {nav.map((i) => (
               <a
                 key={i.href}
                 href={i.href}
-                className="rounded-xl px-3 py-2 text-white/80 hover:bg-white/10 transition"
+                className="rounded-xl border border-white/10 bg-white/5 px-3 py-3 text-white/80 hover:text-white hover:bg-white/10 transition"
                 onClick={() => setOpen(false)}
               >
                 {i.label}
@@ -95,15 +106,16 @@ export default function Navbar() {
 
             <div className="pt-3 grid gap-2">
               <a
-                className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 transition"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/80 hover:text-white hover:bg-white/10 transition"
                 href="mailto:fronteracode@gmail.com?subject=Cotizaci%C3%B3n%20FronteraCode"
                 onClick={() => setOpen(false)}
               >
+                <Mail className="h-4 w-4 text-white/60" />
                 Email
               </a>
 
               <a
-                className="rounded-xl px-4 py-2 text-sm font-medium text-white transition hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-medium text-white transition hover:scale-[1.02] active:scale-[0.98]"
                 style={{
                   background:
                     "linear-gradient(90deg, rgba(177,77,255,0.9), rgba(255,79,216,0.9))",
@@ -114,6 +126,7 @@ export default function Navbar() {
                 rel="noreferrer"
                 onClick={() => setOpen(false)}
               >
+                <Phone className="h-4 w-4 text-white/90" />
                 Agendar llamada
               </a>
             </div>
@@ -123,4 +136,3 @@ export default function Navbar() {
     </header>
   );
 }
-
