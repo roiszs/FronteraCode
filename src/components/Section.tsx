@@ -15,7 +15,7 @@ export default function Section({
 }) {
   return (
     <section id={id} className="scroll-mt-24 py-12 sm:py-14">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
         {/* Header */}
         <div className="max-w-2xl">
           <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">
