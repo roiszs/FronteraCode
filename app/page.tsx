@@ -12,6 +12,7 @@ import {
   Zap,
   ShoppingCart,
   Wrench,
+  Search, PenTool, Code2, Rocket, CheckCircle2 
 } from "lucide-react";
 
 const services = [
@@ -229,44 +230,79 @@ export default function Home() {
       </Section>
 
       {/* PROCESO */}
-      <Section
-        id="proceso"
-        title="Proceso de trabajo"
-        subtitle="Transparente, rápido y con entregables visibles."
-      >
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {[
-            {
-              n: "01",
-              t: "Diagnóstico (30 min)",
-              d: "Objetivo, alcance, riesgos y prioridades.",
-            },
-            {
-              n: "02",
-              t: "Prototipo & UI",
-              d: "Wireframe + diseño; validación antes de construir.",
-            },
-            {
-              n: "03",
-              t: "Desarrollo por sprints",
-              d: "Entrega incremental con revisión y ajustes.",
-            },
-            {
-              n: "04",
-              t: "Deploy + soporte",
-              d: "Lanzamiento, monitoreo y plan de mejoras.",
-            },
-          ].map((p, idx) => (
-            <Reveal key={p.n} delay={idx * 0.04} y={10}>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <div className="text-white/60 text-sm">{p.n}</div>
-                <div className="mt-2 font-semibold">{p.t}</div>
-                <p className="mt-2 text-white/70 leading-relaxed">{p.d}</p>
+      <div className="relative">
+  {/* Línea conectora (desktop) */}
+  <div className="hidden lg:block absolute left-0 right-0 top-10 h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
+
+  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+    {[
+      {
+        n: "01",
+        icon: Search,
+        t: "Diagnóstico (30 min)",
+        d: "Aterrizamos objetivo, alcance, prioridades y riesgos. Te proponemos una ruta clara con entregables.",
+        meta: "Salida: alcance + plan por módulos",
+      },
+      {
+        n: "02",
+        icon: PenTool,
+        t: "Prototipo & UI",
+        d: "Diseñamos el prototipo (wireframe/UI) y lo validamos contigo. Si te gusta, iniciamos formalmente.",
+        meta: "Hito: aprobación + 50% de anticipo",
+      },
+      {
+        n: "03",
+        icon: Code2,
+        t: "Desarrollo por sprints",
+        d: "Construimos por sprints semanales con demos. Avanzas viendo resultados reales, no promesas.",
+        meta: "Demos: 1 por semana",
+      },
+      {
+        n: "04",
+        icon: Rocket,
+        t: "Deploy + soporte",
+        d: "Lanzamiento a producción, monitoreo y soporte. Entrega final y cierre de proyecto.",
+        meta: "Hito: entrega + pago restante",
+      },
+    ].map((p, idx) => {
+      const Icon = p.icon;
+
+      return (
+        <Reveal key={p.n} delay={idx * 0.05} y={12}>
+          <div className="relative rounded-2xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-6 transition hover:border-white/20 hover:from-white/10 hover:to-white/6 hover:-translate-y-1">
+            {/* Punto conector (desktop) */}
+            <div className="hidden lg:block absolute left-1/2 -top-2 h-4 w-4 -translate-x-1/2 rounded-full border border-white/20 bg-[#0b0712]">
+              <div className="absolute inset-0 rounded-full bg-purple-500/30 blur-[6px]" />
+            </div>
+
+            <div className="flex items-start gap-3">
+              <div className="rounded-xl border border-white/10 bg-white/5 p-2">
+                <Icon className="h-5 w-5 text-purple-300 drop-shadow-[0_0_10px_rgba(177,77,255,0.35)]" />
               </div>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
+
+              <div className="flex-1">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="text-xs uppercase tracking-wider text-white/50">
+                    Paso {p.n}
+                  </div>
+                </div>
+
+                <div className="mt-2 text-lg font-semibold">{p.t}</div>
+                <p className="mt-2 text-white/70 leading-relaxed">{p.d}</p>
+
+                <div className="mt-4 flex items-center gap-2 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-white/70">
+                  <CheckCircle2 className="h-4 w-4 text-white/50" />
+                  <span>{p.meta}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      );
+    })}
+  </div>
+</div>
+
 
       {/* PROYECTOS */}
       <Section
