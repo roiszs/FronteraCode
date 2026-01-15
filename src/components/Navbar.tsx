@@ -23,8 +23,8 @@ export default function Navbar() {
             <Image
               src="/brand/sinFondo.png"
               alt="FronteraCode"
-              width={34}
-              height={34}
+              width={95}
+              height={95}
               className="object-contain drop-shadow-[0_0_16px_rgba(177,77,255,0.35)]"
               priority
             />
