@@ -137,7 +137,7 @@ export default function Home() {
                   Ver servicios
                 </a>
                 <a
-                  href="/mensualidades"
+                  href="mensualidades/page.tsx"
                   className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-black/30 px-5 py-3 text-white/80 transition hover:text-white hover:border-white/30 hover:bg-white/5 hover:scale-[1.02]"
                 >
                   Planes mensuales
