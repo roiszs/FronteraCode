@@ -3,24 +3,28 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Menu, X, Mail, Phone } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const nav = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Servicios", href: "/#servicios" },
+  { label: "Proceso", href: "/#proceso" },
+  { label: "Proyectos", href: "/#proyectos" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Contacto", href: "/#contacto" },
 ];
+
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur-md">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Brand */}
-          <a href="#top" className="flex items-center gap-3 min-w-[170px]">
+          <a href={pathname === "/" ? "#top" : "/#top"} className="flex items-center gap-3 min-w-[170px]"></a>
+          <a href="/" className="flex items-center gap-3">
             <Image
               src="/brand/sinFondo.png"
               alt="FronteraCode"
