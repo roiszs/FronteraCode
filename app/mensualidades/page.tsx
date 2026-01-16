@@ -373,6 +373,7 @@ export default function MensualidadesPage() {
         </section>
 
 
+
       {/* ACLARACIONES */}
       <Section
         id="aclaraciones"
