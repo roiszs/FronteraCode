@@ -246,7 +246,7 @@ export default function Home() {
 >
 <div className="relative">
   {/* Línea conectora (desktop) - sutil (sin morado) */}
-  <div className="hidden lg:block absolute left-0 right-0 top-10 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+  <div className="hidden lg:block absolute left-0 right-0 top-12 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
   <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
     {[
@@ -305,11 +305,11 @@ export default function Home() {
             </div>
 
             {/* Nota / chip uniforme y alineada abajo */}
-            <div className="mt-auto pt-5">
-              <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-white/70 w-full">
-                <CheckCircle2 className="h-4 w-4 text-white/50 shrink-0" />
-                <span className="truncate">{p.meta}</span>
-              </div>
+            <div className="mt-4 inline-flex w-full items-start gap-2 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-white/70">
+            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-white/50" />
+            <span className="min-w-0 whitespace-normal break-words leading-snug">
+              {p.meta}
+            </span>
             </div>
           </div>
         </Reveal>
