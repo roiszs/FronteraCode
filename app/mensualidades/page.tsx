@@ -339,6 +339,40 @@ export default function MensualidadesPage() {
         </div>
       </Section>
 
+            <section className="mt-20">
+        <div className="mx-auto max-w-4xl px-6">
+            <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-8">
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">
+                Cambios puntuales sin mensualidad
+            </h2>
+
+            <p className="mt-4 text-white/70 leading-relaxed">
+                Si no cuentas con un plan mensual, también puedes solicitar cambios
+                específicos de forma puntual.
+            </p>
+
+            <div className="mt-6 rounded-2xl border border-white/10 bg-black/30 p-6">
+                <div className="text-3xl font-semibold text-white">
+                $60 USD <span className="text-sm text-white/60 font-normal">/ pago único</span>
+                </div>
+
+                <ul className="mt-4 space-y-2 text-white/70">
+                <li>• Hasta <span className="text-white">10 cambios</span> incluidos</li>
+                <li>• Los cambios deben solicitarse <span className="text-white">en el mismo momento</span></li>
+                <li>• No acumulables para futuras solicitudes</li>
+                <li>• Aplica a ajustes visuales, textos, configuraciones y lógica ligera</li>
+                <li>• Entrega dentro del mismo ciclo de trabajo acordado</li>
+                </ul>
+
+                <p className="mt-4 text-sm text-white/50">
+                Ideal para ajustes rápidos cuando no se requiere soporte continuo.
+                </p>
+            </div>
+            </div>
+        </div>
+        </section>
+
+
       {/* ACLARACIONES */}
       <Section
         id="aclaraciones"

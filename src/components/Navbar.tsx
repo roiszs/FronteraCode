@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 import { Menu, X, Mail, Phone } from "lucide-react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
+
 
 const nav = [
   { label: "Servicios", href: "/#servicios" },
