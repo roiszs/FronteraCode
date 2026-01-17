@@ -30,16 +30,16 @@ export default function Navbar() {
             <Image
               src="/brand/sinFondo.png"
               alt="FronteraCode"
-              width={40}
-              height={40}
-              className="object-contain drop-shadow-[0_0_16px_rgba(177,77,255,0.35)]"
+              width={44}
+              height={44}
+              className="h-9 w-9 sm:h-10 sm:w-10 object-contain drop-shadow-[0_0_16px_rgba(177,77,255,0.35)]"
               priority
             />
-            <span className="font-semibold tracking-tight">FronteraCode</span>
+            <span className="hidden sm:inline font-semibold tracking-tight">FronteraCode</span>
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-white/70">
+          <nav className="hidden xl:flex items-center gap-7 text-sm font-medium text-white/70">
             {nav.map((i) => (
               <a
                 key={i.href}
@@ -80,7 +80,8 @@ export default function Navbar() {
             {/* Mobile menu button */}
             <button
               type="button"
-              className="lg:hidden inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 p-2 text-white/80 hover:bg-white/10 transition"
+              className="xl:hidden inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/80 hover:bg-white/10 transition"
+
               onClick={() => setOpen((v) => !v)}
               aria-label={open ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={open}
@@ -96,7 +97,7 @@ export default function Navbar() {
       {open && (
         <div
           id="mobile-nav"
-          className="lg:hidden border-t border-white/10 bg-black/70 backdrop-blur-md"
+          className="xl:hidden border-t border-white/10 bg-black/70 backdrop-blur-md"
         >
           <div className="mx-auto max-w-6xl px-4 sm:px-6 py-4 grid gap-2">
             {nav.map((i) => (

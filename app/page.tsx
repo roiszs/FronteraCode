@@ -245,9 +245,6 @@ export default function Home() {
   glow
 >
 <div className="relative">
-  {/* Línea conectora (desktop) - sutil (sin morado) */}
-  <div className="hidden lg:block absolute left-0 right-0 top-12 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
   <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
     {[
       {
