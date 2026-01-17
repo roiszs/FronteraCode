@@ -11,6 +11,11 @@ const sora = Sora({
   variable: "--font-sora",
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: {

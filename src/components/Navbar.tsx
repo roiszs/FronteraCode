@@ -35,7 +35,9 @@ export default function Navbar() {
               className="h-9 w-9 sm:h-10 sm:w-10 object-contain drop-shadow-[0_0_16px_rgba(177,77,255,0.35)]"
               priority
             />
-            <span className="font-semibold tracking-tight">FronteraCode</span>
+            <span className="font-semibold tracking-tight text-sm sm:text-base truncate">
+            FronteraCode
+            </span>
           </a>
 
           {/* Desktop nav */}
