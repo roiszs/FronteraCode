@@ -48,9 +48,18 @@ const faqs = [
         <br />
         Esto incluye correcciones, ajustes, mejoras continuas y acompañamiento
         técnico para que tu software siga creciendo junto con tu operación.
+        <br />
+        <br />
+        <a
+          href="/mensualidades"
+          className="inline-flex items-center gap-1 text-purple-300 hover:text-purple-200 underline underline-offset-4 transition"
+        >
+          Ver planes mensuales de soporte →
+        </a>
       </>
     ),
   },
+  
   {
     icon: FileText,
     q: "¿Cómo cotizan los proyectos?",
@@ -77,9 +86,9 @@ const faqs = [
         Desarrollamos sistemas orientados a operación real:{" "}
         <strong>
           captura de producción, control por roles, reportes, trazabilidad,
-          dashboards y KPIs
+          dashboards y KPIs {" "}
         </strong>
-        diseñados para supervisores y personal en piso.
+         diseñados para supervisores y personal en piso.
       </>
     ),
   },
