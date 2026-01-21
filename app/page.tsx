@@ -319,8 +319,8 @@ export default function Home() {
 
 
 
-      {/* PROYECTOS */}
-      <Section
+      {/* PROYECTOS 
+        <Section
         id="proyectos"
         title="Proyectos"
         subtitle="Casos tipo (demos) que representan lo que construimos."
@@ -345,7 +345,7 @@ export default function Home() {
             </Reveal>
           ))}
         </div>
-      </Section>
+      </Section> */}
 
       {/* FAQ */}
       <Section
