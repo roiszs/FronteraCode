@@ -26,18 +26,20 @@ export default function Navbar() {
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Brand */}
           <a href={pathname === "/" ? "#top" : "/#top"} className="flex items-center gap-3 min-w-[170px]"></a>
-          <a href="/" className="flex items-center gap-3">
-            <Image
-              src="/brand/sinFondo.png"
-              alt="FronteraCode"
-              width={44}
-              height={44}
-              className="h-9 w-9 sm:h-10 sm:w-10 object-contain drop-shadow-[0_0_16px_rgba(177,77,255,0.35)]"
-              priority
-            />
-            <span className="font-semibold tracking-tight text-sm sm:text-base truncate">
-            FronteraCode
+          <a href="/" className="flex items-center gap-2 min-w-0">
+                <Image
+                  src="/brand/sinFondo.png"
+                  alt="FronteraCode"
+                  width={40}
+                  height={40}
+                  className="h-9 w-9 sm:h-10 sm:w-10 object-contain shrink-0 drop-shadow-[0_0_16px_rgba(177,77,255,0.35)]"
+                  priority
+                />
+            <span className="font-semibold tracking-tight">
+                  <span className="sm:hidden">FC</span>
+                  <span className="hidden sm:inline">FronteraCode</span>
             </span>
+
           </a>
 
           {/* Desktop nav */}
