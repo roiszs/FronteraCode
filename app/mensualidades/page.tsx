@@ -42,7 +42,7 @@ const plans = [
       "Reportes, exportaciones y ajustes de captura",
       "Soporte a usuarios (orientación y fixes)",
     ],
-    bestFor: "Registro de producción, trazabilidad, supervisión, capturas por turno/proceso.",
+    bestFor: "Registro de producción, trazabilidad, supervisión, capturas por turno/proceso. Si el sistema crece mucho o se vuelve crítico, se revisa tarifa.", 
     featured: true,
   },
   {
