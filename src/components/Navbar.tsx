@@ -1,29 +1,39 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
-
-const nav = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contacto", href: "#contacto" },
-];
+import { useMemo, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useLang } from "@/src/components/context/LanguageProvider";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const { lang, toggle, t } = useLang();
+
+  const nav = useMemo(
+    () => [
+      { label: t("nav_services"), href: "#servicios" },
+      { label: t("nav_process"), href: "#proceso" },
+      // si no usarás proyectos por ahora, puedes quitarlo
+      // { label: t("nav_projects"), href: "#proyectos" },
+      { label: t("nav_faq"), href: "#faq" },
+      { label: t("nav_contact"), href: "#contacto" },
+    ],
+    [t]
+  );
+
+  const hrefFor = (hash: string) => (isHome ? hash : `/${hash}`);
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur-md">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        {/* Contenedor principal */}
         <div className="relative flex h-16 items-center justify-between">
-          {/* Brand desktop (izquierda) */}
+          {/* Brand desktop */}
           <a
             href="/"
             className="hidden lg:flex items-center gap-3 min-w-[190px]"
-            aria-label="Ir a inicio"
+            aria-label="Home"
           >
             <Image
               src="/brand/sinFondo.png"
@@ -36,11 +46,11 @@ export default function Navbar() {
             <span className="font-semibold tracking-tight">FronteraCode</span>
           </a>
 
-          {/* Brand mobile (centrado absoluto) */}
+          {/* Brand mobile centered */}
           <a
             href="/"
             className="lg:hidden absolute left-1/2 -translate-x-1/2 flex items-center gap-2"
-            aria-label="Ir a inicio"
+            aria-label="Home"
           >
             <Image
               src="/brand/sinFondo.png"
@@ -53,21 +63,30 @@ export default function Navbar() {
             <span className="font-semibold tracking-tight">FronteraCode</span>
           </a>
 
-          {/* Nav desktop (centro) */}
+          {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-white/70">
             {nav.map((i) => (
-              <a
-                key={i.href}
-                href={i.href}
-                className="hover:text-white transition"
-              >
+              <a key={i.href} href={hrefFor(i.href)} className="hover:text-white transition">
                 {i.label}
               </a>
             ))}
           </nav>
 
-          {/* Right side (CTAs + menu) */}
+          {/* Right side */}
           <div className="flex items-center gap-3">
+            {/* Language toggle (desktop + mobile) */}
+            <button
+              type="button"
+              onClick={toggle}
+              className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/80 hover:bg-white/10 transition"
+              aria-label="Cambiar idioma"
+              title="ES / EN"
+            >
+              <span className={lang === "es" ? "text-white" : "text-white/50"}>ES</span>
+              <span className="mx-2 text-white/30">|</span>
+              <span className={lang === "en" ? "text-white" : "text-white/50"}>EN</span>
+            </button>
+
             {/* Desktop CTAs */}
             <a
               className="hidden sm:inline-flex rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 transition"
@@ -90,7 +109,7 @@ export default function Navbar() {
               Agendar llamada
             </a>
 
-            {/* Mobile menu button */}
+            {/* Mobile menu */}
             <button
               type="button"
               className="lg:hidden inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/80 hover:bg-white/10 transition"
@@ -98,7 +117,7 @@ export default function Navbar() {
               aria-label={open ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={open}
             >
-              {open ? "Cerrar" : "Menú"}
+              {open ? (lang === "en" ? "Close" : "Cerrar") : (lang === "en" ? "Menu" : "Menú")}
             </button>
           </div>
         </div>
@@ -111,7 +130,7 @@ export default function Navbar() {
             {nav.map((i) => (
               <a
                 key={i.href}
-                href={i.href}
+                href={hrefFor(i.href)}
                 className="rounded-xl px-3 py-2 text-white/80 hover:bg-white/10 transition"
                 onClick={() => setOpen(false)}
               >
@@ -140,7 +159,7 @@ export default function Navbar() {
                 rel="noreferrer"
                 onClick={() => setOpen(false)}
               >
-                Agendar llamada
+                {lang === "en" ? "Schedule a call" : "Agendar llamada"}
               </a>
             </div>
           </div>
@@ -149,4 +168,5 @@ export default function Navbar() {
     </header>
   );
 }
+
 

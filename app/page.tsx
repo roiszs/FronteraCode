@@ -1,9 +1,12 @@
+"use client";
+
 import Navbar from "@/src/components/Navbar";
 import Section from "@/src/components/Section";
 import FAQ from "@/src/components/FAQ";
 import ContactForm from "@/src/components/ContactForm";
 import Image from "next/image";
 import Reveal from "@/src/components/Reveal";
+import { useLang } from "@/src/components/context/LanguageProvider";
 
 import {
   MonitorSmartphone,
@@ -12,64 +15,146 @@ import {
   Zap,
   ShoppingCart,
   Wrench,
-  Search, PenTool, Code2, Rocket, CheckCircle2 
+  Search,
+  PenTool,
+  Code2,
+  Rocket,
+  CheckCircle2,
 } from "lucide-react";
 
-const services = [
-  {
-    title: "Websites & Landing Pages",
-    desc: "Sitios modernos, rápidos y optimizados para conversión.",
-    icon: MonitorSmartphone,
-  },
-  {
-    title: "Sistemas para maquila",
-    desc: "Registro de producción, trazabilidad, roles y reportes.",
-    icon: Factory,
-  },
-  {
-    title: "Dashboards & KPIs",
-    desc: "Indicadores claros para decidir con datos, no con suposiciones.",
-    icon: Gauge,
-  },
-  {
-    title: "Automatización",
-    desc: "Menos tareas manuales, menos errores, más velocidad.",
-    icon: Zap,
-  },
-  {
-    title: "E-commerce",
-    desc: "Catálogo, pagos y experiencia de compra sólida.",
-    icon: ShoppingCart,
-  },
-  {
-    title: "Soporte & mejoras",
-    desc: "Mantenimiento y evolución continua del producto.",
-    icon: Wrench,
-  },
-];
-
-const projects = [
-  {
-    title: "Dashboard de Producción",
-    problem: "Poca visibilidad diaria del rendimiento.",
-    solution: "Panel con KPIs y filtros por proceso/turno.",
-    result: "Decisiones más rápidas y menos retrabajo.",
-  },
-  {
-    title: "Registro de Piezas/Hora (Supervisor + Asociados)",
-    problem: "Registro manual y disperso.",
-    solution: "Captura centralizada + firma + exportación.",
-    result: "Trazabilidad y control en minutos.",
-  },
-  {
-    title: "Landing B2B para PyME",
-    problem: "Presencia débil y baja conversión.",
-    solution: "Landing con CTA + estructura de venta + SEO técnico.",
-    result: "Más solicitudes y mejor imagen de marca.",
-  },
-];
-
 export default function Home() {
+  const { lang, t } = useLang();
+
+  const services =
+    lang === "es"
+      ? [
+          {
+            title: "Websites & Landing Pages",
+            desc: "Sitios modernos, rápidos y optimizados para conversión.",
+            icon: MonitorSmartphone,
+          },
+          {
+            title: "Sistemas para maquila",
+            desc: "Registro de producción, trazabilidad, roles y reportes.",
+            icon: Factory,
+          },
+          {
+            title: "Dashboards & KPIs",
+            desc: "Indicadores claros para decidir con datos, no con suposiciones.",
+            icon: Gauge,
+          },
+          {
+            title: "Automatización",
+            desc: "Menos tareas manuales, menos errores, más velocidad.",
+            icon: Zap,
+          },
+          {
+            title: "E-commerce",
+            desc: "Catálogo, pagos y experiencia de compra sólida.",
+            icon: ShoppingCart,
+          },
+          {
+            title: "Soporte & mejoras",
+            desc: "Mantenimiento y evolución continua del producto.",
+            icon: Wrench,
+          },
+        ]
+      : [
+          {
+            title: "Websites & Landing Pages",
+            desc: "Modern, fast, conversion-focused websites.",
+            icon: MonitorSmartphone,
+          },
+          {
+            title: "Manufacturing systems",
+            desc: "Production logging, traceability, roles and reporting.",
+            icon: Factory,
+          },
+          {
+            title: "Dashboards & KPIs",
+            desc: "Clear metrics to decide with data, not guesses.",
+            icon: Gauge,
+          },
+          {
+            title: "Automation",
+            desc: "Less manual work, fewer errors, more speed.",
+            icon: Zap,
+          },
+          {
+            title: "E-commerce",
+            desc: "Catalog, payments, and a solid checkout experience.",
+            icon: ShoppingCart,
+          },
+          {
+            title: "Support & improvements",
+            desc: "Maintenance and continuous product evolution.",
+            icon: Wrench,
+          },
+        ];
+
+  const processSteps =
+    lang === "es"
+      ? [
+          {
+            n: "01",
+            icon: Search,
+            t: "Diagnóstico (30 min)",
+            d: "Aterrizamos objetivo, alcance, prioridades y riesgos. Te proponemos una ruta clara con entregables.",
+            meta: "Salida: alcance + plan por módulos",
+          },
+          {
+            n: "02",
+            icon: PenTool,
+            t: "Prototipo & UI",
+            d: "Diseñamos el prototipo (wireframe/UI) y lo validamos contigo. Si te gusta, iniciamos formalmente.",
+            meta: "Hito: aprobación + 50% de anticipo",
+          },
+          {
+            n: "03",
+            icon: Code2,
+            t: "Desarrollo por sprints",
+            d: "Construimos por sprints semanales con demos. Avanzas viendo resultados reales, no promesas.",
+            meta: "Demos: 1 por semana",
+          },
+          {
+            n: "04",
+            icon: Rocket,
+            t: "Deploy + soporte",
+            d: "Lanzamiento a producción, monitoreo y soporte. Entrega final y cierre de proyecto.",
+            meta: "Hito: entrega + pago restante",
+          },
+        ]
+      : [
+          {
+            n: "01",
+            icon: Search,
+            t: "Diagnosis (30 min)",
+            d: "We define goals, scope, priorities, and risks. You get a clear roadmap with deliverables.",
+            meta: "Output: scope + modular plan",
+          },
+          {
+            n: "02",
+            icon: PenTool,
+            t: "Prototype & UI",
+            d: "We design the prototype (wireframe/UI) and validate it with you. If approved, we start formally.",
+            meta: "Milestone: approval + 50% deposit",
+          },
+          {
+            n: "03",
+            icon: Code2,
+            t: "Weekly sprints",
+            d: "We build in weekly sprints with demos. You see real progress, not promises.",
+            meta: "Demos: 1 per week",
+          },
+          {
+            n: "04",
+            icon: Rocket,
+            t: "Deploy + support",
+            d: "Production launch, monitoring and support. Final delivery and project closeout.",
+            meta: "Milestone: delivery + remaining payment",
+          },
+        ];
+
   return (
     <main id="top" className="scroll-mt-24 min-h-screen bg-[#07060A] text-white">
       <Navbar />
@@ -101,19 +186,16 @@ export default function Home() {
               <Reveal y={14}>
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
-                    Tecnología de frontera · Software que trabaja contigo
+                    {t("hero_badge")}
                   </span>
                 </div>
 
                 <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight">
-                  Software y websites que funcionan en operación real.
+                  {t("hero_title")}
                 </h1>
 
                 <p className="mt-4 text-white/70 leading-relaxed">
-                  En <span className="text-white">FronteraCode</span> diseñamos y
-                  desarrollamos productos digitales para PyMEs, e-commerce y
-                  maquilas: sistemas internos, dashboards, automatización y sitios
-                  web modernos.
+                  {t("hero_desc")}
                 </p>
               </Reveal>
 
@@ -127,28 +209,28 @@ export default function Home() {
                     boxShadow: "0 0 30px rgba(177,77,255,0.25)",
                   }}
                 >
-                  Cotizar proyecto
+                  {t("cta_quote")}
                 </a>
 
                 <a
                   href="#servicios"
                   className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-white/80 transition hover:bg-white/10 hover:scale-[1.02]"
                 >
-                  Ver servicios
+                  {t("cta_services")}
                 </a>
+
                 <a
                   href="/mensualidades"
                   className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-black/30 px-5 py-3 text-white/80 transition hover:text-white hover:border-white/30 hover:bg-white/5 hover:scale-[1.02]"
                 >
-                  Planes mensuales
+                  {t("cta_plans")}
                 </a>
-
               </div>
 
               <div className="mt-8 grid gap-2 text-sm text-white/70">
-                <p>• Entregas por sprints con demos semanales</p>
-                <p>• UI moderna, simple de usar</p>
-                <p>• Escalable y listo para crecer</p>
+                <p>{t("bullet_1")}</p>
+                <p>{t("bullet_2")}</p>
+                <p>{t("bullet_3")}</p>
               </div>
             </div>
 
@@ -203,8 +285,8 @@ export default function Home() {
       {/* SERVICIOS */}
       <Section
         id="servicios"
-        title="Servicios"
-        subtitle="Soluciones claras, sin complicaciones, orientadas a resultados."
+        title={t("services_title")}
+        subtitle={t("services_sub")}
         glow
       >
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -222,7 +304,7 @@ export default function Home() {
                       <Icon className="h-5 w-5 text-purple-300 drop-shadow-[0_0_10px_rgba(177,77,255,0.35)]" />
                     </div>
                     <div className="text-xs uppercase tracking-wider text-white/50">
-                      Servicio
+                      {t("service_label")}
                     </div>
                   </div>
 
@@ -236,136 +318,67 @@ export default function Home() {
         </div>
       </Section>
 
-      
       {/* PROCESO */}
-<Section
-  id="proceso"
-  title="Proceso de trabajo"
-  subtitle="Transparente, rápido y con entregables visibles."
-  glow
->
-<div className="relative">
-  <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-    {[
-      {
-        n: "01",
-        icon: Search,
-        t: "Diagnóstico (30 min)",
-        d: "Aterrizamos objetivo, alcance, prioridades y riesgos. Te proponemos una ruta clara con entregables.",
-        meta: "Salida: alcance + plan por módulos",
-      },
-      {
-        n: "02",
-        icon: PenTool,
-        t: "Prototipo & UI",
-        d: "Diseñamos el prototipo (wireframe/UI) y lo validamos contigo. Si te gusta, iniciamos formalmente.",
-        meta: "Hito: aprobación + 50% de anticipo",
-      },
-      {
-        n: "03",
-        icon: Code2,
-        t: "Desarrollo por sprints",
-        d: "Construimos por sprints semanales con demos. Avanzas viendo resultados reales, no promesas.",
-        meta: "Demos: 1 por semana",
-      },
-      {
-        n: "04",
-        icon: Rocket,
-        t: "Deploy + soporte",
-        d: "Lanzamiento a producción, monitoreo y soporte. Entrega final y cierre de proyecto.",
-        meta: "Hito: entrega + pago restante",
-      },
-    ].map((p, idx) => {
-      const Icon = p.icon;
-
-      return (
-        <Reveal key={p.n} delay={idx * 0.05} y={12}>
-          <div className="relative rounded-2xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-6 transition hover:border-white/20 hover:from-white/10 hover:to-white/6 hover:-translate-y-1 flex flex-col min-h-[230px]">
-            {/* Punto conector (desktop) - más discreto */}
-            <div className="hidden lg:block absolute left-1/2 -top-2 h-4 w-4 -translate-x-1/2 rounded-full border border-white/15 bg-[#0b0712]">
-              <div className="absolute inset-0 rounded-full bg-white/10 blur-[6px]" />
-            </div>
-
-            <div className="flex items-start gap-3">
-              <div className="rounded-xl border border-white/10 bg-white/5 p-2">
-                <Icon className="h-5 w-5 text-purple-300 drop-shadow-[0_0_10px_rgba(177,77,255,0.35)]" />
-              </div>
-
-              <div className="flex-1">
-                <div className="text-xs uppercase tracking-wider text-white/50">
-                  Paso {p.n}
-                </div>
-
-                <div className="mt-2 text-lg font-semibold">{p.t}</div>
-                <p className="mt-2 text-white/70 leading-relaxed">{p.d}</p>
-              </div>
-            </div>
-
-            {/* Nota / chip uniforme y alineada abajo */}
-            <div className="mt-4 inline-flex w-full items-start gap-2 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-white/70">
-            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-white/50" />
-            <span className="min-w-0 whitespace-normal break-words leading-snug">
-              {p.meta}
-            </span>
-            </div>
-          </div>
-        </Reveal>
-      );
-    })}
-  </div>
-</div>
-
-</Section>
-
-
-
-      {/* PROYECTOS 
-        <Section
-        id="proyectos"
-        title="Proyectos"
-        subtitle="Casos tipo (demos) que representan lo que construimos."
+      <Section
+        id="proceso"
+        title={t("process_title")}
+        subtitle={t("process_sub")}
+        glow
       >
-        <div className="grid gap-4 lg:grid-cols-3">
-          {projects.map((p, idx) => (
-            <Reveal key={p.title} delay={idx * 0.05} y={10}>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <div className="text-lg font-semibold">{p.title}</div>
-                <div className="mt-4 space-y-2 text-sm text-white/70">
-                  <p>
-                    <span className="text-white/85">Problema:</span> {p.problem}
-                  </p>
-                  <p>
-                    <span className="text-white/85">Solución:</span> {p.solution}
-                  </p>
-                  <p>
-                    <span className="text-white/85">Resultado:</span> {p.result}
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
+        <div className="relative">
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {processSteps.map((p, idx) => {
+              const Icon = p.icon;
+
+              return (
+                <Reveal key={p.n} delay={idx * 0.05} y={12}>
+                  <div className="relative rounded-2xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-6 transition hover:border-white/20 hover:from-white/10 hover:to-white/6 hover:-translate-y-1 flex flex-col min-h-[230px]">
+                    {/* Punto conector (desktop) */}
+                    <div className="hidden lg:block absolute left-1/2 -top-2 h-4 w-4 -translate-x-1/2 rounded-full border border-white/15 bg-[#0b0712]">
+                      <div className="absolute inset-0 rounded-full bg-white/10 blur-[6px]" />
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="rounded-xl border border-white/10 bg-white/5 p-2">
+                        <Icon className="h-5 w-5 text-purple-300 drop-shadow-[0_0_10px_rgba(177,77,255,0.35)]" />
+                      </div>
+
+                      <div className="flex-1">
+                        <div className="text-xs uppercase tracking-wider text-white/50">
+                          {lang === "en" ? `Step ${p.n}` : `Paso ${p.n}`}
+                        </div>
+
+                        <div className="mt-2 text-lg font-semibold">{p.t}</div>
+                        <p className="mt-2 text-white/70 leading-relaxed">{p.d}</p>
+                      </div>
+                    </div>
+
+                    {/* Nota / chip uniforme */}
+                    <div className="mt-4 inline-flex w-full items-start gap-2 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-white/70">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-white/50" />
+                      <span className="min-w-0 whitespace-normal break-words leading-snug">
+                        {p.meta}
+                      </span>
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
-      </Section> */}
+      </Section>
 
       {/* FAQ */}
-      <Section
-        id="faq"
-        title="FAQ"
-        subtitle="Respuestas rápidas a las dudas más comunes."
-      >
+      <Section id="faq" title={t("faq_title")} subtitle={t("faq_sub")}>
         <FAQ />
       </Section>
 
       {/* CONTACTO */}
-      <Section
-        id="contacto"
-        title="Contacto"
-        subtitle="Cuéntanos qué necesitas y te proponemos una ruta clara: alcance, tiempos y entregables."
-      >
+      <Section id="contacto" title={t("contact_title")} subtitle={t("contact_sub")}>
         <div className="grid gap-6 lg:grid-cols-2">
           {/* Contact buttons */}
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <div className="text-sm text-white/60">Canales directos</div>
+            <div className="text-sm text-white/60">{t("channels_title")}</div>
             <div className="mt-4 grid gap-3">
               <a
                 className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 transition"
@@ -382,7 +395,7 @@ export default function Home() {
                 Email: fronteracode@gmail.com
               </a>
               <div className="rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white/60">
-                Formulario: envía tu solicitud y te respondemos por correo.
+                {t("form_hint")}
               </div>
             </div>
           </div>
@@ -394,13 +407,11 @@ export default function Home() {
 
       <footer className="border-t border-white/10 py-10">
         <div className="mx-auto max-w-6xl px-6 text-sm text-white/50 flex flex-col sm:flex-row gap-3 justify-between">
-          <p>
-            © {new Date().getFullYear()} FronteraCode. Todos los derechos
-            reservados.
-          </p>
-          <p>Ciudad Juárez · Tecnología de frontera</p>
+          <p>© {new Date().getFullYear()} FronteraCode. Todos los derechos reservados.</p>
+          <p>{t("footer_right")}</p>
         </div>
       </footer>
     </main>
   );
 }
+
