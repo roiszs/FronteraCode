@@ -1,12 +1,75 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Mail, MessageSquareText, Phone, User, Wrench } from "lucide-react";
 
 type Status = "idle" | "sending" | "sent" | "error";
+type Lang = "es" | "en";
 
-export default function ContactForm() {
+type Props = {
+  lang: Lang;
+};
+
+export default function ContactForm({ lang }: Props) {
   const [status, setStatus] = useState<Status>("idle");
+
+  const copy = useMemo(() => {
+    const es = {
+      formTitle: "Formulario",
+      sending: "Enviando…",
+      sent: "Enviado",
+      error: "Error",
+
+      namePh: "Nombre",
+      contactPh: "Email o teléfono",
+      typeLabel: "Tipo de proyecto",
+      messagePh: "Cuéntanos el objetivo y lo que necesitas",
+
+      optWebsite: "Website / Landing",
+      optSystem: "Sistema",
+      optDashboard: "Dashboard / KPIs",
+      optAutomation: "Automatización",
+      optOther: "Otro",
+
+      btnSending: "Enviando...",
+      btnSend: "Enviar",
+
+      okMsg: "Listo. Recibimos tu mensaje y te contactaremos pronto.",
+      errMsg: "Ocurrió un error. Intenta de nuevo.",
+
+      waText: "WhatsApp directo (respuesta más rápida)",
+      emailText: "Email: fronteracode@gmail.com",
+    };
+
+    const en = {
+      formTitle: "Form",
+      sending: "Sending…",
+      sent: "Sent",
+      error: "Error",
+
+      namePh: "Name",
+      contactPh: "Email or phone",
+      typeLabel: "Project type",
+      messagePh: "Tell us your goal and what you need",
+
+      optWebsite: "Website / Landing",
+      optSystem: "Internal system",
+      optDashboard: "Dashboards / KPIs",
+      optAutomation: "Automation",
+      optOther: "Other",
+
+      btnSending: "Sending...",
+      btnSend: "Send",
+
+      okMsg: "Done. We received your message and will contact you soon.",
+      errMsg: "Something went wrong. Please try again.",
+
+      waText: "Direct WhatsApp (fastest reply)",
+      emailText: "Email: fronteracode@gmail.com",
+    };
+
+    return lang === "en" ? en : es;
+  }, [lang]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -27,7 +90,6 @@ export default function ContactForm() {
       setStatus("sent");
       form.reset();
 
-      // Opcional: regresar a idle después de unos segundos
       setTimeout(() => setStatus("idle"), 3500);
     } catch {
       setStatus("error");
@@ -38,21 +100,21 @@ export default function ContactForm() {
     if (status === "sending") {
       return (
         <span className="ml-2 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-2 py-1 text-xs text-white/70">
-          Enviando…
+          {copy.sending}
         </span>
       );
     }
     if (status === "sent") {
       return (
         <span className="ml-2 inline-flex items-center rounded-full border border-emerald-400/20 bg-emerald-500/10 px-2 py-1 text-xs text-emerald-200">
-          Enviado
+          {copy.sent}
         </span>
       );
     }
     if (status === "error") {
       return (
         <span className="ml-2 inline-flex items-center rounded-full border border-red-400/20 bg-red-500/10 px-2 py-1 text-xs text-red-200">
-          Error
+          {copy.error}
         </span>
       );
     }
@@ -65,7 +127,7 @@ export default function ContactForm() {
       onSubmit={handleSubmit}
     >
       <div className="flex items-center text-sm text-white/60">
-        Formulario
+        {copy.formTitle}
         <StatusBadge />
       </div>
 
@@ -75,7 +137,7 @@ export default function ContactForm() {
           <User className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/35" />
           <input
             className="w-full rounded-xl border border-white/10 bg-black/30 pl-12 pr-4 py-3 outline-none focus:border-white/30 transition"
-            placeholder="Nombre"
+            placeholder={copy.namePh}
             name="name"
             required
           />
@@ -86,7 +148,7 @@ export default function ContactForm() {
           <Mail className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/35" />
           <input
             className="w-full rounded-xl border border-white/10 bg-black/30 pl-12 pr-4 py-3 outline-none focus:border-white/30 transition"
-            placeholder="Email o teléfono"
+            placeholder={copy.contactPh}
             name="contact"
             required
           />
@@ -102,13 +164,13 @@ export default function ContactForm() {
             defaultValue=""
           >
             <option value="" disabled>
-              Tipo de proyecto
+              {copy.typeLabel}
             </option>
-            <option>Website / Landing</option>
-            <option>Sistema</option>
-            <option>Dashboard / KPIs</option>
-            <option>Automatización</option>
-            <option>Otro</option>
+            <option>{copy.optWebsite}</option>
+            <option>{copy.optSystem}</option>
+            <option>{copy.optDashboard}</option>
+            <option>{copy.optAutomation}</option>
+            <option>{copy.optOther}</option>
           </select>
         </div>
 
@@ -117,7 +179,7 @@ export default function ContactForm() {
           <MessageSquareText className="pointer-events-none absolute left-4 top-4 h-5 w-5 text-white/35" />
           <textarea
             className="w-full rounded-xl border border-white/10 bg-black/30 pl-12 pr-4 py-3 outline-none focus:border-white/30 transition"
-            placeholder="Cuéntanos el objetivo y lo que necesitas"
+            placeholder={copy.messagePh}
             name="message"
             rows={5}
             required
@@ -135,23 +197,19 @@ export default function ContactForm() {
           type="submit"
           disabled={status === "sending"}
         >
-          {status === "sending" ? "Enviando..." : "Enviar"}
+          {status === "sending" ? copy.btnSending : copy.btnSend}
         </button>
 
         {/* Feedback */}
         {status === "sent" && (
-          <p className="text-sm text-white/70">
-            Listo. Recibimos tu mensaje y te contactaremos pronto.
-          </p>
+          <p className="text-sm text-white/70">{copy.okMsg}</p>
         )}
 
         {status === "error" && (
-          <p className="text-sm text-red-200">
-            Ocurrió un error. Intenta de nuevo.
-          </p>
+          <p className="text-sm text-red-200">{copy.errMsg}</p>
         )}
 
-        {/* Alternativas reales (en vez de “redes sociales”) */}
+        {/* Alternativas */}
         <div className="pt-2 grid gap-2 text-xs text-white/60">
           <a
             className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 hover:bg-white/10 transition"
@@ -160,7 +218,7 @@ export default function ContactForm() {
             rel="noreferrer"
           >
             <Phone className="h-4 w-4 text-white/50" />
-            WhatsApp directo (respuesta más rápida)
+            {copy.waText}
           </a>
 
           <a
@@ -168,7 +226,7 @@ export default function ContactForm() {
             href="mailto:fronteracode@gmail.com?subject=Cotizaci%C3%B3n%20FronteraCode"
           >
             <Mail className="h-4 w-4 text-white/50" />
-            Email: fronteracode@gmail.com
+            {copy.emailText}
           </a>
         </div>
       </div>

@@ -585,11 +585,22 @@ export default function MensualidadesPage() {
       </section>
 
       <footer className="border-t border-white/10 py-10">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8 text-sm text-white/50 flex flex-col sm:flex-row gap-3 justify-between">
-          <p>© {new Date().getFullYear()} FronteraCode. Todos los derechos reservados.</p>
-          <p>{lang === "en" ? "Ciudad Juárez · Border technology" : "Ciudad Juárez · Tecnología de frontera"}</p>
+        <div className="mx-auto max-w-6xl px-6 text-sm text-white/50 flex flex-col sm:flex-row gap-3 justify-between">
+          <p>
+            © {new Date().getFullYear()} FronteraCode.{" "}
+            {lang === "en"
+              ? "All rights reserved."
+              : "Todos los derechos reservados."}
+          </p>
+
+          <p>
+            {lang === "en"
+              ? "Ciudad Juárez · Border technology"
+              : "Ciudad Juárez · Tecnología de frontera"}
+          </p>
         </div>
       </footer>
+
     </main>
   );
 }

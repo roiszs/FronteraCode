@@ -424,7 +424,7 @@ export default function Home() {
           </div>
 
           {/* Form */}
-          <ContactForm />
+          <ContactForm lang={lang} />
         </div>
       </Section>
 
