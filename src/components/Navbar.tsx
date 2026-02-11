@@ -23,7 +23,8 @@ export default function Navbar() {
     [t]
   );
 
-  const hrefFor = (hash: string) => (isHome ? hash : `/${hash}`);
+  const hrefFor = (hash: string) => (isHome ? hash : `/${hash.startsWith("#") ? hash : `#${hash}`}`);
+
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur-md">
