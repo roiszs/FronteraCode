@@ -392,8 +392,9 @@ export default function Home() {
 
       {/* FAQ */}
       <Section id="faq" title={t("faq_title")} subtitle={t("faq_sub")}>
-        <FAQ />
+        <FAQ lang={lang} />
       </Section>
+
 
       {/* CONTACTO */}
       <Section id="contacto" title={t("contact_title")} subtitle={t("contact_sub")}>
