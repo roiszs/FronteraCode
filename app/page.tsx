@@ -326,46 +326,68 @@ export default function Home() {
         glow
       >
         <div className="relative">
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {processSteps.map((p, idx) => {
-              const Icon = p.icon;
+  <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+    {processSteps.map((p, idx) => {
+      const Icon = p.icon;
 
-              return (
+      return (
                 <Reveal key={p.n} delay={idx * 0.05} y={12}>
-                  <div className="relative rounded-2xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-6 transition hover:border-white/20 hover:from-white/10 hover:to-white/6 hover:-translate-y-1 flex flex-col min-h-[230px]">
-                    {/* Punto conector (desktop) */}
-                    <div className="hidden lg:block absolute left-1/2 -top-2 h-4 w-4 -translate-x-1/2 rounded-full border border-white/15 bg-[#0b0712]">
-                      <div className="absolute inset-0 rounded-full bg-white/10 blur-[6px]" />
-                    </div>
+          <div
+            className="
+              relative rounded-2xl border border-white/10
+              bg-gradient-to-b from-white/8 to-white/4
+              p-6 transition hover:border-white/20 hover:from-white/10 hover:to-white/6
+              hover:-translate-y-1
+              flex flex-col
+              lg:min-h-[420px] xl:min-h-[380px]
+            "
+          >
+            {/* Punto conector (desktop) */}
+            <div className="hidden lg:block absolute left-1/2 -top-2 h-4 w-4 -translate-x-1/2 rounded-full border border-white/15 bg-[#0b0712]">
+              <div className="absolute inset-0 rounded-full bg-white/10 blur-[6px]" />
+            </div>
 
-                    <div className="flex items-start gap-3">
-                      <div className="rounded-xl border border-white/10 bg-white/5 p-2">
-                        <Icon className="h-5 w-5 text-purple-300 drop-shadow-[0_0_10px_rgba(177,77,255,0.35)]" />
-                      </div>
+            {/* Header */}
+            <div className="flex items-start gap-3">
+              <div className="rounded-xl border border-white/10 bg-white/5 p-2 shrink-0">
+                <Icon className="h-5 w-5 text-purple-300 drop-shadow-[0_0_10px_rgba(177,77,255,0.35)]" />
+              </div>
 
-                      <div className="flex-1">
-                        <div className="text-xs uppercase tracking-wider text-white/50">
-                          {lang === "en" ? `Step ${p.n}` : `Paso ${p.n}`}
-                        </div>
+              <div className="min-w-0 flex-1 text-left">
+                <div className="text-xs uppercase tracking-wider text-white/50">
+                  {lang === "en" ? `Step ${p.n}` : `Paso ${p.n}`}
+                </div>
 
-                        <div className="mt-2 text-lg font-semibold">{p.t}</div>
-                        <p className="mt-2 text-white/70 leading-relaxed">{p.d}</p>
-                      </div>
-                    </div>
+                {/* Título: misma caja */}
+                <div className="mt-2 font-semibold text-white leading-snug min-h-[52px]">
+                  {p.t}
+                </div>
 
-                    {/* Nota / chip uniforme */}
-                    <div className="mt-4 inline-flex w-full items-start gap-2 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-white/70">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-white/50" />
-                      <span className="min-w-0 whitespace-normal break-words leading-snug">
-                        {p.meta}
-                      </span>
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
+                {/* Descripción: clamp para que TODAS se vean iguales */}
+                <p className="mt-2 text-white/70 leading-relaxed [text-wrap:pretty]">
+                  {p.d}
+                </p>
+
+              </div>
+            </div>
+
+            {/* Chip: siempre abajo + altura uniforme */}
+            <div className="mt-auto pt-4">
+              <div className="inline-flex w-full items-start gap-2 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-white/70 min-h-[48px]">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-white/50" />
+                <span className="min-w-0 break-words leading-snug line-clamp-2">
+                  {p.meta}
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
+        </Reveal>
+
+      );
+    })}
+  </div>
+</div>
+
       </Section>
 
       {/* FAQ */}
