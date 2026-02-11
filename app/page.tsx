@@ -156,11 +156,12 @@ export default function Home() {
         ];
 
   return (
-    <main id="top" className="scroll-mt-24 min-h-screen bg-[#07060A] text-white">
+    <main id="top" className="scroll-mt-16 min-h-screen bg-[#07060A] text-white">
       <Navbar />
 
       {/* HERO */}
       <div className="pointer-events-none absolute inset-0 fc-grid" />
+
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <div
@@ -179,7 +180,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28 relative">
+        <div className="mx-auto max-w-6xl px-6 pt-14 pb-20 sm:pt-16 sm:pb-24 relative">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             {/* Copy */}
             <div>
@@ -194,9 +195,7 @@ export default function Home() {
                   {t("hero_title")}
                 </h1>
 
-                <p className="mt-4 text-white/70 leading-relaxed">
-                  {t("hero_desc")}
-                </p>
+                <p className="mt-4 text-white/70 leading-relaxed">{t("hero_desc")}</p>
               </Reveal>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
@@ -238,41 +237,46 @@ export default function Home() {
             <Reveal delay={0.08} y={10}>
               <div className="relative">
                 <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
-                  <div className="aspect-square rounded-3xl border border-white/10 bg-black/30 grid place-items-center relative overflow-hidden">
+                  <div className="relative grid aspect-square place-items-center overflow-hidden rounded-3xl border border-white/10 bg-black/30">
+                    {/* Glow sutil de fondo */}
                     <div
-                      className="absolute inset-0 opacity-80"
+                      className="pointer-events-none absolute inset-0 opacity-90"
                       style={{
                         background:
-                          "radial-gradient(circle at 30% 30%, rgba(177,77,255,0.28), transparent 55%), radial-gradient(circle at 70% 70%, rgba(255,79,216,0.18), transparent 55%)",
+                          "radial-gradient(circle at 50% 45%, rgba(177,77,255,0.22), transparent 62%), radial-gradient(circle at 70% 75%, rgba(255,79,216,0.12), transparent 55%)",
                       }}
                     />
-                    <div
-                      className="h-64 w-64 rotate-0"
-                      style={{
-                        clipPath:
-                          "polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)",
-                        border: "1px solid rgba(255,255,255,0.18)",
-                        boxShadow: "0 0 45px rgba(177,77,255,0.28)",
-                        background: "rgba(14,11,20,0.65)",
-                      }}
-                    />
-                    <div className="absolute inset-0 grid place-items-center text-center px-6">
+
+                    {/* Contenido centrado */}
+                    <div className="relative z-10 text-center px-6">
                       <Image
                         src="/brand/sinFondo.png"
                         alt="FronteraCode"
-                        width={88}
-                        height={88}
-                        className="object-contain drop-shadow-[0_0_26px_rgba(177,77,255,0.40)]"
+                        width={128}
+                        height={128}
                         priority
+                        className="mx-auto object-contain drop-shadow-[0_0_34px_rgba(177,77,255,0.38)]"
                       />
 
-                      <p className="mt-3 text-sm text-white/70">FronteraCode</p>
-                      <p className="mt-2 text-lg font-semibold">
-                        Neón · Tech · Industrial
-                      </p>
-                      <p className="mt-2 text-sm text-white/60">
-                        Web · Sistemas · Automatización · KPIs
-                      </p>
+                      <div className="mt-5">
+                        <p className="text-lg font-semibold tracking-tight">
+                          FronteraCode
+                        </p>
+                        <p className="mt-2 text-sm text-white/60 leading-relaxed">
+                          Software real para operación real
+                        </p>
+                      </div>
+
+                      <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+                        {["Web", "Sistemas", "Automatización", "KPIs"].map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -281,6 +285,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+
 
       {/* SERVICIOS */}
       <Section
@@ -430,10 +436,21 @@ export default function Home() {
 
       <footer className="border-t border-white/10 py-10">
         <div className="mx-auto max-w-6xl px-6 text-sm text-white/50 flex flex-col sm:flex-row gap-3 justify-between">
-          <p>© {new Date().getFullYear()} FronteraCode. Todos los derechos reservados.</p>
-          <p>{t("footer_right")}</p>
+          <p>
+            © {new Date().getFullYear()} FronteraCode.{" "}
+            {lang === "en"
+              ? "All rights reserved."
+              : "Todos los derechos reservados."}
+          </p>
+
+          <p>
+            {lang === "en"
+              ? "Ciudad Juárez · Border technology"
+              : "Ciudad Juárez · Tecnología de frontera"}
+          </p>
         </div>
       </footer>
+
     </main>
   );
 }
