@@ -223,10 +223,16 @@ export default function Home() {
 
                 <a
                   href="/mensualidades"
-                  className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-black/30 px-5 py-3 text-white/80 transition hover:text-white hover:border-white/30 hover:bg-white/5 hover:scale-[1.02]"
+                  className="inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium text-white transition hover:scale-[1.03] active:scale-[0.98]"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, rgba(177,77,255,0.85), rgba(255,79,216,0.85))",
+                    boxShadow: "0 0 24px rgba(177,77,255,0.20)",
+                  }}
                 >
                   {t("cta_plans")}
                 </a>
+
               </div>
 
               <div className="mt-8 grid gap-2 text-sm text-white/70">
@@ -466,7 +472,8 @@ export default function Home() {
           </span>
 
           {/* SOLO ÍCONOS */}
-          <SocialLinks variant="icons" size={18} />
+          <SocialLinks variant="icons" size={22} className="justify-end" />
+
 
         </div>
 
