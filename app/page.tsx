@@ -7,6 +7,7 @@ import ContactForm from "@/src/components/ContactForm";
 import Image from "next/image";
 import Reveal from "@/src/components/Reveal";
 import { useLang } from "@/src/components/context/LanguageProvider";
+import SocialLinks from "@/src/components/SocialLinks";
 
 import {
   MonitorSmartphone,
@@ -195,7 +196,9 @@ export default function Home() {
                   {t("hero_title")}
                 </h1>
 
-                <p className="mt-4 text-white/70 leading-relaxed">{t("hero_desc")}</p>
+                <p className="mt-4 text-white/70 leading-relaxed">
+                  {t("hero_desc")}
+                </p>
               </Reveal>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
@@ -238,7 +241,6 @@ export default function Home() {
               <div className="relative">
                 <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
                   <div className="relative grid aspect-square place-items-center overflow-hidden rounded-3xl border border-white/10 bg-black/30">
-                    {/* Glow sutil de fondo */}
                     <div
                       className="pointer-events-none absolute inset-0 opacity-90"
                       style={{
@@ -247,7 +249,6 @@ export default function Home() {
                       }}
                     />
 
-                    {/* Contenido centrado */}
                     <div className="relative z-10 text-center px-6">
                       <Image
                         src="/brand/sinFondo.png"
@@ -263,12 +264,19 @@ export default function Home() {
                           FronteraCode
                         </p>
                         <p className="mt-2 text-sm text-white/60 leading-relaxed">
-                          Software real para operación real
+                          {lang === "en"
+                            ? "Real software for real operations"
+                            : "Software real para operación real"}
                         </p>
                       </div>
 
                       <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
-                        {["Web", "Sistemas", "Automatización", "KPIs"].map((tag) => (
+                        {[
+                          lang === "en" ? "Web" : "Web",
+                          lang === "en" ? "Systems" : "Sistemas",
+                          lang === "en" ? "Automation" : "Automatización",
+                          "KPIs",
+                        ].map((tag) => (
                           <span
                             key={tag}
                             className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70"
@@ -286,8 +294,6 @@ export default function Home() {
         </div>
       </section>
 
-
-
       {/* SERVICIOS */}
       <Section
         id="servicios"
@@ -298,7 +304,6 @@ export default function Home() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, idx) => {
             const Icon = s.icon;
-
             return (
               <Reveal key={s.title} delay={idx * 0.04} y={10}>
                 <div
@@ -315,7 +320,6 @@ export default function Home() {
                   </div>
 
                   <div className="mt-4 text-lg font-semibold">{s.title}</div>
-
                   <p className="mt-2 text-white/70 leading-relaxed">{s.desc}</p>
                 </div>
               </Reveal>
@@ -332,68 +336,60 @@ export default function Home() {
         glow
       >
         <div className="relative">
-  <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-    {processSteps.map((p, idx) => {
-      const Icon = p.icon;
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {processSteps.map((p, idx) => {
+              const Icon = p.icon;
 
-      return (
+              return (
                 <Reveal key={p.n} delay={idx * 0.05} y={12}>
-          <div
-            className="
-              relative rounded-2xl border border-white/10
-              bg-gradient-to-b from-white/8 to-white/4
-              p-6 transition hover:border-white/20 hover:from-white/10 hover:to-white/6
-              hover:-translate-y-1
-              flex flex-col
-              lg:min-h-[420px] xl:min-h-[380px]
-            "
-          >
-            {/* Punto conector (desktop) */}
-            <div className="hidden lg:block absolute left-1/2 -top-2 h-4 w-4 -translate-x-1/2 rounded-full border border-white/15 bg-[#0b0712]">
-              <div className="absolute inset-0 rounded-full bg-white/10 blur-[6px]" />
-            </div>
+                  <div
+                    className="
+                      relative rounded-2xl border border-white/10
+                      bg-gradient-to-b from-white/8 to-white/4
+                      p-6 transition hover:border-white/20 hover:from-white/10 hover:to-white/6
+                      hover:-translate-y-1
+                      flex flex-col
+                      lg:min-h-[420px] xl:min-h-[380px]
+                    "
+                  >
+                    <div className="hidden lg:block absolute left-1/2 -top-2 h-4 w-4 -translate-x-1/2 rounded-full border border-white/15 bg-[#0b0712]">
+                      <div className="absolute inset-0 rounded-full bg-white/10 blur-[6px]" />
+                    </div>
 
-            {/* Header */}
-            <div className="flex items-start gap-3">
-              <div className="rounded-xl border border-white/10 bg-white/5 p-2 shrink-0">
-                <Icon className="h-5 w-5 text-purple-300 drop-shadow-[0_0_10px_rgba(177,77,255,0.35)]" />
-              </div>
+                    <div className="flex items-start gap-3">
+                      <div className="rounded-xl border border-white/10 bg-white/5 p-2 shrink-0">
+                        <Icon className="h-5 w-5 text-purple-300 drop-shadow-[0_0_10px_rgba(177,77,255,0.35)]" />
+                      </div>
 
-              <div className="min-w-0 flex-1 text-left">
-                <div className="text-xs uppercase tracking-wider text-white/50">
-                  {lang === "en" ? `Step ${p.n}` : `Paso ${p.n}`}
-                </div>
+                      <div className="min-w-0 flex-1 text-left">
+                        <div className="text-xs uppercase tracking-wider text-white/50">
+                          {lang === "en" ? `Step ${p.n}` : `Paso ${p.n}`}
+                        </div>
 
-                {/* Título: misma caja */}
-                <div className="mt-2 font-semibold text-white leading-snug min-h-[52px]">
-                  {p.t}
-                </div>
+                        <div className="mt-2 font-semibold text-white leading-snug min-h-[52px]">
+                          {p.t}
+                        </div>
 
-                {/* Descripción: clamp para que TODAS se vean iguales */}
-                <p className="mt-2 text-white/70 leading-relaxed [text-wrap:pretty]">
-                  {p.d}
-                </p>
+                        <p className="mt-2 text-white/70 leading-relaxed [text-wrap:pretty]">
+                          {p.d}
+                        </p>
+                      </div>
+                    </div>
 
-              </div>
-            </div>
-
-            {/* Chip: siempre abajo + altura uniforme */}
-            <div className="mt-auto pt-4">
-              <div className="inline-flex w-full items-start gap-2 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-white/70 min-h-[48px]">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-white/50" />
-                <span className="min-w-0 break-words leading-snug line-clamp-2">
-                  {p.meta}
-                </span>
-              </div>
-            </div>
+                    <div className="mt-auto pt-4">
+                      <div className="inline-flex w-full items-start gap-2 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-white/70 min-h-[48px]">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-white/50" />
+                        <span className="min-w-0 break-words leading-snug line-clamp-2">
+                          {p.meta}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
-        </Reveal>
-
-      );
-    })}
-  </div>
-</div>
-
+        </div>
       </Section>
 
       {/* FAQ */}
@@ -401,13 +397,12 @@ export default function Home() {
         <FAQ lang={lang} />
       </Section>
 
-
       {/* CONTACTO */}
       <Section id="contacto" title={t("contact_title")} subtitle={t("contact_sub")}>
         <div className="grid gap-6 lg:grid-cols-2">
-          {/* Contact buttons */}
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
             <div className="text-sm text-white/60">{t("channels_title")}</div>
+
             <div className="mt-4 grid gap-3">
               <a
                 className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 transition"
@@ -417,41 +412,77 @@ export default function Home() {
               >
                 WhatsApp: 656 763 5652
               </a>
+
               <a
                 className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 transition"
                 href="mailto:fronteracode@gmail.com?subject=Cotizaci%C3%B3n%20FronteraCode"
               >
                 Email: fronteracode@gmail.com
               </a>
+
               <div className="rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white/60">
                 {t("form_hint")}
               </div>
             </div>
+
+            {/* Redes (aquí sí convierten) */}
+          {/* Redes (aquí sí convierten) */}
+          <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-4">
+            <p className="mb-3 text-sm text-white/60">
+              {lang === "en" ? "Also find us on" : "También puedes encontrarnos aquí"}
+            </p>
+
+            <SocialLinks variant="brand" size={18} />
+
           </div>
 
-          {/* Form */}
+
+          </div>
+
           <ContactForm lang={lang} />
         </div>
       </Section>
 
-      <footer className="border-t border-white/10 py-10">
-        <div className="mx-auto max-w-6xl px-6 text-sm text-white/50 flex flex-col sm:flex-row gap-3 justify-between">
-          <p>
-            © {new Date().getFullYear()} FronteraCode.{" "}
-            {lang === "en"
-              ? "All rights reserved."
-              : "Todos los derechos reservados."}
-          </p>
+      {/* FOOTER (alineado y pro) */}
+      {/* FOOTER (alineado y pro) */}
+      <footer className="border-t border-white/10">
+  <div className="mx-auto max-w-6xl px-6 py-10">
+    <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+      {/* Left */}
+      <div className="space-y-2">
+        <p className="text-sm font-semibold text-white/80">FronteraCode</p>
+        <p className="text-sm text-white/50">
+          {lang === "en"
+            ? "Border tech · Real software for real operations."
+            : "Tecnología de frontera · Software real para operación real."}
+        </p>
+      </div>
 
-          <p>
-            {lang === "en"
-              ? "Ciudad Juárez · Border technology"
-              : "Ciudad Juárez · Tecnología de frontera"}
-          </p>
+      {/* Right */}
+      <div className="flex flex-col gap-3 sm:items-end">
+        <div className="flex items-center gap-3">
+          <span className="text-xs text-white/45">
+            {lang === "en" ? "Follow us" : "Síguenos"}
+          </span>
+
+          {/* SOLO ÍCONOS */}
+          <SocialLinks variant="icons" size={18} />
+
         </div>
-      </footer>
+
+        <p className="text-xs text-white/45">
+          © {new Date().getFullYear()} FronteraCode ·{" "}
+          {lang === "en"
+            ? "Ciudad Juárez · Border technology"
+            : "Ciudad Juárez · Tecnología de frontera"}
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
 
     </main>
   );
 }
-
