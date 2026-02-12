@@ -1,95 +1,94 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Mail, MessageSquareText, Phone, User, Wrench } from "lucide-react";
 
 type Status = "idle" | "sending" | "sent" | "error";
-type Lang = "es" | "en";
 
-type Props = {
-  lang: Lang;
-};
-
-export default function ContactForm({ lang }: Props) {
+export default function ContactForm({ lang }: { lang: "es" | "en" }) {
   const [status, setStatus] = useState<Status>("idle");
 
-  const copy = useMemo(() => {
-    const es = {
-      formTitle: "Formulario",
-      sending: "Enviando…",
-      sent: "Enviado",
-      error: "Error",
-
-      namePh: "Nombre",
-      contactPh: "Email o teléfono",
-      typeLabel: "Tipo de proyecto",
-      messagePh: "Cuéntanos el objetivo y lo que necesitas",
-
-      optWebsite: "Website / Landing",
-      optSystem: "Sistema",
-      optDashboard: "Dashboard / KPIs",
-      optAutomation: "Automatización",
-      optOther: "Otro",
-
-      btnSending: "Enviando...",
-      btnSend: "Enviar",
-
-      okMsg: "Listo. Recibimos tu mensaje y te contactaremos pronto.",
-      errMsg: "Ocurrió un error. Intenta de nuevo.",
-
-      waText: "WhatsApp directo (respuesta más rápida)",
-      emailText: "Email: fronteracode@gmail.com",
-    };
-
-    const en = {
-      formTitle: "Form",
-      sending: "Sending…",
-      sent: "Sent",
-      error: "Error",
-
-      namePh: "Name",
-      contactPh: "Email or phone",
-      typeLabel: "Project type",
-      messagePh: "Tell us your goal and what you need",
-
-      optWebsite: "Website / Landing",
-      optSystem: "Internal system",
-      optDashboard: "Dashboards / KPIs",
-      optAutomation: "Automation",
-      optOther: "Other",
-
-      btnSending: "Sending...",
-      btnSend: "Send",
-
-      okMsg: "Done. We received your message and will contact you soon.",
-      errMsg: "Something went wrong. Please try again.",
-
-      waText: "Direct WhatsApp (fastest reply)",
-      emailText: "Email: fronteracode@gmail.com",
-    };
-
-    return lang === "en" ? en : es;
-  }, [lang]);
+  const copy =
+    lang === "en"
+      ? {
+          title: "Form",
+          sending: "Sending…",
+          sent: "Sent",
+          error: "Error",
+          name: "Name",
+          contact: "Email or phone",
+          typePlaceholder: "Project type",
+          types: [
+            "Website / Landing",
+            "System",
+            "Dashboard / KPIs",
+            "Automation",
+            "Other",
+          ],
+          message: "Tell us the goal and what you need",
+          submit: "Send",
+          submitSending: "Sending…",
+          ok: "Done. We received your message and will contact you soon.",
+          bad: "Something went wrong. Please try again.",
+          wa: "WhatsApp direct (fastest reply)",
+          email: "Email: fronteracode@gmail.com",
+        }
+      : {
+          title: "Formulario",
+          sending: "Enviando…",
+          sent: "Enviado",
+          error: "Error",
+          name: "Nombre",
+          contact: "Email o teléfono",
+          typePlaceholder: "Tipo de proyecto",
+          types: [
+            "Website / Landing",
+            "Sistema",
+            "Dashboard / KPIs",
+            "Automatización",
+            "Otro",
+          ],
+          message: "Cuéntanos el objetivo y lo que necesitas",
+          submit: "Enviar",
+          submitSending: "Enviando…",
+          ok: "Listo. Recibimos tu mensaje y te contactaremos pronto.",
+          bad: "Ocurrió un error. Intenta de nuevo.",
+          wa: "WhatsApp directo (respuesta más rápida)",
+          email: "Email: fronteracode@gmail.com",
+        };
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("sending");
 
     try {
-      // Captura lista para cuando lo conectemos a /api/contact o Resend
       const form = e.currentTarget;
       const data = new FormData(form);
-      void data.get("name");
-      void data.get("contact");
-      void data.get("type");
-      void data.get("message");
 
-      // Simulación de envío
-      await new Promise((r) => setTimeout(r, 700));
+      const payload = {
+        name: String(data.get("name") ?? "").trim(),
+        contact: String(data.get("contact") ?? "").trim(),
+        type: String(data.get("type") ?? "").trim(),
+        message: String(data.get("message") ?? "").trim(),
+        lang,
+      };
 
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          contact: data.get("contact"),
+          type: data.get("type"),
+          message: data.get("message"),
+          lang,
+        }),
+      });
+      
+      if (!res.ok) throw new Error("Request failed");
+      
       setStatus("sent");
       form.reset();
-
       setTimeout(() => setStatus("idle"), 3500);
     } catch {
       setStatus("error");
@@ -127,34 +126,34 @@ export default function ContactForm({ lang }: Props) {
       onSubmit={handleSubmit}
     >
       <div className="flex items-center text-sm text-white/60">
-        {copy.formTitle}
+        {copy.title}
         <StatusBadge />
       </div>
 
       <div className="mt-4 grid gap-4">
-        {/* Nombre */}
+        {/* Name */}
         <div className="relative">
           <User className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/35" />
           <input
             className="w-full rounded-xl border border-white/10 bg-black/30 pl-12 pr-4 py-3 outline-none focus:border-white/30 transition"
-            placeholder={copy.namePh}
+            placeholder={copy.name}
             name="name"
             required
           />
         </div>
 
-        {/* Contacto */}
+        {/* Contact */}
         <div className="relative">
           <Mail className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/35" />
           <input
             className="w-full rounded-xl border border-white/10 bg-black/30 pl-12 pr-4 py-3 outline-none focus:border-white/30 transition"
-            placeholder={copy.contactPh}
+            placeholder={copy.contact}
             name="contact"
             required
           />
         </div>
 
-        {/* Tipo */}
+        {/* Type */}
         <div className="relative">
           <Wrench className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/35" />
           <select
@@ -164,22 +163,20 @@ export default function ContactForm({ lang }: Props) {
             defaultValue=""
           >
             <option value="" disabled>
-              {copy.typeLabel}
+              {copy.typePlaceholder}
             </option>
-            <option>{copy.optWebsite}</option>
-            <option>{copy.optSystem}</option>
-            <option>{copy.optDashboard}</option>
-            <option>{copy.optAutomation}</option>
-            <option>{copy.optOther}</option>
+            {copy.types.map((opt) => (
+              <option key={opt}>{opt}</option>
+            ))}
           </select>
         </div>
 
-        {/* Mensaje */}
+        {/* Message */}
         <div className="relative">
           <MessageSquareText className="pointer-events-none absolute left-4 top-4 h-5 w-5 text-white/35" />
           <textarea
             className="w-full rounded-xl border border-white/10 bg-black/30 pl-12 pr-4 py-3 outline-none focus:border-white/30 transition"
-            placeholder={copy.messagePh}
+            placeholder={copy.message}
             name="message"
             rows={5}
             required
@@ -197,19 +194,14 @@ export default function ContactForm({ lang }: Props) {
           type="submit"
           disabled={status === "sending"}
         >
-          {status === "sending" ? copy.btnSending : copy.btnSend}
+          {status === "sending" ? copy.submitSending : copy.submit}
         </button>
 
         {/* Feedback */}
-        {status === "sent" && (
-          <p className="text-sm text-white/70">{copy.okMsg}</p>
-        )}
+        {status === "sent" && <p className="text-sm text-white/70">{copy.ok}</p>}
+        {status === "error" && <p className="text-sm text-red-200">{copy.bad}</p>}
 
-        {status === "error" && (
-          <p className="text-sm text-red-200">{copy.errMsg}</p>
-        )}
-
-        {/* Alternativas */}
+        {/* Alternatives */}
         <div className="pt-2 grid gap-2 text-xs text-white/60">
           <a
             className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 hover:bg-white/10 transition"
@@ -218,7 +210,7 @@ export default function ContactForm({ lang }: Props) {
             rel="noreferrer"
           >
             <Phone className="h-4 w-4 text-white/50" />
-            {copy.waText}
+            {copy.wa}
           </a>
 
           <a
@@ -226,7 +218,7 @@ export default function ContactForm({ lang }: Props) {
             href="mailto:fronteracode@gmail.com?subject=Cotizaci%C3%B3n%20FronteraCode"
           >
             <Mail className="h-4 w-4 text-white/50" />
-            {copy.emailText}
+            {copy.email}
           </a>
         </div>
       </div>
