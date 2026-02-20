@@ -219,7 +219,7 @@ function renderAutoReplyES({ name, type }: { name: string; type: string }) {
         <td style="padding:10px 22px 22px;">
           <div style="height:1px;background:rgba(255,255,255,.10);"></div>
           <p style="margin:12px 0 0;color:rgba(255,255,255,.45);font-size:12px;line-height:1.6;">
-            Este es un correo automático. Si no solicitaste información, puedes ignorarlo.
+            Si este correo llegó a spam, muévelo a tu bandeja principal para poder enviarte la propuesta correctamente.
           </p>
         </td>
       </tr>
