@@ -3,10 +3,21 @@ import { Resend } from "resend";
 
 export const runtime = "nodejs";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+
 
 export async function POST(req: Request) {
   try {
+    // ✅ Creamos Resend AQUÍ dentro del handler (no en top-level)
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error("Missing RESEND_API_KEY");
+      return NextResponse.json(
+        { ok: false, error: "Server misconfigured: RESEND_API_KEY missing" },
+        { status: 500 }
+      );
+    }
+    const resend = new Resend(apiKey);
+    
     const body = await req.json();
 
     const name = String(body?.name ?? "").trim();
