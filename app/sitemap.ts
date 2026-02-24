@@ -1,28 +1,20 @@
-import type { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://fronteracode.com'
+  const baseUrl = "https://fronteracode.com";
 
   return [
     {
-      url: `${baseUrl}`,
+      url: `${baseUrl}/`,
       lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 1,
     },
     {
-      url: `${baseUrl}/#servicios`,
+      url: `${baseUrl}/mensualidades`,
       lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
     },
-    {
-      url: `${baseUrl}/#proceso`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}/#faq`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}/#contacto`,
-      lastModified: new Date(),
-    },
-  ]
+  ];
 }
