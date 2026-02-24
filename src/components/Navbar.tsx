@@ -54,7 +54,7 @@ export default function Navbar() {
             aria-label="Home"
           >
             <Image
-              src="/brand/Logo1Oscuro.png"
+              src="/brand/sinFondo.png"
               alt="FronteraCode"
               width={32}
               height={32}
