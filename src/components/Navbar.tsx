@@ -23,8 +23,8 @@ export default function Navbar() {
     [t]
   );
 
-  const hrefFor = (hash: string) => (isHome ? hash : `/${hash.startsWith("#") ? hash : `#${hash}`}`);
-
+  const hrefFor = (hash: string) =>
+    isHome ? hash : `/${hash.startsWith("#") ? hash : `#${hash}`}`;
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur-md">
@@ -37,7 +37,7 @@ export default function Navbar() {
             aria-label="Home"
           >
             <Image
-              src="/brand/sinFondo.png"
+              src="/brand/Logo1Oscuro.png"
               alt="FronteraCode"
               width={40}
               height={40}
@@ -54,7 +54,7 @@ export default function Navbar() {
             aria-label="Home"
           >
             <Image
-              src="/brand/sinFondo.png"
+              src="/brand/Logo1Oscuro.png"
               alt="FronteraCode"
               width={32}
               height={32}
@@ -67,7 +67,11 @@ export default function Navbar() {
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-white/70">
             {nav.map((i) => (
-              <a key={i.href} href={hrefFor(i.href)} className="hover:text-white transition">
+              <a
+                key={i.href}
+                href={hrefFor(i.href)}
+                className="hover:text-white transition"
+              >
                 {i.label}
               </a>
             ))}
@@ -83,9 +87,13 @@ export default function Navbar() {
               aria-label="Cambiar idioma"
               title="ES / EN"
             >
-              <span className={lang === "es" ? "text-white" : "text-white/50"}>ES</span>
+              <span className={lang === "es" ? "text-white" : "text-white/50"}>
+                ES
+              </span>
               <span className="mx-2 text-white/30">|</span>
-              <span className={lang === "en" ? "text-white" : "text-white/50"}>EN</span>
+              <span className={lang === "en" ? "text-white" : "text-white/50"}>
+                EN
+              </span>
             </button>
 
             {/* Desktop CTAs */}
@@ -118,7 +126,13 @@ export default function Navbar() {
               aria-label={open ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={open}
             >
-              {open ? (lang === "en" ? "Close" : "Cerrar") : (lang === "en" ? "Menu" : "Menú")}
+              {open
+                ? lang === "en"
+                  ? "Close"
+                  : "Cerrar"
+                : lang === "en"
+                ? "Menu"
+                : "Menú"}
             </button>
           </div>
         </div>
@@ -169,5 +183,4 @@ export default function Navbar() {
     </header>
   );
 }
-
 

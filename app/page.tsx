@@ -201,10 +201,11 @@ export default function Home() {
                 </p>
               </Reveal>
 
-              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+              {/* ✅ FIX: botones separados en móvil */}
+              <div className="mt-8 grid gap-3 sm:flex sm:flex-row sm:items-center">
                 <a
                   href="#contacto"
-                  className="inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition hover:scale-[1.03] active:scale-[0.98]"
+                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition hover:scale-[1.03] active:scale-[0.98]"
                   style={{
                     background:
                       "linear-gradient(90deg, rgba(177,77,255,0.9), rgba(255,79,216,0.9))",
@@ -216,14 +217,14 @@ export default function Home() {
 
                 <a
                   href="#servicios"
-                  className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-white/80 transition hover:bg-white/10 hover:scale-[1.02]"
+                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-white/80 transition hover:bg-white/10 hover:scale-[1.02]"
                 >
                   {t("cta_services")}
                 </a>
 
                 <a
                   href="/mensualidades"
-                  className="inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium text-white transition hover:scale-[1.03] active:scale-[0.98]"
+                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium text-white transition hover:scale-[1.03] active:scale-[0.98]"
                   style={{
                     background:
                       "linear-gradient(90deg, rgba(177,77,255,0.85), rgba(255,79,216,0.85))",
@@ -232,7 +233,6 @@ export default function Home() {
                 >
                   {t("cta_plans")}
                 </a>
-
               </div>
 
               <div className="mt-8 grid gap-2 text-sm text-white/70">
@@ -432,64 +432,56 @@ export default function Home() {
             </div>
 
             {/* Redes (aquí sí convierten) */}
-          {/* Redes (aquí sí convierten) */}
-          <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-4">
-            <p className="mb-3 text-sm text-white/60">
-              {lang === "en" ? "Also find us on" : "También puedes encontrarnos aquí"}
-            </p>
+            <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-4">
+              <p className="mb-3 text-sm text-white/60">
+                {lang === "en"
+                  ? "Also find us on"
+                  : "También puedes encontrarnos aquí"}
+              </p>
 
-            <SocialLinks variant="brand" size={18} />
-
-          </div>
-
-
+              <SocialLinks variant="brand" size={18} />
+            </div>
           </div>
 
           <ContactForm lang={lang} />
         </div>
       </Section>
 
-      {/* FOOTER (alineado y pro) */}
-      {/* FOOTER (alineado y pro) */}
+      {/* FOOTER */}
       <footer className="border-t border-white/10">
-  <div className="mx-auto max-w-6xl px-6 py-10">
-    <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-      {/* Left */}
-      <div className="space-y-2">
-        <p className="text-sm font-semibold text-white/80">FronteraCode</p>
-        <p className="text-sm text-white/50">
-          {lang === "en"
-            ? "Border tech · Real software for real operations."
-            : "Tecnología de frontera · Software real para operación real."}
-        </p>
-      </div>
+        <div className="mx-auto max-w-6xl px-6 py-10">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            {/* Left */}
+            <div className="space-y-2">
+              <p className="text-sm font-semibold text-white/80">FronteraCode</p>
+              <p className="text-sm text-white/50">
+                {lang === "en"
+                  ? "Border tech · Real software for real operations."
+                  : "Tecnología de frontera · Software real para operación real."}
+              </p>
+            </div>
 
-      {/* Right */}
-      <div className="flex flex-col gap-3 sm:items-end">
-        <div className="flex items-center gap-3">
-          <span className="text-xs text-white/45">
-            {lang === "en" ? "Follow us" : "Síguenos"}
-          </span>
+            {/* Right */}
+            <div className="flex flex-col gap-3 sm:items-end">
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-white/45">
+                  {lang === "en" ? "Follow us" : "Síguenos"}
+                </span>
 
-          {/* SOLO ÍCONOS */}
-          <SocialLinks variant="icons" size={22} className="justify-end" />
+                {/* SOLO ÍCONOS */}
+                <SocialLinks variant="icons" size={22} className="justify-end" />
+              </div>
 
-
+              <p className="text-xs text-white/45">
+                © {new Date().getFullYear()} FronteraCode ·{" "}
+                {lang === "en"
+                  ? "Ciudad Juárez · Border technology"
+                  : "Ciudad Juárez · Tecnología de frontera"}
+              </p>
+            </div>
+          </div>
         </div>
-
-        <p className="text-xs text-white/45">
-          © {new Date().getFullYear()} FronteraCode ·{" "}
-          {lang === "en"
-            ? "Ciudad Juárez · Border technology"
-            : "Ciudad Juárez · Tecnología de frontera"}
-        </p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-
-
+      </footer>
     </main>
   );
 }

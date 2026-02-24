@@ -231,12 +231,12 @@ export default function MensualidadesPage() {
                 </p>
               </Reveal>
 
-              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+              <div className="mt-8 grid gap-3 sm:flex sm:flex-row sm:items-center">
                 <a
                   href={whatsappHref}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition hover:scale-[1.03] active:scale-[0.98]"
+                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition hover:scale-[1.03] active:scale-[0.98]"
                   style={{
                     background:
                       "linear-gradient(90deg, rgba(177,77,255,0.9), rgba(255,79,216,0.9))",
@@ -249,7 +249,7 @@ export default function MensualidadesPage() {
 
                 <a
                   href={emailHref}
-                  className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-white/80 transition hover:text-white hover:bg-white/10"
+                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-white/80 transition hover:text-white hover:bg-white/10"
                 >
                   {t("plans_btn_mail")}
                 </a>
