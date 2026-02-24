@@ -6,7 +6,7 @@ export default function Head() {
       "@type": "Organization",
       name: "FronteraCode",
       url: siteUrl,
-      logo: `${siteUrl}/brand/Logo1Oscuro.png`,
+      logo: `${siteUrl}/brand/sinFondo.png`,
     };
   
     return (
@@ -26,7 +26,7 @@ export default function Head() {
           property="og:description"
           content="Software real para operación real: sistemas, dashboards, automatización y sitios web modernos."
         />
-        <meta property="og:image" content={`${siteUrl}/brand/Logo1Oscuro.png`} />
+        <meta property="og:image" content={`${siteUrl}/brand/sinFondo.png`} />
   
         {/* ✅ Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -35,7 +35,7 @@ export default function Head() {
           name="twitter:description"
           content="Software real para operación real: sistemas, dashboards, automatización y sitios web modernos."
         />
-        <meta name="twitter:image" content={`${siteUrl}/brand/Logo1Oscuro.png`} />
+        <meta name="twitter:image" content={`${siteUrl}/brand/sinFondo.png`} />
   
         {/* ✅ Structured Data (logo para Google) */}
         <script
