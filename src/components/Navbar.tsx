@@ -118,22 +118,7 @@ export default function Navbar() {
               Agendar llamada
             </a>
 
-            {/* Mobile menu */}
-            <button
-              type="button"
-              className="lg:hidden inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/80 hover:bg-white/10 transition"
-              onClick={() => setOpen((v) => !v)}
-              aria-label={open ? "Cerrar menú" : "Abrir menú"}
-              aria-expanded={open}
-            >
-              {open
-                ? lang === "en"
-                  ? "Close"
-                  : "Cerrar"
-                : lang === "en"
-                ? "Menu"
-                : "Menú"}
-            </button>
+            
           </div>
         </div>
       </div>
