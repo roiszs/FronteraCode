@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: "FronteraCode",
     images: [
       {
-        url: "/brand/LogoOscuro.png",
+        url: "/brand/Logo1Oscuro.png",
         width: 1200,
         height: 630,
         alt: "FronteraCode",
@@ -46,13 +46,13 @@ export const metadata: Metadata = {
     locale: "es_MX",
     type: "website",
   },
-  
+
   twitter: {
     card: "summary_large_image",
     title: "FronteraCode | Desarrollo de software en México y USA",
     description:
       "Desarrollamos software a medida, sistemas internos, dashboards, automatización, e-commerce y websites para empresas en México y Estados Unidos.",
-    images: ["/brand/LogoOscuro.png"],
+    images: ["/brand/Logo1Oscuro.png"],
   },
 
   icons: {

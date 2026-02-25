@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: "FronteraCode",
     images: [
       {
-        url: "/brand/LogoOscuro.png",
+        url: "/brand/Logo1Oscuro.png",
         width: 1200,
         height: 630,
         alt: "FronteraCode",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Planes mensuales | FronteraCode",
     description:
       "Soporte mensual para software, websites, ecommerce, dashboards y automatización. México y USA.",
-    images: ["/brand/LogoOscuro.png"],
+    images: ["/brand/Logo1Oscuro.png"],
   },
 };
 
