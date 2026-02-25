@@ -6,13 +6,13 @@ export const metadata: Metadata = {
   description:
     "Soporte mensual para software, websites, ecommerce, dashboards y automatización. Mejora continua para empresas en México y Estados Unidos.",
   alternates: {
-    canonical: "https://fronteracode.com/mensualidades",
+    canonical: "https://www.fronteracode.com/mensualidades",
   },
   openGraph: {
     title: "Planes mensuales | FronteraCode",
     description:
       "Soporte mensual para software, websites, ecommerce, dashboards y automatización. México y USA.",
-    url: "https://fronteracode.com/mensualidades",
+      url: "https://www.fronteracode.com/mensualidades",
     siteName: "FronteraCode",
     images: [
       {
@@ -24,6 +24,13 @@ export const metadata: Metadata = {
     ],
     locale: "es_MX",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Planes mensuales | FronteraCode",
+    description:
+      "Soporte mensual para software, websites, ecommerce, dashboards y automatización. México y USA.",
+    images: ["/brand/LogoOscuro.png"],
   },
 };
 

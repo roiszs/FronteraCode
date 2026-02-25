@@ -2,12 +2,13 @@ import "./globals.css";
 import { Inter, Sora } from "next/font/google";
 import { LanguageProvider } from "@/src/components/context/LanguageProvider";
 import type { Metadata } from "next";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://fronteracode.com"),
+  metadataBase: new URL("https://www.fronteracode.com"),
 
   title: {
     default: "FronteraCode | Desarrollo de software en México y USA",
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     title: "FronteraCode | Custom software for real operations",
     description:
       "Software a medida para empresas en México y Estados Unidos. Websites, sistemas internos, automatización y dashboards.",
-    url: "https://fronteracode.com",
+      url: "https://www.fronteracode.com",
     siteName: "FronteraCode",
     images: [
       {
@@ -44,6 +45,14 @@ export const metadata: Metadata = {
     ],
     locale: "es_MX",
     type: "website",
+  },
+  
+  twitter: {
+    card: "summary_large_image",
+    title: "FronteraCode | Desarrollo de software en México y USA",
+    description:
+      "Desarrollamos software a medida, sistemas internos, dashboards, automatización, e-commerce y websites para empresas en México y Estados Unidos.",
+    images: ["/brand/LogoOscuro.png"],
   },
 
   icons: {
@@ -65,6 +74,20 @@ export default function RootLayout({
     <html lang="es" className={`${inter.variable} ${sora.variable}`}>
       <body className="bg-[#07060A] text-white antialiased overflow-x-hidden">
         <LanguageProvider>{children}</LanguageProvider>
+        <Script
+                    id="org-jsonld"
+                    type="application/ld+json"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                      __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        name: "FronteraCode",
+                        url: "https://www.fronteracode.com",
+                        logo: "https://www.fronteracode.com/brand/sinFondo.png",
+                      }),
+                    }}
+                  />
       </body>
     </html>
   );
