@@ -116,6 +116,12 @@ function Price({
   );
 }
 
+export const metadata = {
+  title: "Planes mensuales de desarrollo y soporte de software",
+  description:
+    "Soporte mensual para software, websites, ecommerce, dashboards y automatización. Mejora continua para empresas en México y USA.",
+};
+
 export default function MensualidadesPage() {
   const { lang, t } = useLang();
 
