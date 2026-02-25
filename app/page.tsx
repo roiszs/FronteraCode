@@ -193,7 +193,9 @@ export default function Home() {
                 </div>
 
                 <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight">
-                  {t("hero_title")}
+                  {lang === "en"
+                    ? "Custom software development for companies in Mexico and the United States."
+                    : "Desarrollo de software a medida para empresas en México y Estados Unidos."}
                 </h1>
 
                 <p className="mt-4 text-white/70 leading-relaxed">
