@@ -29,15 +29,23 @@ export const metadata: Metadata = {
     "ecommerce development",
   ],
 
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
+  },
+
   openGraph: {
-    title: "FronteraCode | Custom software for real operations",
+    title: "FronteraCode | Desarrollo de software en México y USA",
     description:
       "Software a medida para empresas en México y Estados Unidos. Websites, sistemas internos, automatización y dashboards.",
-      url: "https://www.fronteracode.com",
+    url: "https://www.fronteracode.com",
     siteName: "FronteraCode",
     images: [
       {
-        url: "/brand/Logo1Oscuro.png",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: "FronteraCode",
@@ -52,11 +60,7 @@ export const metadata: Metadata = {
     title: "FronteraCode | Desarrollo de software en México y USA",
     description:
       "Desarrollamos software a medida, sistemas internos, dashboards, automatización, e-commerce y websites para empresas en México y Estados Unidos.",
-    images: ["/brand/Logo1Oscuro.png"],
-  },
-
-  icons: {
-    icon: "/favicon.ico",
+    images: ["/og.png"],
   },
 };
 
@@ -74,20 +78,21 @@ export default function RootLayout({
     <html lang="es" className={`${inter.variable} ${sora.variable}`}>
       <body className="bg-[#07060A] text-white antialiased overflow-x-hidden">
         <LanguageProvider>{children}</LanguageProvider>
+
         <Script
-                    id="org-jsonld"
-                    type="application/ld+json"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                      __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "Organization",
-                        name: "FronteraCode",
-                        url: "https://www.fronteracode.com",
-                        logo: "https://www.fronteracode.com/brand/sinFondo.png",
-                      }),
-                    }}
-                  />
+          id="org-jsonld"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "FronteraCode",
+              url: "https://www.fronteracode.com",
+              logo: "https://www.fronteracode.com/icon.png",
+            }),
+          }}
+        />
       </body>
     </html>
   );
