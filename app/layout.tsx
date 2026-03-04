@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: "FronteraCode | Desarrollo de software en México y USA",
     description:
       "Software a medida para empresas en México y Estados Unidos. Websites, sistemas internos, automatización y dashboards.",
-    url: "https://www.fronteracode.com",
+    url: "https://fronteracode.com",
     siteName: "FronteraCode",
     images: [
       {
@@ -88,8 +88,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "FronteraCode",
-              url: "https://www.fronteracode.com",
-              logo: "https://www.fronteracode.com/icon.png",
+              url: "https://fronteracode.com",
+              logo: "https://fronteracode.com/icon.png",
             }),
           }}
         />
