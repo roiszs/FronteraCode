@@ -80,19 +80,76 @@ export default function RootLayout({
         <LanguageProvider>{children}</LanguageProvider>
 
         <Script
-          id="org-jsonld"
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "FronteraCode",
-              url: "https://fronteracode.com",
-              logo: "https://fronteracode.com/icon.png",
-            }),
-          }}
-        />
+  id="org-jsonld"
+  type="application/ld+json"
+  strategy="afterInteractive"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "FronteraCode",
+      url: "https://fronteracode.com",
+      logo: "https://fronteracode.com/icon.png",
+    }),
+  }}
+/>
+
+<Script
+  id="website-jsonld"
+  type="application/ld+json"
+  strategy="afterInteractive"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "FronteraCode",
+      alternateName: "Frontera Code",
+      url: "https://fronteracode.com",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://fronteracode.com/?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+    }),
+  }}
+/>
+<Script
+  id="nav-jsonld"
+  type="application/ld+json"
+  strategy="afterInteractive"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      itemListElement: [
+        {
+          "@type": "SiteNavigationElement",
+          position: 1,
+          name: "Servicios",
+          url: "https://fronteracode.com/#servicios",
+        },
+        {
+          "@type": "SiteNavigationElement",
+          position: 2,
+          name: "Planes mensuales",
+          url: "https://fronteracode.com/mensualidades",
+        },
+        {
+          "@type": "SiteNavigationElement",
+          position: 3,
+          name: "FAQ",
+          url: "https://fronteracode.com/#faq",
+        },
+        {
+          "@type": "SiteNavigationElement",
+          position: 4,
+          name: "Contacto",
+          url: "https://fronteracode.com/#contacto",
+        },
+      ],
+    }),
+  }}
+/>
       </body>
     </html>
   );
