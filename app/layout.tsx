@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.fronteracode.com"),
+  metadataBase: new URL("https://fronteracode.com"),
 
   title: {
     default: "FronteraCode | Desarrollo de software en México y USA",
