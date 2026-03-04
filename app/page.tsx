@@ -161,147 +161,153 @@ export default function Home() {
       <Navbar />
 
       {/* HERO */}
-      <div className="pointer-events-none absolute inset-0 fc-grid" />
+<div className="pointer-events-none absolute inset-0 fc-grid" />
 
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
-          <div
-            className="absolute -top-24 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full"
+<section className="relative overflow-hidden">
+  {/* overlays / glows */}
+  <div className="absolute inset-0 opacity-30" />
+
+  <div
+    className="absolute -top-24 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full"
+    style={{
+      background:
+        "radial-gradient(circle, rgba(177,77,255,0.35), transparent 60%)",
+    }}
+  />
+
+  <div
+    className="absolute top-32 right-[-120px] h-[420px] w-[420px] rounded-full"
+    style={{
+      background:
+        "radial-gradient(circle, rgba(255,79,216,0.25), transparent 60%)",
+    }}
+  />
+
+  {/* content */}
+  <div className="relative mx-auto max-w-6xl px-6 pt-14 pb-20 sm:pt-16 sm:pb-24">
+    <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+      {/* Copy */}
+      <div>
+        <Reveal y={14}>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
+              {t("hero_badge")}
+            </span>
+          </div>
+
+          <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight">
+            {lang === "en"
+              ? "Custom software development for companies in Mexico and the United States."
+              : "Desarrollo de software a medida para empresas en México y Estados Unidos."}
+          </h1>
+
+          <p className="mt-4 text-white/70 leading-relaxed">{t("hero_desc")}</p>
+        </Reveal>
+
+        {/* ✅ botones separados en móvil */}
+        <div className="mt-8 grid gap-3 sm:flex sm:flex-row sm:items-center">
+          <a
+            href="#contacto"
+            className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition hover:scale-[1.03] active:scale-[0.98]"
             style={{
               background:
-                "radial-gradient(circle, rgba(177,77,255,0.35), transparent 60%)",
+                "linear-gradient(90deg, rgba(177,77,255,0.9), rgba(255,79,216,0.9))",
+              boxShadow: "0 0 30px rgba(177,77,255,0.25)",
             }}
-          />
-          <div
-            className="absolute top-32 right-[-120px] h-[420px] w-[420px] rounded-full"
+          >
+            {t("cta_quote")}
+          </a>
+
+          <a
+            href="#servicios"
+            className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-white/80 transition hover:bg-white/10 hover:scale-[1.02]"
+          >
+            {t("cta_services")}
+          </a>
+
+          <a
+            href="/mensualidades"
+            className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium text-white transition hover:scale-[1.03] active:scale-[0.98]"
             style={{
               background:
-                "radial-gradient(circle, rgba(255,79,216,0.25), transparent 60%)",
+                "linear-gradient(90deg, rgba(177,77,255,0.85), rgba(255,79,216,0.85))",
+              boxShadow: "0 0 24px rgba(177,77,255,0.20)",
             }}
-          />
+          >
+            {t("cta_plans")}
+          </a>
         </div>
 
-        <div className="mx-auto max-w-6xl px-6 pt-14 pb-20 sm:pt-16 sm:pb-24 relative">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            {/* Copy */}
-            <div>
-              <Reveal y={14}>
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
-                    {t("hero_badge")}
-                  </span>
+        <div className="mt-8 grid gap-2 text-sm text-white/70">
+          <p>{t("bullet_1")}</p>
+          <p>{t("bullet_2")}</p>
+          <p>{t("bullet_3")}</p>
+        </div>
+      </div>
+
+      {/* Visual */}
+      <Reveal delay={0.08} y={10}>
+        <div className="relative">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
+            <div
+              className="
+                relative grid place-items-center overflow-hidden rounded-3xl border border-white/10 bg-black/30
+                min-h-[360px] py-10
+                sm:aspect-square sm:min-h-0 sm:py-0
+              "
+            >
+              <div
+                className="pointer-events-none absolute inset-0 opacity-90"
+                style={{
+                  background:
+                    "radial-gradient(circle at 50% 45%, rgba(177,77,255,0.22), transparent 62%), radial-gradient(circle at 70% 75%, rgba(255,79,216,0.12), transparent 55%)",
+                }}
+              />
+
+              <div className="relative z-10 text-center px-6">
+                <Image
+                  src="/brand/sinFondo.png"
+                  alt="FronteraCode"
+                  width={128}
+                  height={128}
+                  priority
+                  className="mx-auto object-contain drop-shadow-[0_0_34px_rgba(177,77,255,0.38)]"
+                />
+
+                <div className="mt-5">
+                  <p className="text-lg font-semibold tracking-tight">
+                    FronteraCode
+                  </p>
+                  <p className="mt-2 text-sm text-white/60 leading-relaxed">
+                    {lang === "en"
+                      ? "Real software for real operations"
+                      : "Software real para operación real"}
+                  </p>
                 </div>
 
-                <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight">
-                  {lang === "en"
-                    ? "Custom software development for companies in Mexico and the United States."
-                    : "Desarrollo de software a medida para empresas en México y Estados Unidos."}
-                </h1>
-
-                <p className="mt-4 text-white/70 leading-relaxed">
-                  {t("hero_desc")}
-                </p>
-              </Reveal>
-
-              {/* ✅ FIX: botones separados en móvil */}
-              <div className="mt-8 grid gap-3 sm:flex sm:flex-row sm:items-center">
-                <a
-                  href="#contacto"
-                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition hover:scale-[1.03] active:scale-[0.98]"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, rgba(177,77,255,0.9), rgba(255,79,216,0.9))",
-                    boxShadow: "0 0 30px rgba(177,77,255,0.25)",
-                  }}
-                >
-                  {t("cta_quote")}
-                </a>
-
-                <a
-                  href="#servicios"
-                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-white/80 transition hover:bg-white/10 hover:scale-[1.02]"
-                >
-                  {t("cta_services")}
-                </a>
-
-                <a
-                  href="/mensualidades"
-                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium text-white transition hover:scale-[1.03] active:scale-[0.98]"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, rgba(177,77,255,0.85), rgba(255,79,216,0.85))",
-                    boxShadow: "0 0 24px rgba(177,77,255,0.20)",
-                  }}
-                >
-                  {t("cta_plans")}
-                </a>
-              </div>
-
-              <div className="mt-8 grid gap-2 text-sm text-white/70">
-                <p>{t("bullet_1")}</p>
-                <p>{t("bullet_2")}</p>
-                <p>{t("bullet_3")}</p>
+                <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+                  {[
+                    lang === "en" ? "Web" : "Web",
+                    lang === "en" ? "Systems" : "Sistemas",
+                    lang === "en" ? "Automation" : "Automatización",
+                    "KPIs",
+                  ].map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs leading-none text-white/70"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
-
-            {/* Visual */}
-            <Reveal delay={0.08} y={10}>
-              <div className="relative">
-                <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
-                  <div className="relative grid aspect-square place-items-center overflow-hidden rounded-3xl border border-white/10 bg-black/30">
-                    <div
-                      className="pointer-events-none absolute inset-0 opacity-90"
-                      style={{
-                        background:
-                          "radial-gradient(circle at 50% 45%, rgba(177,77,255,0.22), transparent 62%), radial-gradient(circle at 70% 75%, rgba(255,79,216,0.12), transparent 55%)",
-                      }}
-                    />
-
-                    <div className="relative z-10 text-center px-6">
-                      <Image
-                        src="/brand/sinFondo.png"
-                        alt="FronteraCode"
-                        width={128}
-                        height={128}
-                        priority
-                        className="mx-auto object-contain drop-shadow-[0_0_34px_rgba(177,77,255,0.38)]"
-                      />
-
-                      <div className="mt-5">
-                        <p className="text-lg font-semibold tracking-tight">
-                          FronteraCode
-                        </p>
-                        <p className="mt-2 text-sm text-white/60 leading-relaxed">
-                          {lang === "en"
-                            ? "Real software for real operations"
-                            : "Software real para operación real"}
-                        </p>
-                      </div>
-
-                      <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
-                        {[
-                          lang === "en" ? "Web" : "Web",
-                          lang === "en" ? "Systems" : "Sistemas",
-                          lang === "en" ? "Automation" : "Automatización",
-                          "KPIs",
-                        ].map((tag) => (
-                          <span
-                            key={tag}
-                            className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
           </div>
         </div>
-      </section>
-
+      </Reveal>
+    </div>
+  </div>
+</section>
       {/* SERVICIOS */}
       <Section
         id="servicios"
