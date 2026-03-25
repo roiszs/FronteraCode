@@ -8,6 +8,7 @@ import Image from "next/image";
 import Reveal from "@/src/components/Reveal";
 import { useLang } from "@/src/components/context/LanguageProvider";
 import SocialLinks from "@/src/components/SocialLinks";
+import Link from "next/link";
 
 import {
   MonitorSmartphone,
@@ -33,6 +34,7 @@ export default function Home() {
             title: "Websites & Landing Pages",
             desc: "Sitios modernos, rápidos y optimizados para conversión.",
             icon: MonitorSmartphone,
+            href: "/servicios/websites-landing-pages",
           },
           {
             title: "Sistemas para maquila",
