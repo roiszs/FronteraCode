@@ -230,45 +230,49 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="mt-4">
-          <a
-            href="/mensualidades"
-            className="inline-flex items-center gap-2 text-sm text-white/55 transition hover:text-purple-200"
-          >
-            <span>
-              {lang === "en"
-                ? "See monthly plans"
-                : "Ver planes mensuales"}
-            </span>
-            <span className="text-purple-300">→</span>
-          </a>
-        </div>
+              <div className="mt-5">
+        <a
+          href="/mensualidades"
+          className="group inline-flex items-center gap-2 rounded-full border border-white/8 bg-white/[0.03] px-4 py-2 text-sm text-white/62 transition hover:border-purple-400/20 hover:bg-purple-500/[0.06] hover:text-white"
+        >
+          <span>
+            {lang === "en"
+              ? "See monthly plans"
+              : "Ver planes mensuales"}
+          </span>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2">
-          {[
-            lang === "en"
-              ? "Real code, no generic templates"
-              : "Código real, sin plantillas genéricas",
-            lang === "en"
-              ? "Weekly progress with visible demos"
-              : "Avance semanal con demos visibles",
-            lang === "en"
-              ? "Modern and easy-to-use interfaces"
-              : "Interfaces modernas y fáciles de usar",
-            lang === "en"
-              ? "Scalable solutions for business growth"
-              : "Soluciones escalables para el crecimiento del negocio",
-          ].map((item) => (
-            <div key={item} className="flex items-start gap-3">
-              <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5">
-                <CheckCircle2 className="h-4 w-4 text-purple-200" />
-              </div>
-              <span className="text-sm sm:text-[15px] leading-relaxed text-white/72">
-                {item}
-              </span>
+          <span className="text-purple-300 transition group-hover:translate-x-0.5">
+            →
+          </span>
+        </a>
+      </div>
+
+              <div className="mt-10 grid gap-4 sm:grid-cols-2">
+        {[
+          lang === "en"
+            ? "Real code, no generic templates"
+            : "Código real, sin plantillas genéricas",
+          lang === "en"
+            ? "Weekly progress with visible demos"
+            : "Avance semanal con demos visibles",
+          lang === "en"
+            ? "Modern and easy-to-use interfaces"
+            : "Interfaces modernas y fáciles de usar",
+          lang === "en"
+            ? "Scalable solutions for business growth"
+            : "Soluciones escalables para el crecimiento del negocio",
+        ].map((item) => (
+          <div key={item} className="flex items-start gap-3">
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5">
+              <CheckCircle2 className="h-4 w-4 text-purple-200" />
             </div>
-          ))}
-        </div>
+
+            <span className="pt-[2px] text-sm sm:text-[15px] leading-relaxed text-white/72">
+              {item}
+            </span>
+          </div>
+        ))}
+      </div>
       </div>
 
       {/* RIGHT */}
