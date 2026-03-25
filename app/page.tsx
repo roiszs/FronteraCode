@@ -67,6 +67,7 @@ export default function Home() {
             title: "Websites & Landing Pages",
             desc: "Modern, fast, conversion-focused websites.",
             icon: MonitorSmartphone,
+            href: "/servicios/websites-landing-pages",
           },
           {
             title: "Manufacturing systems",
@@ -322,8 +323,9 @@ export default function Home() {
             const Icon = s.icon;
             return (
               <Reveal key={s.title} delay={idx * 0.04} y={10}>
-                <div
-                  className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-6 transition hover:border-white/20 hover:from-white/10 hover:to-white/6"
+                <Link
+                  href={s.href || "#"}
+                  className="block rounded-2xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-6 transition hover:border-white/20 hover:from-white/10 hover:to-white/6"
                   style={{ boxShadow: "0 0 40px rgba(177,77,255,0.06)" }}
                 >
                   <div className="flex items-center gap-3">
@@ -337,7 +339,7 @@ export default function Home() {
 
                   <div className="mt-4 text-lg font-semibold">{s.title}</div>
                   <p className="mt-2 text-white/70 leading-relaxed">{s.desc}</p>
-                </div>
+                </Link>
               </Reveal>
             );
           })}
