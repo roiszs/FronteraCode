@@ -22,6 +22,7 @@ import {
   Code2,
   Rocket,
   CheckCircle2,
+  ArrowUpRight,
 } from "lucide-react";
 
 export default function Home() {
@@ -319,31 +320,56 @@ export default function Home() {
         glow
       >
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s, idx) => {
-            const Icon = s.icon;
-            return (
-              <Reveal key={s.title} delay={idx * 0.04} y={10}>
-                <Link
-                  href={s.href || "#"}
-                  className="block rounded-2xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-6 transition hover:border-white/20 hover:from-white/10 hover:to-white/6"
-                  style={{ boxShadow: "0 0 40px rgba(177,77,255,0.06)" }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="rounded-xl border border-white/10 bg-white/5 p-2">
-                      <Icon className="h-5 w-5 text-purple-300 drop-shadow-[0_0_10px_rgba(177,77,255,0.35)]" />
-                    </div>
-                    <div className="text-xs uppercase tracking-wider text-white/50">
-                      {t("service_label")}
-                    </div>
-                  </div>
+  {services.map((s, idx) => {
+    const Icon = s.icon;
+    const isClickable = !!s.href;
 
-                  <div className="mt-4 text-lg font-semibold">{s.title}</div>
-                  <p className="mt-2 text-white/70 leading-relaxed">{s.desc}</p>
-                </Link>
-              </Reveal>
-            );
-          })}
-        </div>
+    return (
+      <Reveal key={s.title} delay={idx * 0.04} y={10}>
+        <Link
+          href={s.href || "#"}
+          className={`group block rounded-2xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-6 transition duration-300 ${
+            isClickable
+              ? "cursor-pointer hover:-translate-y-1 hover:border-purple-400/25 hover:from-white/10 hover:to-white/6"
+              : "cursor-default"
+          }`}
+          style={{ boxShadow: "0 0 40px rgba(177,77,255,0.06)" }}
+        >
+          <div className="flex items-start justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="rounded-xl border border-white/10 bg-white/5 p-2">
+                <Icon className="h-5 w-5 text-purple-300 drop-shadow-[0_0_10px_rgba(177,77,255,0.35)]" />
+              </div>
+              <div className="text-xs uppercase tracking-wider text-white/50">
+                {t("service_label")}
+              </div>
+            </div>
+
+                {isClickable ? (
+                  <div className="rounded-full border border-white/10 bg-white/5 p-2 transition group-hover:border-purple-400/25 group-hover:bg-purple-500/10">
+                    <ArrowUpRight className="h-4 w-4 text-white/55 transition group-hover:text-purple-200" />
+                  </div>
+                ) : null}
+              </div>
+
+              <div className="mt-4 text-lg font-semibold text-white">{s.title}</div>
+              <p className="mt-2 text-white/70 leading-relaxed">{s.desc}</p>
+
+              {isClickable ? (
+                <div className="mt-5 inline-flex items-center gap-2 text-sm text-purple-200/90 transition group-hover:text-purple-100">
+                  <span>{lang === "en" ? "View service" : "Ver servicio"}</span>
+                  <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </div>
+              ) : (
+                <div className="mt-5 text-sm text-white/35">
+                  {lang === "en" ? "Coming soon" : "Próximamente"}
+                </div>
+              )}
+            </Link>
+          </Reveal>
+        );
+      })}
+    </div>
       </Section>
 
       {/* PROCESO */}
