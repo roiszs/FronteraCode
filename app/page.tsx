@@ -164,146 +164,161 @@ export default function Home() {
     <main id="top" className="scroll-mt-16 min-h-screen bg-[#07060A] text-white">
       <Navbar />
 
-      {/* HERO */}
+            {/* HERO */}
 <div className="pointer-events-none absolute inset-0 fc-grid" />
 
-<section className="relative overflow-hidden">
-  {/* overlays / glows */}
-  <div className="absolute inset-0 opacity-30" />
-
+<section className="relative overflow-hidden border-b border-white/10">
+  {/* glows */}
   <div
-    className="absolute -top-24 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full"
+    className="absolute left-1/2 top-[-120px] h-[520px] w-[520px] -translate-x-1/2 rounded-full blur-3xl"
     style={{
       background:
-        "radial-gradient(circle, rgba(177,77,255,0.35), transparent 60%)",
+        "radial-gradient(circle, rgba(177,77,255,0.18), transparent 62%)",
     }}
   />
 
   <div
-    className="absolute top-32 right-[-120px] h-[420px] w-[420px] rounded-full"
+    className="absolute right-[-120px] top-24 h-[360px] w-[360px] rounded-full blur-3xl"
     style={{
       background:
-        "radial-gradient(circle, rgba(255,79,216,0.25), transparent 60%)",
+        "radial-gradient(circle, rgba(255,79,216,0.12), transparent 60%)",
     }}
   />
 
-  {/* content */}
-  <div className="relative mx-auto max-w-6xl px-6 pt-14 pb-20 sm:pt-16 sm:pb-24">
-    <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-      {/* Copy */}
+<div className="relative mx-auto max-w-6xl px-6 pt-10 pb-20 sm:pt-12 sm:pb-24 lg:pt-14 lg:pb-28">
+    <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      {/* LEFT */}
       <div>
         <Reveal y={14}>
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
-              {t("hero_badge")}
-            </span>
+          <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70 backdrop-blur-sm">
+            {lang === "en"
+              ? "Border technology · Real software"
+              : "Tecnología de frontera · Software real"}
           </div>
 
-          <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight">
+          <h1 className="mt-6 max-w-4xl text-4xl sm:text-5xl lg:text-6xl xl:text-[76px] font-semibold tracking-[-0.05em] leading-[0.95]">
             {lang === "en"
-              ? "Custom software development for companies in Mexico and the United States."
-              : "Desarrollo de software a medida para empresas en México y Estados Unidos."}
+              ? "Custom software for companies that need real solutions."
+              : "Desarrollo de software para empresas que necesitan soluciones reales."}
           </h1>
 
-          <p className="mt-4 text-white/70 leading-relaxed">{t("hero_desc")}</p>
+          <p className="mt-6 max-w-2xl text-base sm:text-lg lg:text-xl leading-relaxed text-white/68">
+            {lang === "en"
+              ? "We design and develop websites, internal systems, dashboards, automation, and digital solutions for businesses in Mexico and the United States."
+              : "Diseñamos y desarrollamos sitios web, sistemas internos, dashboards, automatización y soluciones digitales para negocios en México y Estados Unidos."}
+          </p>
         </Reveal>
 
-        {/* ✅ botones separados en móvil */}
-        <div className="mt-8 grid gap-3 sm:flex sm:flex-row sm:items-center">
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           <a
             href="#contacto"
-            className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition hover:scale-[1.03] active:scale-[0.98]"
+            className="inline-flex items-center justify-center rounded-xl px-6 py-3.5 font-medium transition hover:scale-[1.03] active:scale-[0.98]"
             style={{
               background:
-                "linear-gradient(90deg, rgba(177,77,255,0.9), rgba(255,79,216,0.9))",
-              boxShadow: "0 0 30px rgba(177,77,255,0.25)",
+                "linear-gradient(90deg, rgba(177,77,255,0.92), rgba(255,79,216,0.92))",
+              boxShadow: "0 0 28px rgba(177,77,255,0.22)",
             }}
           >
-            {t("cta_quote")}
+            {lang === "en" ? "Quote project" : "Cotizar proyecto"}
           </a>
 
           <a
             href="#servicios"
-            className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-white/80 transition hover:bg-white/10 hover:scale-[1.02]"
+            className="inline-flex items-center justify-center rounded-xl border border-white/12 bg-white/5 px-6 py-3.5 text-white/82 transition hover:bg-white/10 hover:scale-[1.02]"
           >
-            {t("cta_services")}
-          </a>
-
-          <a
-            href="/mensualidades"
-            className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium text-white transition hover:scale-[1.03] active:scale-[0.98]"
-            style={{
-              background:
-                "linear-gradient(90deg, rgba(177,77,255,0.85), rgba(255,79,216,0.85))",
-              boxShadow: "0 0 24px rgba(177,77,255,0.20)",
-            }}
-          >
-            {t("cta_plans")}
+            {lang === "en" ? "View services" : "Ver servicios"}
           </a>
         </div>
 
-        <div className="mt-8 grid gap-2 text-sm text-white/70">
-          <p>{t("bullet_1")}</p>
-          <p>{t("bullet_2")}</p>
-          <p>{t("bullet_3")}</p>
+        <div className="mt-4">
+          <a
+            href="/mensualidades"
+            className="inline-flex items-center gap-2 text-sm text-white/55 transition hover:text-purple-200"
+          >
+            <span>
+              {lang === "en"
+                ? "See monthly plans"
+                : "Ver planes mensuales"}
+            </span>
+            <span className="text-purple-300">→</span>
+          </a>
+        </div>
+
+        <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          {[
+            lang === "en"
+              ? "Real code, no generic templates"
+              : "Código real, sin plantillas genéricas",
+            lang === "en"
+              ? "Weekly progress with visible demos"
+              : "Avance semanal con demos visibles",
+            lang === "en"
+              ? "Modern and easy-to-use interfaces"
+              : "Interfaces modernas y fáciles de usar",
+            lang === "en"
+              ? "Scalable solutions for business growth"
+              : "Soluciones escalables para el crecimiento del negocio",
+          ].map((item) => (
+            <div key={item} className="flex items-start gap-3">
+              <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5">
+                <CheckCircle2 className="h-4 w-4 text-purple-200" />
+              </div>
+              <span className="text-sm sm:text-[15px] leading-relaxed text-white/72">
+                {item}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Visual */}
+      {/* RIGHT */}
       <Reveal delay={0.08} y={10}>
-        <div className="relative">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
+        <div className="relative mx-auto w-full max-w-[460px]">
+          <div
+            className="absolute inset-0 scale-110 rounded-full blur-3xl"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(177,77,255,0.16), rgba(255,79,216,0.08), transparent 68%)",
+            }}
+          />
+
+          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 backdrop-blur-xl">
             <div
-              className="
-                relative grid place-items-center overflow-hidden rounded-3xl border border-white/10 bg-black/30
-                min-h-[360px] py-10
-                sm:aspect-square sm:min-h-0 sm:py-0
-              "
-            >
+              className="absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(circle at 50% 40%, rgba(177,77,255,0.14), transparent 48%)",
+              }}
+            />
+
+            <div className="relative flex aspect-[4/5] items-center justify-center rounded-[1.5rem] border border-white/10 bg-black/25">
               <div
-                className="pointer-events-none absolute inset-0 opacity-90"
+                className="absolute h-[240px] w-[240px] rounded-full blur-3xl"
                 style={{
                   background:
-                    "radial-gradient(circle at 50% 45%, rgba(177,77,255,0.22), transparent 62%), radial-gradient(circle at 70% 75%, rgba(255,79,216,0.12), transparent 55%)",
+                    "radial-gradient(circle, rgba(177,77,255,0.24), transparent 70%)",
                 }}
               />
 
-              <div className="relative z-10 text-center px-6">
+              <div className="relative flex flex-col items-center text-center px-6">
                 <Image
                   src="/brand/sinFondo.png"
                   alt="FronteraCode"
-                  width={128}
-                  height={128}
+                  width={132}
+                  height={132}
                   priority
-                  className="mx-auto object-contain drop-shadow-[0_0_34px_rgba(177,77,255,0.38)]"
+                  className="object-contain drop-shadow-[0_0_34px_rgba(177,77,255,0.35)]"
                 />
 
-                <div className="mt-5">
-                  <p className="text-lg font-semibold tracking-tight">
-                    FronteraCode
-                  </p>
-                  <p className="mt-2 text-sm text-white/60 leading-relaxed">
-                    {lang === "en"
-                      ? "Real software for real operations"
-                      : "Software real para operación real"}
-                  </p>
-                </div>
+                <p className="mt-6 text-2xl sm:text-3xl font-semibold tracking-tight">
+                  FronteraCode
+                </p>
 
-                <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
-                  {[
-                    lang === "en" ? "Web" : "Web",
-                    lang === "en" ? "Systems" : "Sistemas",
-                    lang === "en" ? "Automation" : "Automatización",
-                    "KPIs",
-                  ].map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs leading-none text-white/70"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                <p className="mt-3 max-w-[280px] text-sm sm:text-base leading-relaxed text-white/58">
+                  {lang === "en"
+                    ? "Real software for real operations"
+                    : "Software real para operación real"}
+                </p>
               </div>
             </div>
           </div>
