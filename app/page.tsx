@@ -372,69 +372,126 @@ export default function Home() {
     </div>
       </Section>
 
-      {/* PROCESO */}
       <Section
-        id="proceso"
-        title={t("process_title")}
-        subtitle={t("process_sub")}
-        glow
-      >
-        <div className="relative">
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {processSteps.map((p, idx) => {
-              const Icon = p.icon;
+  id="proceso"
+  title={t("process_title")}
+  subtitle={t("process_sub")}
+  glow
+>
+  <div className="relative">
+    <div className="grid gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-4">
+      {processSteps.map((p, idx) => {
+        const Icon = p.icon;
 
-              return (
-                <Reveal key={p.n} delay={idx * 0.05} y={12}>
-                  <div
-                    className="
-                      relative rounded-2xl border border-white/10
-                      bg-gradient-to-b from-white/8 to-white/4
-                      p-6 transition hover:border-white/20 hover:from-white/10 hover:to-white/6
-                      hover:-translate-y-1
-                      flex flex-col
-                      lg:min-h-[420px] xl:min-h-[380px]
-                    "
-                  >
-                    <div className="hidden lg:block absolute left-1/2 -top-2 h-4 w-4 -translate-x-1/2 rounded-full border border-white/15 bg-[#0b0712]">
-                      <div className="absolute inset-0 rounded-full bg-white/10 blur-[6px]" />
-                    </div>
+        const stepsContent =
+          lang === "en"
+            ? [
+                {
+                  title: "Diagnosis (30 min)",
+                  desc: "We define goals, scope, priorities, and risks. You get a clear roadmap with deliverables.",
+                  meta: "Output: scope + modular plan",
+                },
+                {
+                  title: "Prototype & UI",
+                  desc: "We design the prototype and validate it with you. If approved, we start formally.",
+                  meta: "Milestone: approval + 50% deposit",
+                },
+                {
+                  title: "Weekly sprints",
+                  desc: "We build in weekly sprints with demos. You see real progress, not promises.",
+                  meta: "Demos: 1 per week",
+                },
+                {
+                  title: "Deploy + support",
+                  desc: "Production launch, monitoring, and support. Final delivery and project closeout.",
+                  meta: "Milestone: delivery + remaining payment",
+                },
+              ]
+            : [
+                {
+                  title: "Diagnóstico (30 min)",
+                  desc: "Aterrizamos objetivo, alcance, prioridades y riesgos. Te proponemos una ruta clara con entregables.",
+                  meta: "Salida: alcance + plan por módulos",
+                },
+                {
+                  title: "Prototipo & UI",
+                  desc: "Diseñamos el prototipo y lo validamos contigo. Si te gusta, iniciamos formalmente.",
+                  meta: "Hito: aprobación + 50% de anticipo",
+                },
+                {
+                  title: "Desarrollo por sprints",
+                  desc: "Construimos por sprints semanales con demos. Avanzas viendo resultados reales, no promesas.",
+                  meta: "Demos: 1 por semana",
+                },
+                {
+                  title: "Deploy + soporte",
+                  desc: "Lanzamiento a producción, monitoreo y soporte. Entrega final y cierre del proyecto.",
+                  meta: "Hito: entrega + pago restante",
+                },
+              ];
 
-                    <div className="flex items-start gap-3">
-                      <div className="rounded-xl border border-white/10 bg-white/5 p-2 shrink-0">
-                        <Icon className="h-5 w-5 text-purple-300 drop-shadow-[0_0_10px_rgba(177,77,255,0.35)]" />
-                      </div>
+        const current = stepsContent[idx];
 
-                      <div className="min-w-0 flex-1 text-left">
-                        <div className="text-xs uppercase tracking-wider text-white/50">
-                          {lang === "en" ? `Step ${p.n}` : `Paso ${p.n}`}
-                        </div>
+        return (
+          <Reveal key={p.n} delay={idx * 0.05} y={12}>
+            <div
+              className="
+                group relative h-full overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10
+                bg-gradient-to-b from-white/8 to-white/4
+                p-5 sm:p-6
+                transition duration-300
+                hover:-translate-y-1 hover:border-purple-400/20
+              "
+              style={{ boxShadow: "0 0 40px rgba(177,77,255,0.07)" }}
+            >
+              <div
+                className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
+                style={{
+                  background:
+                    "radial-gradient(circle at top center, rgba(177,77,255,0.10), transparent 55%)",
+                }}
+              />
 
-                        <div className="mt-2 font-semibold text-white leading-snug min-h-[52px]">
-                          {p.t}
-                        </div>
-
-                        <p className="mt-2 text-white/70 leading-relaxed [text-wrap:pretty]">
-                          {p.d}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="mt-auto pt-4">
-                      <div className="inline-flex w-full items-start gap-2 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-white/70 min-h-[48px]">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-white/50" />
-                        <span className="min-w-0 break-words leading-snug line-clamp-2">
-                          {p.meta}
-                        </span>
-                      </div>
-                    </div>
+              <div className="relative z-10 flex h-full flex-col">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-2.5 sm:p-3 shrink-0">
+                    <Icon className="h-5 w-5 text-purple-300 drop-shadow-[0_0_12px_rgba(177,77,255,0.35)]" />
                   </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </Section>
+
+                  <div className="min-w-0">
+                    <div className="inline-flex items-center rounded-full border border-white/10 bg-black/25 px-2.5 py-1 sm:px-3 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-white/50">
+                      {lang === "en" ? `Step ${p.n}` : `Paso ${p.n}`}
+                    </div>
+
+                    <h3 className="mt-3 text-lg sm:text-xl font-semibold leading-snug tracking-tight text-white">
+                      {current.title}
+                    </h3>
+                  </div>
+                </div>
+
+                <p className="mt-4 sm:mt-5 flex-1 text-[14px] sm:text-[15px] leading-7 sm:leading-8 text-white/68">
+                  {current.desc}
+                </p>
+
+                <div className="mt-5 sm:mt-6 rounded-xl sm:rounded-2xl border border-white/10 bg-black/30 p-3.5 sm:p-4">
+                <div className="flex items-start gap-3">
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5">
+                  <CheckCircle2 className="h-4 w-4 text-white/55" />
+                </div>
+
+                <span className="pt-[2px] text-[13px] sm:text-sm leading-relaxed text-white/72">
+                  {current.meta}
+                </span>
+              </div>
+              </div>
+              </div>
+            </div>
+          </Reveal>
+        );
+      })}
+    </div>
+  </div>
+</Section>
 
       {/* FAQ */}
       <Section id="faq" title={t("faq_title")} subtitle={t("faq_sub")}>
