@@ -476,11 +476,7 @@ export default function WebsitesLandingPagesPage() {
           ))}
         </div>
 
-        <p className="mt-6 text-sm leading-relaxed text-white/50">
-          {lang === "en"
-            ? "Note: Prices are starting points and may vary depending on scope, content, integrations, and project complexity."
-            : "Nota: Los precios son puntos de partida y pueden variar según alcance, contenido, integraciones y complejidad del proyecto."}
-        </p>
+    
       </Section>
 
       {/* FAQ */}
