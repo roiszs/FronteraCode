@@ -359,14 +359,14 @@ export default function WebsitesLandingPagesPage() {
             const Icon = item.icon;
             return (
               <Reveal key={item.label} delay={idx * 0.04} y={10}>
-                <div className="h-full min-h-[185px] rounded-2xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-6 transition hover:border-purple-400/20 hover:-translate-y-1">
-                  <div className="rounded-xl border border-white/10 bg-white/5 p-3 w-fit">
-                    <Icon className="h-6 w-6 text-purple-300" />
-                  </div>
+                <div className="h-full min-h-[140px] sm:min-h-[165px] rounded-2xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-5 sm:p-6 transition hover:border-purple-400/20 hover:-translate-y-1">
+                <div className="rounded-xl border border-white/10 bg-white/5 p-2.5 sm:p-3 w-fit">
+                    <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-purple-300" />
+                </div>
 
-                  <p className="mt-6 text-[17px] leading-relaxed text-white/80">
+                <p className="mt-5 sm:mt-6 text-[16px] sm:text-[17px] leading-relaxed text-white/80">
                     {item.label}
-                  </p>
+                </p>
                 </div>
               </Reveal>
             );
