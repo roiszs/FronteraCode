@@ -230,22 +230,22 @@ export default function Home() {
           </a>
         </div>
 
-              <div className="mt-5">
-        <a
-          href="/mensualidades"
-          className="group inline-flex items-center gap-2 rounded-full border border-white/8 bg-white/[0.03] px-4 py-2 text-sm text-white/62 transition hover:border-purple-400/20 hover:bg-purple-500/[0.06] hover:text-white"
-        >
-          <span>
-            {lang === "en"
-              ? "See monthly plans"
-              : "Ver planes mensuales"}
-          </span>
+        <div className="mt-5">
+          <a
+            href="/mensualidades"
+            className="group inline-flex items-center gap-2 text-sm text-white/58 transition hover:text-purple-200"
+          >
+            <span className="border-b border-white/10 pb-0.5 transition group-hover:border-purple-400/30">
+              {lang === "en"
+                ? "See monthly plans"
+                : "Ver planes mensuales"}
+            </span>
 
-          <span className="text-purple-300 transition group-hover:translate-x-0.5">
-            →
-          </span>
-        </a>
-      </div>
+            <span className="text-purple-300 transition group-hover:translate-x-0.5">
+              →
+            </span>
+          </a>
+        </div>
 
               <div className="mt-10 grid gap-4 sm:grid-cols-2">
         {[
