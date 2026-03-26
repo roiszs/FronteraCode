@@ -48,6 +48,7 @@ export default function Home() {
             title: "Dashboards & KPIs",
             desc: "Indicadores claros para decidir con datos, no con suposiciones.",
             icon: Gauge,
+            href: "/servicios/websites-landing-pages/dashboards-kpis",
           },
           {
             title: "Automatización",
@@ -84,6 +85,7 @@ export default function Home() {
             title: "Dashboards & KPIs",
             desc: "Clear metrics to decide with data, not guesses.",
             icon: Gauge,
+            href: "/servicios/websites-landing-pages/dashboards-kpis",
           },
           {
             title: "Automation",
