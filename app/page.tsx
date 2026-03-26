@@ -62,6 +62,7 @@ export default function Home() {
             title: "Soporte & mejoras",
             desc: "Mantenimiento y evolución continua del producto.",
             icon: Wrench,
+            href: "/servicios/websites-landing-pages/soporte-mejoras",
           },
         ]
       : [
@@ -96,6 +97,7 @@ export default function Home() {
             title: "Support & improvements",
             desc: "Maintenance and continuous product evolution.",
             icon: Wrench,
+            href: "/servicios/websites-landing-pages/soporte-mejoras",
           },
         ];
 

@@ -4,412 +4,559 @@ import Navbar from "@/src/components/Navbar";
 import Section from "@/src/components/Section";
 import Reveal from "@/src/components/Reveal";
 import { useLang } from "@/src/components/context/LanguageProvider";
-
+import SocialLinks from "@/src/components/SocialLinks";
 import {
+  Sparkles,
+  ArrowRight,
+  ShieldCheck,
+  CheckCircle2,
   MonitorSmartphone,
   Factory,
   Gauge,
   Zap,
   ShoppingCart,
-  CheckCircle2,
-  ShieldCheck,
-  Clock,
   Wrench,
-  ArrowRight,
-  Sparkles,
+  Clock3,
+  Layers3,
+  RefreshCw,
+  LifeBuoy,
 } from "lucide-react";
 
-const plans = [
-  {
-    title: "Websites & Landing Pages",
-    price: 120,
-    icon: MonitorSmartphone,
-    desc: "Ideal para PyMEs que quieren un sitio siempre actualizado, rápido y enfocado en conversiones.",
-    includes: [
-      "Ajustes de diseño (UI) y contenido",
-      "Corrección de bugs y mejoras menores",
-      "Optimización básica de performance y SEO técnico",
-      "Mejoras continuas dentro del alcance actual",
-      "Soporte y recomendaciones proactivas",
-    ],
-    bestFor: "Sitios corporativos, landing de campaña, portafolios, páginas informativas.",
-  },
-  {
-    title: "Sistemas para maquila",
-    price: 300,
-    icon: Factory,
-    desc: "Soporte y evolución para sistemas internos orientados a operación real (roles, trazabilidad, reportes).",
-    includes: [
-      "Mejoras de flujo y validaciones",
-      "Ajustes de roles/permisos y pantallas",
-      "Corrección de incidencias operativas",
-      "Reportes, exportaciones y ajustes de captura",
-      "Soporte a usuarios (orientación y fixes)",
-    ],
-    bestFor:
-      "Registro de producción, trazabilidad, supervisión, capturas por turno/proceso. Si el sistema crece mucho o se vuelve crítico, se revisa tarifa.",
-    featured: true,
-  },
-  {
-    title: "Dashboards & KPIs",
-    price: 220,
-    icon: Gauge,
-    desc: "Evolución de dashboards para decisiones rápidas: métricas, filtros, visualización y limpieza de datos.",
-    includes: [
-      "Nuevas métricas/KPIs y ajustes de cálculo",
-      "Mejoras de visualización (claridad y UX)",
-      "Optimización de consultas y performance",
-      "Ajustes de filtros por proceso/turno/línea",
-      "Corrección de inconsistencias de datos",
-    ],
-    bestFor: "Tableros de producción, calidad, scrap, eficiencia, OEE, seguimiento diario.",
-  },
-  {
-    title: "Automatización",
-    price: 150,
-    icon: Zap,
-    desc: "Automatiza tareas repetitivas: flujos, validaciones, integraciones simples y scripts.",
-    includes: [
-      "Ajustes y mejoras a automatizaciones existentes",
-      "Nuevas reglas/validaciones y refinamiento",
-      "Integraciones simples (APIs/CSV/Sheets) según caso",
-      "Mantenimiento preventivo de la automatización",
-      "Corrección de fallas y monitoreo básico",
-    ],
-    bestFor: "Reducción de trabajo manual, menos errores, más velocidad operativa.",
-  },
-  {
-    title: "E-commerce",
-    price: 180,
-    icon: ShoppingCart,
-    desc: "Mejoras mensuales para tiendas: UX, bugs, rendimiento y ajustes de operación comercial.",
-    includes: [
-      "Cambios de UI/UX en PDP/checkout (según alcance)",
-      "Corrección de bugs y ajustes de catálogo",
-      "Optimización básica de conversión",
-      "Ajustes de integración de pagos/envíos (según caso)",
-      "Mejoras continuas dentro del alcance actual",
-    ],
-    bestFor: "Tiendas que requieren cambios frecuentes y soporte continuo.",
-  },
-];
-
 const whatsappHref =
-  "https://wa.me/526567635652?text=Hola%20FronteraCode%2C%20me%20interesan%20los%20planes%20mensuales.%20Quiero%20saber%20cu%C3%A1l%20plan%20me%20recomiendan%20y%20qu%C3%A9%20incluye%20para%20mi%20caso.";
-const emailHref =
-  "mailto:fronteracode@gmail.com?subject=Planes%20mensuales%20FronteraCode&body=Hola%20FronteraCode%2C%0A%0AMe%20interesan%20los%20planes%20mensuales.%20Mi%20proyecto%20es%3A%20%0A%0AObjetivo%3A%20%0AStack%20(si%20aplica)%3A%20%0AUrgencia%3A%20%0A%0AGracias.";
+  "https://wa.me/526567635652?text=Hola%20FronteraCode%2C%20me%20interesan%20las%20mensualidades.%20Quiero%20saber%20qu%C3%A9%20plan%20mensual%20me%20conviene%20seg%C3%BAn%20mi%20proyecto.";
 
-function Price({
-  value,
-  lang,
-}: {
-  value: number;
-  lang: "es" | "en";
-}) {
-  return (
-    <div className="flex items-end gap-2">
-      <div className="text-4xl font-semibold tracking-tight">${value}</div>
-      <div className="pb-1 text-sm text-white/60">
-        {lang === "en" ? "USD / month" : "USD / mes"}
-      </div>
-    </div>
-  );
-}
+const contactHref = "/#contacto";
 
 export default function MensualidadesPage() {
-  const { lang, t } = useLang();
+  const { lang } = useLang();
 
-  // Traducción del contenido del plan (manteniendo títulos iguales)
-  const plansLocalized = plans.map((p) => {
-    if (lang === "es") return p;
+  const problems =
+    lang === "en"
+      ? [
+          "Your product already exists, but it keeps requiring changes month after month.",
+          "You need continuity, not just punctual fixes.",
+          "Your business depends on a website, store, system, or dashboard that should keep evolving.",
+          "You want someone to keep improving the product without starting from zero every time.",
+          "You need support, improvements, and follow-up in a more organized monthly model.",
+          "You want a digital product to stay useful, updated, and aligned with the business.",
+        ]
+      : [
+          "Tu producto ya existe, pero sigue necesitando cambios mes con mes.",
+          "Necesitas continuidad, no solo correcciones puntuales.",
+          "Tu negocio depende de un sitio, tienda, sistema o dashboard que debe seguir evolucionando.",
+          "Quieres que alguien siga mejorando el producto sin empezar desde cero cada vez.",
+          "Necesitas soporte, mejoras y seguimiento dentro de un modelo mensual más ordenado.",
+          "Quieres que tu producto digital siga siendo útil, actualizado y alineado con el negocio.",
+        ];
 
-    // EN version (misma estructura)
-    const mapEN: Record<string, { desc: string; includes: string[]; bestFor: string }> = {
-      "Websites & Landing Pages": {
-        desc: "Perfect for SMBs that want a site that stays updated, fast, and conversion-focused.",
-        includes: [
-          "UI & content adjustments",
-          "Bug fixes and minor improvements",
-          "Basic performance optimization + technical SEO",
-          "Ongoing improvements within the current scope",
-          "Proactive support and recommendations",
-        ],
-        bestFor: "Corporate sites, campaign landings, portfolios, informational pages.",
-      },
-      "Sistemas para maquila": {
-        desc: "Support and evolution for internal systems used in real operations (roles, traceability, reporting).",
-        includes: [
-          "Flow improvements and validations",
-          "Roles/permissions and screen tweaks",
-          "Operational incident fixes",
-          "Reports, exports and data-capture adjustments",
-          "User support (guidance + fixes)",
-        ],
-        bestFor:
-          "Production logging, traceability, supervision, shift/process capture. If the system becomes large/critical, pricing may be reviewed.",
-      },
-      "Dashboards & KPIs": {
-        desc: "Evolve dashboards for faster decisions: metrics, filters, visualization, and data cleanup.",
-        includes: [
-          "New KPIs/metrics and calculation adjustments",
-          "Visualization improvements (clarity + UX)",
-          "Query & performance optimization",
-          "Filters by process/shift/line",
-          "Fix data inconsistencies",
-        ],
-        bestFor: "Production, quality, scrap, efficiency, OEE, daily tracking dashboards.",
-      },
-      "Automatización": {
-        desc: "Automate repetitive tasks: flows, validations, simple integrations and scripts.",
-        includes: [
-          "Improvements to existing automations",
-          "New rules/validations and refinements",
-          "Simple integrations (APIs/CSV/Sheets) as applicable",
-          "Preventive maintenance for automations",
-          "Fixes and basic monitoring",
-        ],
-        bestFor: "Reduce manual work, fewer errors, more operational speed.",
-      },
-      "E-commerce": {
-        desc: "Monthly improvements for stores: UX, bug fixes, performance, and operational tweaks.",
-        includes: [
-          "UI/UX changes in PDP/checkout (within scope)",
-          "Bug fixes and catalog adjustments",
-          "Basic conversion optimization",
-          "Payment/shipping integration tweaks (as applicable)",
-          "Ongoing improvements within the current scope",
-        ],
-        bestFor: "Stores that need frequent changes and ongoing support.",
-      },
-    };
+  const includes =
+    lang === "en"
+      ? [
+          "Monthly support on the current product",
+          "Prioritized monthly backlog",
+          "Fixes and incremental improvements",
+          "Better continuity and follow-up",
+          "More organized execution month by month",
+          "Product evolution without starting over",
+          "A clearer path for maintenance and growth",
+          "A more stable relationship between business and product",
+        ]
+      : [
+          "Soporte mensual sobre el producto actual",
+          "Backlog mensual priorizado",
+          "Correcciones y mejoras incrementales",
+          "Mayor continuidad y seguimiento",
+          "Ejecución más ordenada mes con mes",
+          "Evolución del producto sin empezar de cero",
+          "Ruta más clara para mantenimiento y crecimiento",
+          "Una relación más estable entre negocio y producto",
+        ];
 
-    const en = mapEN[p.title];
-    return en
-      ? { ...p, desc: en.desc, includes: en.includes, bestFor: en.bestFor }
-      : p;
-  });
+  const includeHighlights =
+    lang === "en"
+      ? [
+          "Monthly support on the current product",
+          "Prioritized backlog for the month",
+          "Fixes and incremental improvements",
+          "Better continuity and follow-up",
+          "Product evolution within the current scope",
+          "More organized execution month by month",
+          "A stronger maintenance path",
+          "A more stable product/business relationship",
+        ]
+      : [
+          "Soporte mensual sobre el producto actual",
+          "Backlog del mes priorizado",
+          "Correcciones y mejoras incrementales",
+          "Mayor continuidad y seguimiento",
+          "Evolución del producto dentro del alcance actual",
+          "Ejecución más ordenada mes con mes",
+          "Ruta más sólida de mantenimiento",
+          "Relación más estable entre producto y negocio",
+        ];
+
+  const monthlyPlans =
+    lang === "en"
+      ? [
+          {
+            title: "Websites & Landing Pages",
+            icon: MonitorSmartphone,
+            desc: "For businesses that want their website to stay updated, refined, and useful month after month.",
+            features: [
+              "UI / content adjustments",
+              "Light corrections and improvements",
+              "Ongoing refinement of the current site",
+              "Monthly continuity for the existing website",
+            ],
+            idealFor:
+              "Corporate websites, landing pages, portfolios, and informational sites that need active upkeep.",
+          },
+          {
+            title: "Manufacturing systems",
+            icon: Factory,
+            desc: "For internal systems that need continuity, fixes, and operational improvements over time.",
+            features: [
+              "Flow and usability improvements",
+              "Operational fixes and refinements",
+              "Support for roles, validations, and existing screens",
+              "Monthly continuity for the current system",
+            ],
+            idealFor:
+              "Production logging, traceability, operational capture, supervision, and internal process tools.",
+            featured: true,
+          },
+          {
+            title: "Dashboards & KPIs",
+            icon: Gauge,
+            desc: "For dashboards that need clearer metrics, better filters, and continuous evolution.",
+            features: [
+              "Metric and KPI adjustments",
+              "Visualization and usability refinement",
+              "Filter and reporting improvements",
+              "Monthly continuity for the dashboard",
+            ],
+            idealFor:
+              "Production, quality, scrap, efficiency, OEE, and business reporting dashboards.",
+          },
+          {
+            title: "Automation",
+            icon: Zap,
+            desc: "For automations that need refinement, fixes, and ongoing stability over time.",
+            features: [
+              "Rules and logic adjustments",
+              "Improvements to current automations",
+              "Basic support and optimization",
+              "Monthly continuity for active flows",
+            ],
+            idealFor:
+              "Operational automations, repetitive tasks, simple integrations, and workflow support.",
+          },
+          {
+            title: "E-commerce",
+            icon: ShoppingCart,
+            desc: "For stores that need ongoing adjustments, refinements, and commercial continuity month by month.",
+            features: [
+              "Store improvements and adjustments",
+              "UI / UX refinement in current flows",
+              "Support for catalog, checkout, or existing sections",
+              "Monthly continuity for the active store",
+            ],
+            idealFor:
+              "Stores with recurring operational or commercial updates and active monthly movement.",
+          },
+          {
+            title: "Support & improvements",
+            icon: Wrench,
+            desc: "For products that already need a monthly continuity model instead of isolated change blocks.",
+            features: [
+              "Recurring support on the current product",
+              "Monthly prioritized adjustments",
+              "A more continuous improvement rhythm",
+              "Better product follow-up over time",
+            ],
+            idealFor:
+              "Businesses that already know they need ongoing continuity, not just punctual changes.",
+          },
+        ]
+      : [
+          {
+            title: "Websites & Landing Pages",
+            icon: MonitorSmartphone,
+            desc: "Para negocios que quieren que su sitio siga actualizado, refinado y útil mes con mes.",
+            features: [
+              "Ajustes de UI / contenido",
+              "Correcciones y mejoras ligeras",
+              "Refinamiento continuo del sitio actual",
+              "Continuidad mensual sobre la web existente",
+            ],
+            idealFor:
+              "Sitios corporativos, landing pages, portafolios y páginas informativas que necesitan mantenimiento activo.",
+          },
+          {
+            title: "Sistemas para maquila",
+            icon: Factory,
+            desc: "Para sistemas internos que necesitan continuidad, correcciones y mejoras operativas a lo largo del tiempo.",
+            features: [
+              "Mejoras de flujo y usabilidad",
+              "Correcciones operativas y refinamientos",
+              "Soporte sobre roles, validaciones y pantallas existentes",
+              "Continuidad mensual sobre el sistema actual",
+            ],
+            idealFor:
+              "Registro de producción, trazabilidad, capturas operativas, supervisión y herramientas internas de proceso.",
+            featured: true,
+          },
+          {
+            title: "Dashboards & KPIs",
+            icon: Gauge,
+            desc: "Para dashboards que necesitan métricas más claras, mejores filtros y evolución continua.",
+            features: [
+              "Ajustes de métricas y KPIs",
+              "Refinamiento de visualización y usabilidad",
+              "Mejoras en filtros y reportes",
+              "Continuidad mensual sobre el dashboard",
+            ],
+            idealFor:
+              "Dashboards de producción, calidad, scrap, eficiencia, OEE y reporteo de negocio.",
+          },
+          {
+            title: "Automatización",
+            icon: Zap,
+            desc: "Para automatizaciones que necesitan refinamiento, correcciones y estabilidad constante con el tiempo.",
+            features: [
+              "Ajustes de reglas y lógica",
+              "Mejoras sobre automatizaciones actuales",
+              "Soporte básico y optimización",
+              "Continuidad mensual sobre flujos activos",
+            ],
+            idealFor:
+              "Automatizaciones operativas, tareas repetitivas, integraciones simples y apoyo de flujo de trabajo.",
+          },
+          {
+            title: "E-commerce",
+            icon: ShoppingCart,
+            desc: "Para tiendas que necesitan ajustes, refinamiento y continuidad comercial mes con mes.",
+            features: [
+              "Mejoras y ajustes de tienda",
+              "Refinamiento de UI / UX en flujos actuales",
+              "Soporte sobre catálogo, checkout o secciones existentes",
+              "Continuidad mensual sobre la tienda activa",
+            ],
+            idealFor:
+              "Tiendas con movimiento comercial frecuente y necesidad de cambios operativos recurrentes.",
+          },
+          {
+            title: "Soporte & mejoras",
+            icon: Wrench,
+            desc: "Para productos que ya necesitan un esquema mensual de continuidad en lugar de bloques aislados de cambios.",
+            features: [
+              "Soporte recurrente sobre el producto actual",
+              "Ajustes mensuales priorizados",
+              "Ritmo más continuo de mejora",
+              "Mayor seguimiento del producto con el tiempo",
+            ],
+            idealFor:
+              "Negocios que ya saben que necesitan continuidad activa y no solo cambios puntuales.",
+          },
+        ];
+
+  const faqs =
+    lang === "en"
+      ? [
+          {
+            q: "What is the difference between this and Support & Improvements?",
+            a: "Support & Improvements is for punctual or grouped change blocks. Monthly plans are for businesses that need continuity, follow-up, and recurring work month after month.",
+          },
+          {
+            q: "Do monthly plans cover completely new development?",
+            a: "Not normally. Monthly plans are focused on support and evolution within the current product scope. Large new modules or major new development are reviewed separately.",
+          },
+          {
+            q: "Can I use monthly plans for an existing website, store, system, or dashboard?",
+            a: "Yes. In fact, that is the ideal scenario: a current product that already exists and needs continuity, refinement, and monthly attention.",
+          },
+          {
+            q: "How do I know if I need a monthly plan or a punctual block?",
+            a: "If you only need a few specific changes, a punctual block is usually enough. If your product keeps generating work every month, then a monthly plan is the better fit.",
+          },
+        ]
+      : [
+          {
+            q: "¿Cuál es la diferencia entre esto y Soporte & mejoras?",
+            a: "Soporte & mejoras es para cambios puntuales o bloques agrupados. Las mensualidades son para negocios que necesitan continuidad, seguimiento y trabajo recurrente mes con mes.",
+          },
+          {
+            q: "¿Las mensualidades cubren desarrollo completamente nuevo?",
+            a: "Normalmente no. Las mensualidades están enfocadas en soporte y evolución dentro del alcance actual del producto. Módulos grandes nuevos o desarrollo mayor se revisan aparte.",
+          },
+          {
+            q: "¿Puedo usar mensualidades para un sitio, tienda, sistema o dashboard que ya existe?",
+            a: "Sí. De hecho, ese es el escenario ideal: un producto actual que ya existe y necesita continuidad, refinamiento y atención mensual.",
+          },
+          {
+            q: "¿Cómo sé si necesito mensualidad o un bloque puntual?",
+            a: "Si solo necesitas algunos cambios específicos, normalmente un bloque puntual es suficiente. Si tu producto sigue generando trabajo cada mes, entonces una mensualidad es la mejor opción.",
+          },
+        ];
+
+  const includeCards = [
+    { icon: Clock3, label: includes[0] },
+    { icon: Layers3, label: includes[1] },
+    { icon: RefreshCw, label: includes[2] },
+    { icon: ShieldCheck, label: includes[3] },
+    { icon: LifeBuoy, label: includes[4] },
+    { icon: Wrench, label: includes[6] },
+  ];
 
   return (
     <main className="min-h-screen bg-[#07060A] text-white">
       <Navbar />
 
       {/* HERO */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden border-b border-white/10">
         <div className="pointer-events-none absolute inset-0 fc-grid opacity-80" />
-        <div className="absolute inset-0 opacity-35">
-          <div
-            className="absolute -top-24 left-1/2 h-[540px] w-[540px] -translate-x-1/2 rounded-full"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(177,77,255,0.32), transparent 60%)",
-            }}
-          />
-          <div
-            className="absolute top-28 right-[-140px] h-[420px] w-[420px] rounded-full"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(255,79,216,0.20), transparent 60%)",
-            }}
-          />
-        </div>
 
-        <div className="mx-auto max-w-6xl px-5 sm:px-8 py-16 sm:py-20 relative">
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-            <div>
-              <Reveal y={12}>
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
-                  <Sparkles className="h-4 w-4 text-purple-300" />
-                  {t("plans_badge")}
-                </div>
+        <div
+          className="absolute -top-24 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(177,77,255,0.28), transparent 60%)",
+          }}
+        />
 
-                <h1 className="mt-6 text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
-                  {t("plans_h1")} <span className="text-white/70"> {t("plans_h1_2")}</span>
-                </h1>
+        <div
+          className="absolute top-24 right-[-120px] h-[420px] w-[420px] rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(255,79,216,0.18), transparent 60%)",
+          }}
+        />
 
-                <p className="mt-4 text-white/70 leading-relaxed max-w-xl">
-                  {t("plans_p")}
-                </p>
-              </Reveal>
+        <div className="relative mx-auto max-w-6xl px-6 py-16 sm:py-20">
+          <Reveal y={12}>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="/#servicios"
+                className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70 transition hover:bg-white/10 hover:text-white"
+              >
+                {lang === "en" ? "Back to services" : "Volver a servicios"}
+              </a>
 
-              <div className="mt-8 grid gap-3 sm:flex sm:flex-row sm:items-center">
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition hover:scale-[1.03] active:scale-[0.98]"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, rgba(177,77,255,0.9), rgba(255,79,216,0.9))",
-                    boxShadow: "0 0 30px rgba(177,77,255,0.20)",
-                  }}
-                >
-                  {t("plans_btn_wa")}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
-
-                <a
-                  href={emailHref}
-                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-white/80 transition hover:text-white hover:bg-white/10"
-                >
-                  {t("plans_btn_mail")}
-                </a>
-              </div>
-
-              <div className="mt-8 grid gap-3 text-sm text-white/70">
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="h-4 w-4 text-white/50" />
-                  <span>
-                    {lang === "en"
-                      ? "Plans cover support and improvements within the scope of the current product."
-                      : "Los planes cubren soporte y mejoras dentro del alcance del producto actual."}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-white/50" />
-                  <span>
-                    {lang === "en"
-                      ? "We prioritize requests in a monthly backlog (visible and organized work)."
-                      : "Priorizamos solicitudes en un backlog del mes (trabajo visible y ordenado)."}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Wrench className="h-4 w-4 text-white/50" />
-                  <span>
-                    {lang === "en"
-                      ? "Large new modules or brand-new development are quoted separately (if needed)."
-                      : "Desarrollo completamente nuevo o módulos grandes se cotizan aparte (si aplica)."}
-                  </span>
-                </div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
+                <Sparkles className="h-4 w-4 text-purple-300" />
+                {lang === "en" ? "Monthly continuity" : "Continuidad mensual"}
               </div>
             </div>
 
-            {/* Card resumen */}
-            <Reveal delay={0.06} y={10}>
-              <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-8">
-                <div className="text-sm text-white/60">{t("how_title")}</div>
-                <div className="mt-4 grid gap-3">
-                  {[
-                    { t: t("how_1_t"), d: t("how_1_d") },
-                    { t: t("how_2_t"), d: t("how_2_d") },
-                    { t: t("how_3_t"), d: t("how_3_d") },
-                    { t: t("how_4_t"), d: t("how_4_d") },
-                  ].map((i) => (
-                    <div
-                      key={i.t}
-                      className="rounded-2xl border border-white/10 bg-black/30 p-4"
-                    >
-                      <div className="font-semibold">{i.t}</div>
-                      <p className="mt-1 text-white/70 text-sm leading-relaxed">
-                        {i.d}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-6 rounded-2xl border border-white/10 bg-black/30 p-4">
-                  <div className="text-sm text-white/60">
-                    {lang === "en" ? "Important note" : "Nota importante"}
+            <h1 className="mt-8 max-w-4xl text-4xl font-semibold tracking-tight leading-tight sm:text-5xl lg:text-6xl">
+              {lang === "en" ? "Monthly plans" : "Mensualidades"}
+            </h1>
+
+            <p className="mt-5 max-w-4xl text-base leading-relaxed text-white/70 sm:text-lg">
+              {lang === "en"
+                ? "A monthly support model for products that already exist and need continuity, follow-up, and recurring evolution. Not punctual change blocks, but active monthly product continuity."
+                : "Un modelo de acompañamiento mensual para productos que ya existen y necesitan continuidad, seguimiento y evolución recurrente. No bloques puntuales, sino continuidad activa del producto mes con mes."}
+            </p>
+
+            <div className="mt-8 grid gap-3 sm:flex sm:flex-row">
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition hover:scale-[1.03] active:scale-[0.98]"
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(177,77,255,0.9), rgba(255,79,216,0.9))",
+                  boxShadow: "0 0 30px rgba(177,77,255,0.20)",
+                }}
+              >
+                {lang === "en" ? "Request information" : "Solicitar información"}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+
+              <a
+                href={contactHref}
+                className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-white/80 transition hover:bg-white/10 hover:text-white"
+              >
+                {lang === "en" ? "Go to contact form" : "Ir al formulario"}
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* PROBLEMAS */}
+      <Section
+        id="problemas"
+        title={lang === "en" ? "What this solves" : "Qué resuelve esto"}
+        subtitle={
+          lang === "en"
+            ? "Some products do not need a new project. They need consistent monthly continuity."
+            : "Algunos productos no necesitan un proyecto nuevo. Necesitan continuidad mensual consistente."
+        }
+        glow
+      >
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {problems.map((item, idx) => (
+            <Reveal key={item} delay={idx * 0.04} y={10}>
+              <div className="h-full min-h-[122px] rounded-2xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-5 transition hover:border-purple-400/20 hover:from-white/10 hover:to-white/6">
+                <div className="flex h-full items-start gap-3">
+                  <div className="mt-0.5 rounded-xl border border-white/10 bg-white/5 p-2">
+                    <ShieldCheck className="h-5 w-5 text-purple-300" />
                   </div>
-                  <p className="mt-2 text-sm text-white/70 leading-relaxed">
-                    {lang === "en"
-                      ? "Prices are per month and cover support/improvements within the current system scope. If the month requires a large module or new build, we quote it separately before doing it."
-                      : "Los precios son por mes y cubren soporte/mejoras dentro del alcance del sistema actual. Si el mes requiere un módulo grande o un desarrollo nuevo, te lo cotizamos por separado antes de hacerlo."}
-                  </p>
+                  <p className="text-[17px] leading-relaxed text-white/75">{item}</p>
                 </div>
               </div>
             </Reveal>
-          </div>
+          ))}
         </div>
-      </section>
+      </Section>
+
+      {/* INCLUYE */}
+      <Section
+        id="incluye"
+        title={lang === "en" ? "What is included" : "Qué incluye"}
+        subtitle={
+          lang === "en"
+            ? "A clearer monthly model for continuity, support, and evolution."
+            : "Un modelo mensual más claro para continuidad, soporte y evolución."
+        }
+        glow
+      >
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {includeCards.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <Reveal key={item.label} delay={idx * 0.04} y={10}>
+                <div className="h-full min-h-[140px] sm:min-h-[165px] rounded-2xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-5 sm:p-6 transition hover:border-purple-400/20 hover:-translate-y-1">
+                  <div className="w-fit rounded-xl border border-white/10 bg-white/5 p-2.5 sm:p-3">
+                    <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-purple-300" />
+                  </div>
+
+                  <p className="mt-5 sm:mt-6 text-[16px] sm:text-[17px] leading-relaxed text-white/80">
+                    {item.label}
+                  </p>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        <Reveal delay={0.08} y={10}>
+          <div className="mt-6 overflow-hidden rounded-3xl border border-white/10 bg-black/30">
+            <div
+              className="pointer-events-none h-px w-full"
+              style={{
+                background:
+                  "linear-gradient(90deg, transparent, rgba(177,77,255,0.35), transparent)",
+              }}
+            />
+            <div className="grid gap-6 p-6 md:grid-cols-2">
+              {[includeHighlights.slice(0, 4), includeHighlights.slice(4)].map(
+                (group, groupIdx) => (
+                  <div key={groupIdx} className="grid gap-4">
+                    {group.map((item) => (
+                      <div
+                        key={item}
+                        className="group flex items-start gap-3 rounded-2xl border border-white/5 bg-white/[0.02] px-4 py-3 transition hover:border-purple-400/15 hover:bg-white/[0.04]"
+                      >
+                        <div className="mt-0.5 rounded-full border border-white/10 bg-white/5 p-1.5 transition group-hover:border-purple-400/25">
+                          <CheckCircle2 className="h-4 w-4 text-white/55 group-hover:text-purple-200" />
+                        </div>
+                        <span className="text-base leading-relaxed text-white/72">
+                          {item}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )
+              )}
+            </div>
+          </div>
+        </Reveal>
+      </Section>
 
       {/* PLANES */}
       <Section
         id="planes"
-        title={t("monthly_title")}
-        subtitle={t("monthly_sub")}
+        title={lang === "en" ? "Monthly plans by service" : "Planes mensuales por servicio"}
+        subtitle={
+          lang === "en"
+            ? "A monthly continuity option for each core FronteraCode service."
+            : "Una opción de continuidad mensual para cada servicio principal de FronteraCode."
+        }
         glow
       >
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {plansLocalized.map((p, idx) => {
-            const Icon = p.icon;
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {monthlyPlans.map((plan, idx) => {
+            const Icon = plan.icon;
+
             return (
-              <Reveal key={p.title} delay={idx * 0.04} y={12}>
+              <Reveal key={plan.title} delay={idx * 0.04} y={10}>
                 <div
-                  className={`rounded-2xl border bg-gradient-to-b p-6 transition hover:-translate-y-1 ${
-                    (p as any).featured
+                  className={`group h-full rounded-3xl border bg-gradient-to-b p-8 transition duration-300 hover:-translate-y-2 hover:scale-[1.02] ${
+                    plan.featured
                       ? "border-purple-500/30 from-purple-500/10 to-white/4"
                       : "border-white/10 from-white/8 to-white/4"
-                  } hover:border-white/20`}
+                  }`}
                   style={{
-                    boxShadow: (p as any).featured
-                      ? "0 0 40px rgba(177,77,255,0.14)"
+                    boxShadow: plan.featured
+                      ? "0 0 44px rgba(177,77,255,0.16)"
                       : "0 0 40px rgba(177,77,255,0.06)",
                   }}
                 >
-                  <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <div className="rounded-xl border border-white/10 bg-white/5 p-2">
-                        <Icon className="h-5 w-5 text-purple-300 drop-shadow-[0_0_10px_rgba(177,77,255,0.35)]" />
+                      <div className="rounded-xl border border-white/10 bg-white/5 p-3">
+                        <Icon className="h-5 w-5 text-purple-300" />
                       </div>
                       <div>
-                        <div className="text-sm text-white/60">{t("plan_month")}</div>
-                        <div className="text-lg font-semibold">{p.title}</div>
+                        <div className="text-sm text-white/55">
+                          {lang === "en" ? "Monthly continuity" : "Continuidad mensual"}
+                        </div>
+                        <h3 className="text-xl font-semibold tracking-tight">
+                          {plan.title}
+                        </h3>
                       </div>
                     </div>
 
-                    {(p as any).featured ? (
-                      <span className="text-xs rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-purple-200">
+                    {plan.featured ? (
+                      <span className="rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-xs text-purple-200">
                         {lang === "en" ? "Recommended" : "Recomendado"}
                       </span>
                     ) : null}
                   </div>
 
-                  <div className="mt-4">
-                    <Price value={p.price} lang={lang} />
-                    <p className="mt-3 text-white/70 leading-relaxed">{p.desc}</p>
-                  </div>
-
-                  <div className="mt-5 rounded-2xl border border-white/10 bg-black/30 p-4">
-                    <div className="text-sm font-semibold">{t("includes")}</div>
-                    <ul className="mt-3 grid gap-2 text-sm text-white/70">
-                      {p.includes.map((it) => (
-                        <li key={it} className="flex gap-2">
-                          <CheckCircle2 className="h-4 w-4 text-white/40 mt-0.5 shrink-0" />
-                          <span>{it}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <p className="mt-4 text-sm text-white/60">
-                    <span className="text-white/75 font-medium">{t("ideal_for")}</span>{" "}
-                    {p.bestFor}
+                  <p className="mt-5 min-h-[92px] text-white/70 leading-relaxed">
+                    {plan.desc}
                   </p>
 
-                  <div className="mt-6 grid gap-3">
-                    <a
-                      href={`${whatsappHref}%0A%0APlan%20de%20inter%C3%A9s%3A%20${encodeURIComponent(
-                        p.title
-                      )}%20(%24${p.price}%2Fmes)`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition hover:scale-[1.02] active:scale-[0.98]"
-                      style={{
-                        background:
-                          "linear-gradient(90deg, rgba(177,77,255,0.85), rgba(255,79,216,0.85))",
-                        boxShadow: "0 0 26px rgba(177,77,255,0.18)",
-                      }}
-                    >
-                      {lang === "en" ? "I want this plan" : "Quiero este plan"}
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </a>
+                  <ul className="mt-5 grid gap-3 text-sm text-white/75">
+                    {plan.features.map((feature) => (
+                      <li key={feature} className="flex gap-2">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-white/40" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-                    <a
-                      href="#aclaraciones"
-                      className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-white/80 transition hover:text-white hover:bg-white/10"
-                    >
-                      {lang === "en" ? "View plan clarifications" : "Ver aclaraciones del plan"}
-                    </a>
-                  </div>
+                  <p className="mt-5 text-sm leading-relaxed text-white/60">
+                    <span className="font-medium text-white/75">
+                      {lang === "en" ? "Ideal for:" : "Ideal para:"}
+                    </span>{" "}
+                    {plan.idealFor}
+                  </p>
+
+                  <a
+                    href={`${whatsappHref}%0A%0A${
+                      lang === "en" ? "Monthly plan of interest" : "Plan mensual de interés"
+                    }%3A%20${encodeURIComponent(plan.title)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-8 inline-flex w-full items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-white/85 transition hover:bg-white/10 hover:text-white"
+                  >
+                    {lang === "en" ? "Ask about this plan" : "Preguntar por este plan"}
+                  </a>
                 </div>
               </Reveal>
             );
@@ -417,191 +564,119 @@ export default function MensualidadesPage() {
         </div>
       </Section>
 
-      {/* CAMBIOS PUNTUALES */}
-      <section className="mt-20">
-        <div className="mx-auto max-w-4xl px-6">
-          <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-8">
-            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">
-              {t("punctual_title")}
-            </h2>
+      {/* FAQ */}
+      <Section
+        id="faq"
+        title="FAQ"
+        subtitle={
+          lang === "en"
+            ? "Common questions about monthly continuity."
+            : "Preguntas comunes sobre continuidad mensual."
+        }
+      >
+        <div className="grid gap-4">
+          {faqs.map((item, idx) => (
+            <Reveal key={item.q} delay={idx * 0.04} y={10}>
+              <div
+                className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-6 transition hover:border-purple-400/25"
+                style={{
+                  boxShadow: "0 0 30px rgba(177,77,255,0.06)",
+                }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 rounded-xl border border-purple-400/20 bg-purple-500/10 p-2">
+                    <Sparkles className="h-4 w-4 text-purple-200" />
+                  </div>
 
-            <p className="mt-4 text-white/70 leading-relaxed">
-              {t("punctual_desc")}
-            </p>
-
-            <div className="mt-6 rounded-2xl border border-white/10 bg-black/30 p-6">
-              <div className="text-3xl font-semibold text-white">
-                $60 USD{" "}
-                <span className="text-sm text-white/60 font-normal">
-                  {t("punctual_one")}
-                </span>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold tracking-tight">{item.q}</h3>
+                    <p className="mt-3 text-white/72 leading-relaxed">{item.a}</p>
+                  </div>
+                </div>
               </div>
-
-              <ul className="mt-4 space-y-2 text-white/70">
-                <li>
-                  • {lang === "en" ? "Up to " : "Hasta "}
-                  <span className="text-white">10 {lang === "en" ? "changes" : "cambios"}</span>
-                  {lang === "en" ? " included" : " incluidos"}
-                </li>
-                <li>
-                  • {lang === "en" ? "All changes must be requested " : "Los cambios deben solicitarse "}
-                  <span className="text-white">
-                    {lang === "en" ? "at the same time" : "en el mismo momento"}
-                  </span>
-                </li>
-                <li>• {lang === "en" ? "Not transferable to future requests" : "No acumulables para futuras solicitudes"}</li>
-                <li>
-                  • {lang === "en"
-                    ? "Applies to UI, text, configurations, and light logic"
-                    : "Aplica a ajustes visuales, textos, configuraciones y lógica ligera"}
-                </li>
-                <li>
-                  • {lang === "en"
-                    ? "Delivered within the agreed work cycle"
-                    : "Entrega dentro del mismo ciclo de trabajo acordado"}
-                </li>
-              </ul>
-
-              <p className="mt-4 text-sm text-white/50">{t("punctual_note")}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ACLARACIONES */}
-      <Section id="aclaraciones" title={t("clar_title")} subtitle={t("clar_sub")}>
-        <div className="grid gap-5 lg:grid-cols-2">
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <div className="text-lg font-semibold">{t("clar_in")}</div>
-            <ul className="mt-4 grid gap-3 text-sm text-white/70">
-              {(
-                lang === "en"
-                  ? [
-                      "Bug fixes and operational support",
-                      "Incremental improvements on the current system",
-                      "Reasonable UI/UX adjustments within the product",
-                      "Basic performance optimization",
-                      "Monthly prioritized backlog (transparent)",
-                      "Change summary at month end",
-                    ]
-                  : [
-                      "Corrección de bugs y soporte operativo",
-                      "Mejoras incrementales sobre el sistema actual",
-                      "Ajustes de UI/UX razonables según el producto",
-                      "Optimización básica de performance",
-                      "Backlog mensual priorizado (transparente)",
-                      "Resumen de cambios al cierre del mes",
-                    ]
-              ).map((i) => (
-                <li key={i} className="flex gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-white/40 mt-0.5 shrink-0" />
-                  <span>{i}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <div className="text-lg font-semibold">{t("clar_out")}</div>
-            <ul className="mt-4 grid gap-3 text-sm text-white/70">
-              {(
-                lang === "en"
-                  ? [
-                      "Completely new modules or major re-architecture",
-                      "Complex full migrations without prior evaluation",
-                      "Enterprise integrations requiring extra licensing/infra",
-                      "Full rebrand or “new product” level UI redesign",
-                      "Extraordinary workload beyond what’s reasonable for a month",
-                    ]
-                  : [
-                      "Módulos completamente nuevos o re-arquitectura grande",
-                      "Migraciones complejas (por ejemplo, de sistema completo) sin evaluación previa",
-                      "Integraciones enterprise que requieran licencias/infra adicional",
-                      "Re-diseño total de marca o UI a nivel “nuevo producto”",
-                      "Volumen extraordinario de trabajo fuera de lo razonable para un mes",
-                    ]
-              ).map((i) => (
-                <li key={i} className="flex gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-white/40 mt-0.5 shrink-0" />
-                  <span>{i}</span>
-                </li>
-              ))}
-            </ul>
-
-            <p className="mt-4 text-sm text-white/60 leading-relaxed">
-              {lang === "en"
-                ? "If something is ‘quoted separately’, we first propose scope, timeline and cost. Nothing is executed without your approval."
-                : "Si algo cae en “cotiza aparte”, primero te proponemos alcance, tiempos y costo. No se ejecuta nada sin tu aprobación."}
-            </p>
-          </div>
+            </Reveal>
+          ))}
         </div>
       </Section>
 
       {/* CTA FINAL */}
       <section className="border-t border-white/10">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8 py-12">
-          <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+        <div className="mx-auto max-w-6xl px-6 py-12">
+          <div className="flex flex-col items-start justify-between gap-6 rounded-3xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-8 lg:flex-row lg:items-center">
             <div>
-              <div className="text-sm text-white/60">{t("next_step")}</div>
-              <h2 className="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight">
-                {t("next_h2")}
+              <div className="text-sm text-white/60">
+                {lang === "en" ? "Next step" : "Siguiente paso"}
+              </div>
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
+                {lang === "en"
+                  ? "Let’s define the right monthly continuity model for your product"
+                  : "Definamos el modelo mensual correcto para tu producto"}
               </h2>
-              <p className="mt-3 text-white/70 leading-relaxed max-w-2xl">
-                {t("next_p")}
+              <p className="mt-3 max-w-2xl leading-relaxed text-white/70">
+                {lang === "en"
+                  ? "Tell us what product you already have, what kind of recurring work it generates, and which service it belongs to. We will help you choose the best monthly route."
+                  : "Cuéntanos qué producto ya tienes, qué tipo de trabajo recurrente genera y a qué servicio pertenece. Te ayudamos a elegir la mejor ruta mensual."}
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+            <div className="flex w-full flex-col gap-3 sm:flex-row lg:w-auto">
               <a
                 href={whatsappHref}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition hover:scale-[1.03] active:scale-[0.98] w-full"
+                className="inline-flex w-full items-center justify-center rounded-xl px-5 py-3 font-medium transition hover:scale-[1.03] active:scale-[0.98]"
                 style={{
                   background:
                     "linear-gradient(90deg, rgba(177,77,255,0.9), rgba(255,79,216,0.9))",
                   boxShadow: "0 0 30px rgba(177,77,255,0.20)",
                 }}
               >
-                {t("next_btn_wa")}
+                {lang === "en" ? "Talk to us" : "Hablar con nosotros"}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
 
               <a
-                href="/#contacto"
-                className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-white/80 transition hover:text-white hover:bg-white/10 w-full"
+                href={contactHref}
+                className="inline-flex w-full items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-white/80 transition hover:bg-white/10 hover:text-white"
               >
-                {t("next_btn_form")}
+                {lang === "en" ? "Open contact form" : "Abrir formulario"}
               </a>
             </div>
           </div>
-
-          <p className="mt-6 text-xs text-white/50 leading-relaxed">
-            {lang === "en"
-              ? "Note: All prices are in USD and are per month. Exact scope is confirmed during diagnosis."
-              : "Nota: Todos los precios están en USD y son por mes. El alcance exacto se confirma en el diagnóstico."}
-          </p>
         </div>
       </section>
 
-      <footer className="border-t border-white/10 py-10">
-        <div className="mx-auto max-w-6xl px-6 text-sm text-white/50 flex flex-col sm:flex-row gap-3 justify-between">
-          <p>
-            © {new Date().getFullYear()} FronteraCode.{" "}
-            {lang === "en"
-              ? "All rights reserved."
-              : "Todos los derechos reservados."}
-          </p>
+      {/* FOOTER */}
+      <footer className="border-t border-white/10">
+        <div className="mx-auto max-w-6xl px-6 py-10">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="space-y-2">
+              <p className="text-sm font-semibold text-white/80">FronteraCode</p>
+              <p className="text-sm text-white/50">
+                {lang === "en"
+                  ? "Border tech · Real software for real operations."
+                  : "Tecnología de frontera · Software real para operación real."}
+              </p>
+            </div>
 
-          <p>
-            {lang === "en"
-              ? "Ciudad Juárez · Border technology"
-              : "Ciudad Juárez · Tecnología de frontera"}
-          </p>
+            <div className="flex flex-col gap-3 sm:items-end">
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-white/45">
+                  {lang === "en" ? "Follow us" : "Síguenos"}
+                </span>
+                <SocialLinks variant="icons" size={22} className="justify-end" />
+              </div>
+
+              <p className="text-xs text-white/45">
+                © {new Date().getFullYear()} FronteraCode ·{" "}
+                {lang === "en"
+                  ? "Ciudad Juárez · Border technology"
+                  : "Ciudad Juárez · Tecnología de frontera"}
+              </p>
+            </div>
+          </div>
         </div>
       </footer>
-
     </main>
   );
 }
-
