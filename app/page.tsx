@@ -56,6 +56,7 @@ export default function Home() {
             title: "E-commerce",
             desc: "Catálogo, pagos y experiencia de compra sólida.",
             icon: ShoppingCart,
+            href: "/servicios/websites-landing-pages/ecommerce",
           },
           {
             title: "Soporte & mejoras",
@@ -89,6 +90,7 @@ export default function Home() {
             title: "E-commerce",
             desc: "Catalog, payments, and a solid checkout experience.",
             icon: ShoppingCart,
+            href: "/servicios/websites-landing-pages/ecommerce",
           },
           {
             title: "Support & improvements",
