@@ -23,6 +23,7 @@ import {
   Rocket,
   CheckCircle2,
   ArrowUpRight,
+  Sparkles,
 } from "lucide-react";
 
 export default function Home() {
@@ -234,18 +235,27 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="mt-5">
+                <div className="mt-5">
           <a
             href="/mensualidades"
-            className="group inline-flex items-center gap-2 text-sm text-white/58 transition hover:text-purple-200"
+            className="group inline-flex max-w-full items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-left transition hover:border-purple-400/20 hover:bg-purple-500/[0.06]"
           >
-            <span className="border-b border-white/10 pb-0.5 transition group-hover:border-purple-400/30">
-              {lang === "en"
-                ? "See monthly plans"
-                : "Ver planes mensuales"}
-            </span>
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5">
+              <Sparkles className="h-4 w-4 text-purple-200" />
+            </div>
 
-            <span className="text-purple-300 transition group-hover:translate-x-0.5">
+            <div className="min-w-0">
+              <div className="text-sm font-medium text-white/82">
+                {lang === "en" ? "Monthly plans" : "Planes mensuales"}
+              </div>
+              <div className="text-xs sm:text-sm leading-relaxed text-white/55">
+                {lang === "en"
+                  ? "For products that need monthly continuity"
+                  : "Para productos que necesitan continuidad mensual"}
+              </div>
+            </div>
+
+            <span className="ml-1 shrink-0 text-purple-300 transition group-hover:translate-x-0.5">
               →
             </span>
           </a>
