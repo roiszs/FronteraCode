@@ -39,9 +39,10 @@ export default function Home() {
             href: "/servicios/websites-landing-pages",
           },
           {
-            title: "Sistemas para maquila",
-            desc: "Registro de producción, trazabilidad, roles y reportes.",
+            title: "Sistemas a Medida",
+            desc: "Sistemas internos para operación, ventas, control, seguimiento, cobro o administración.",
             icon: Factory,
+            href: "/servicios/websites-landing-pages/sistemas-a-medida",
           },
           {
             title: "Dashboards & KPIs",
@@ -74,9 +75,10 @@ export default function Home() {
             href: "/servicios/websites-landing-pages",
           },
           {
-            title: "Manufacturing systems",
-            desc: "Production logging, traceability, roles and reporting.",
+            title: "Custom System",
+            desc: "Internal systems for operations, sales, control, tracking, billing, or administration.",
             icon: Factory,
+            href: "/servicios/websites-landing-pages/sistemas-a-medida",
           },
           {
             title: "Dashboards & KPIs",
