@@ -54,6 +54,7 @@ export default function Home() {
             title: "Automatización",
             desc: "Menos tareas manuales, menos errores, más velocidad.",
             icon: Zap,
+            href: "/servicios/websites-landing-pages/automatizacion",
           },
           {
             title: "E-commerce",
@@ -91,6 +92,7 @@ export default function Home() {
             title: "Automation",
             desc: "Less manual work, fewer errors, more speed.",
             icon: Zap,
+            href: "/servicios/websites-landing-pages/automatizacion",
           },
           {
             title: "E-commerce",
