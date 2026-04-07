@@ -1,33 +1,33 @@
 import "./globals.css";
 import { Inter, Sora } from "next/font/google";
 import { LanguageProvider } from "@/src/components/context/LanguageProvider";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+
+const SITE_URL = "https://www.fronteracode.com";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://fronteracode.com"),
+  metadataBase: new URL(SITE_URL),
 
   title: {
-    default: "FronteraCode | Desarrollo de software en México y USA",
+    default: "FronteraCode | Desarrollo de software en Ciudad Juárez",
     template: "%s | FronteraCode",
   },
 
   description:
-    "Desarrollamos software a medida, sistemas internos, dashboards, automatización, e-commerce y websites para empresas en México y Estados Unidos.",
+    "Desarrollamos software a medida, sistemas internos, dashboards, automatización, e-commerce y websites para empresas en Ciudad Juárez, Chihuahua, México y Estados Unidos.",
 
-  keywords: [
-    "desarrollo de software a medida",
-    "custom software development Mexico",
-    "nearshore software development",
-    "software para empresas",
-    "desarrollo web profesional",
-    "automatización de procesos",
-    "dashboards y KPIs",
-    "ecommerce development",
-  ],
+  alternates: {
+    canonical: "/",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 
   icons: {
     icon: [
@@ -38,10 +38,10 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "FronteraCode | Desarrollo de software en México y USA",
+    title: "FronteraCode | Desarrollo de software en Ciudad Juárez",
     description:
-      "Software a medida para empresas en México y Estados Unidos. Websites, sistemas internos, automatización y dashboards.",
-    url: "https://fronteracode.com",
+      "Software a medida para empresas en Ciudad Juárez, México y Estados Unidos. Websites, sistemas internos, automatización y dashboards.",
+    url: SITE_URL,
     siteName: "FronteraCode",
     images: [
       {
@@ -57,14 +57,14 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "FronteraCode | Desarrollo de software en México y USA",
+    title: "FronteraCode | Desarrollo de software en Ciudad Juárez",
     description:
-      "Desarrollamos software a medida, sistemas internos, dashboards, automatización, e-commerce y websites para empresas en México y Estados Unidos.",
+      "Desarrollamos software a medida, sistemas internos, dashboards, automatización, e-commerce y websites para empresas en Ciudad Juárez, México y Estados Unidos.",
     images: ["/og.png"],
   },
 };
 
-export const viewport = {
+export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
 };
@@ -74,82 +74,28 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "FronteraCode",
+    alternateName: "Frontera Code",
+    url: SITE_URL,
+    logo: `${SITE_URL}/icon.png`,
+  };
+
   return (
-    <html lang="es" className={`${inter.variable} ${sora.variable}`}>
+    <html lang="es-MX" className={`${inter.variable} ${sora.variable}`}>
       <body className="bg-[#07060A] text-white antialiased overflow-x-hidden">
         <LanguageProvider>{children}</LanguageProvider>
 
         <Script
-  id="org-jsonld"
-  type="application/ld+json"
-  strategy="afterInteractive"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "FronteraCode",
-      url: "https://fronteracode.com",
-      logo: "https://fronteracode.com/icon.png",
-    }),
-  }}
-/>
-
-<Script
-  id="website-jsonld"
-  type="application/ld+json"
-  strategy="afterInteractive"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      name: "FronteraCode",
-      alternateName: "Frontera Code",
-      url: "https://fronteracode.com",
-      potentialAction: {
-        "@type": "SearchAction",
-        target: "https://fronteracode.com/?q={search_term_string}",
-        "query-input": "required name=search_term_string",
-      },
-    }),
-  }}
-/>
-<Script
-  id="nav-jsonld"
-  type="application/ld+json"
-  strategy="afterInteractive"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      itemListElement: [
-        {
-          "@type": "SiteNavigationElement",
-          position: 1,
-          name: "Servicios",
-          url: "https://fronteracode.com/#servicios",
-        },
-        {
-          "@type": "SiteNavigationElement",
-          position: 2,
-          name: "Planes mensuales",
-          url: "https://fronteracode.com/mensualidades",
-        },
-        {
-          "@type": "SiteNavigationElement",
-          position: 3,
-          name: "FAQ",
-          url: "https://fronteracode.com/#faq",
-        },
-        {
-          "@type": "SiteNavigationElement",
-          position: 4,
-          name: "Contacto",
-          url: "https://fronteracode.com/#contacto",
-        },
-      ],
-    }),
-  }}
-/>
+          id="org-jsonld"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
       </body>
     </html>
   );
