@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fronteracode.com/sitemap.xml
+Sitemap: https://www.fronteracode.com/sitemap.xml
