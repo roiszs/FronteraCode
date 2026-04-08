@@ -42,31 +42,31 @@ export default function HomeClient() {
             title: "Sistemas a Medida",
             desc: "Sistemas internos para operación, ventas, control, seguimiento, cobro o administración.",
             icon: Factory,
-            href: "/servicios/websites-landing-pages/sistemas-a-medida",
+            href: "/servicios/sistemas-a-medida",
           },
           {
             title: "Dashboards & KPIs",
             desc: "Indicadores claros para decidir con datos, no con suposiciones.",
             icon: Gauge,
-            href: "/servicios/websites-landing-pages/dashboards-kpis",
+            href: "/servicios/dashboards-kpis",
           },
           {
             title: "Automatización",
             desc: "Menos tareas manuales, menos errores, más velocidad.",
             icon: Zap,
-            href: "/servicios/websites-landing-pages/automatizacion",
+            href: "/servicios/automatizacion",
           },
           {
             title: "E-commerce",
             desc: "Catálogo, pagos y experiencia de compra sólida.",
             icon: ShoppingCart,
-            href: "/servicios/websites-landing-pages/ecommerce",
+            href: "/servicios/ecommerce",
           },
           {
             title: "Soporte & mejoras",
             desc: "Mantenimiento y evolución continua del producto.",
             icon: Wrench,
-            href: "/servicios/websites-landing-pages/soporte-mejoras",
+            href: "/servicios/soporte-mejoras",
           },
         ]
       : [
@@ -80,31 +80,31 @@ export default function HomeClient() {
             title: "Custom System",
             desc: "Internal systems for operations, sales, control, tracking, billing, or administration.",
             icon: Factory,
-            href: "/servicios/websites-landing-pages/sistemas-a-medida",
+            href: "/servicios/sistemas-a-medida",
           },
           {
             title: "Dashboards & KPIs",
             desc: "Clear metrics to decide with data, not guesses.",
             icon: Gauge,
-            href: "/servicios/websites-landing-pages/dashboards-kpis",
+            href: "/servicios/dashboards-kpis",
           },
           {
             title: "Automation",
             desc: "Less manual work, fewer errors, more speed.",
             icon: Zap,
-            href: "/servicios/websites-landing-pages/automatizacion",
+            href: "/servicios/automatizacion",
           },
           {
             title: "E-commerce",
             desc: "Catalog, payments, and a solid checkout experience.",
             icon: ShoppingCart,
-            href: "/servicios/websites-landing-pages/ecommerce",
+            href: "/servicios/ecommerce",
           },
           {
             title: "Support & improvements",
             desc: "Maintenance and continuous product evolution.",
             icon: Wrench,
-            href: "/servicios/websites-landing-pages/soporte-mejoras",
+            href: "/servicios/soporte-mejoras",
           },
         ];
 

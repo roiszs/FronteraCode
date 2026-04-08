@@ -23,24 +23,7 @@ const whatsappHref =
 
 const contactHref = "/#contacto";
 
-function PriceBlock({
-  price,
-  lang,
-}: {
-  price: number;
-  lang: "es" | "en";
-}) {
-  return (
-    <div className="mt-5 flex items-end gap-2">
-      <span className="text-4xl font-semibold tracking-tight">${price}</span>
-      <span className="pb-1 text-sm text-white/55">
-        {lang === "en" ? "USD / project" : "USD / proyecto"}
-      </span>
-    </div>
-  );
-}
-
-export default function EcommercePage() {
+export default function EcommercePageClient() {
   const { lang } = useLang();
 
   const problems =
@@ -112,7 +95,7 @@ export default function EcommercePage() {
     lang === "en"
       ? [
           {
-            name: "Base",           
+            name: "Base",
             desc: "For businesses that need a solid online store to start selling in a more professional way.",
             features: [
               "Essential store structure",
@@ -233,7 +216,10 @@ export default function EcommercePage() {
     { icon: ShoppingCart, label: includes[2] },
     { icon: CreditCard, label: includes[5] },
     { icon: Truck, label: includes[6] },
-    { icon: Search, label: lang === "en" ? "Better browsing experience" : "Mejor experiencia de navegación" },
+    {
+      icon: Search,
+      label: lang === "en" ? "Better browsing experience" : "Mejor experiencia de navegación",
+    },
     { icon: BarChart3, label: includes[7] },
   ];
 
@@ -241,7 +227,6 @@ export default function EcommercePage() {
     <main className="min-h-screen bg-[#07060A] text-white">
       <Navbar />
 
-      {/* HERO */}
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="pointer-events-none absolute inset-0 fc-grid opacity-80" />
 
@@ -314,7 +299,6 @@ export default function EcommercePage() {
         </div>
       </section>
 
-      {/* PROBLEMAS */}
       <Section
         id="problemas"
         title={lang === "en" ? "What this service solves" : "Qué resuelve este servicio"}
@@ -341,7 +325,6 @@ export default function EcommercePage() {
         </div>
       </Section>
 
-      {/* INCLUYE */}
       <Section
         id="incluye"
         title={lang === "en" ? "What is included" : "Qué incluye"}
@@ -405,7 +388,6 @@ export default function EcommercePage() {
         </Reveal>
       </Section>
 
-      {/* PAQUETES */}
       <Section
         id="paquetes"
         title={lang === "en" ? "Packages" : "Paquetes"}
@@ -470,10 +452,8 @@ export default function EcommercePage() {
             </Reveal>
           ))}
         </div>
-
       </Section>
 
-      {/* FAQ */}
       <Section
         id="faq"
         title="FAQ"
@@ -508,7 +488,6 @@ export default function EcommercePage() {
         </div>
       </Section>
 
-      {/* CTA FINAL */}
       <section className="border-t border-white/10">
         <div className="mx-auto max-w-6xl px-6 py-12">
           <div className="flex flex-col items-start justify-between gap-6 rounded-3xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-8 lg:flex-row lg:items-center">
@@ -555,7 +534,6 @@ export default function EcommercePage() {
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="border-t border-white/10">
         <div className="mx-auto max-w-6xl px-6 py-10">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">

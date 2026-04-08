@@ -24,24 +24,7 @@ const whatsappHref =
 
 const contactHref = "/#contacto";
 
-function PriceBlock({
-  price,
-  lang,
-}: {
-  price: number;
-  lang: "es" | "en";
-}) {
-  return (
-    <div className="mt-5 flex items-end gap-2">
-      <span className="text-4xl font-semibold tracking-tight">${price}</span>
-      <span className="pb-1 text-sm text-white/55">
-        {lang === "en" ? "USD / project" : "USD / proyecto"}
-      </span>
-    </div>
-  );
-}
-
-export default function SistemasAMedidaPage() {
+export default function SistemasAMedidaPageClient() {
   const { lang } = useLang();
 
   const problems =
@@ -242,7 +225,6 @@ export default function SistemasAMedidaPage() {
     <main className="min-h-screen bg-[#07060A] text-white">
       <Navbar />
 
-      {/* HERO */}
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="pointer-events-none absolute inset-0 fc-grid opacity-80" />
 
@@ -315,7 +297,6 @@ export default function SistemasAMedidaPage() {
         </div>
       </section>
 
-      {/* PROBLEMAS */}
       <Section
         id="problemas"
         title={lang === "en" ? "What this service solves" : "Qué resuelve este servicio"}
@@ -342,7 +323,6 @@ export default function SistemasAMedidaPage() {
         </div>
       </Section>
 
-      {/* INCLUYE */}
       <Section
         id="incluye"
         title={lang === "en" ? "What is included" : "Qué incluye"}
@@ -406,7 +386,6 @@ export default function SistemasAMedidaPage() {
         </Reveal>
       </Section>
 
-      {/* PAQUETES */}
       <Section
         id="paquetes"
         title={lang === "en" ? "Packages" : "Paquetes"}
@@ -442,8 +421,6 @@ export default function SistemasAMedidaPage() {
                   ) : null}
                 </div>
 
-            
-
                 <p className="mt-4 min-h-[92px] text-white/70 leading-relaxed">
                   {tier.desc}
                 </p>
@@ -473,11 +450,8 @@ export default function SistemasAMedidaPage() {
             </Reveal>
           ))}
         </div>
-
-        
       </Section>
 
-      {/* FAQ */}
       <Section
         id="faq"
         title="FAQ"
@@ -512,7 +486,6 @@ export default function SistemasAMedidaPage() {
         </div>
       </Section>
 
-      {/* CTA FINAL */}
       <section className="border-t border-white/10">
         <div className="mx-auto max-w-6xl px-6 py-12">
           <div className="flex flex-col items-start justify-between gap-6 rounded-3xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-8 lg:flex-row lg:items-center">
@@ -559,7 +532,6 @@ export default function SistemasAMedidaPage() {
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="border-t border-white/10">
         <div className="mx-auto max-w-6xl px-6 py-10">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
