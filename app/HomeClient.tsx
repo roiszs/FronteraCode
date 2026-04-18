@@ -238,7 +238,7 @@ export default function HomeClient() {
                   {lang === "en" ? "View services" : "Ver servicios"}
                 </a>
               </div>
-
+                {/*
               <div className="mt-5">
                 <a
                   href="/mensualidades"
@@ -264,6 +264,7 @@ export default function HomeClient() {
                   </span>
                 </a>
               </div>
+              */}
 
               <div className="mt-10 grid gap-4 sm:grid-cols-2">
                 {[
