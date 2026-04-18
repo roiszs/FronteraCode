@@ -92,86 +92,30 @@ export default function SistemasAMedidaPageClient() {
           "Construido alrededor del flujo del negocio",
         ];
 
-  const tiers =
+  const pricing =
     lang === "en"
-      ? [
-          {
-            name: "Base",
-            desc: "For businesses that need a first internal system to organize a specific process clearly.",
-            features: [
-              "Base system structure",
-              "Essential screens and flows",
-              "Basic forms and validations",
-              "Initial control of a core process",
-              "Responsive and modern interface",
-              "A better digital foundation for the business",
-            ],
-          },
-          {
-            name: "Growth",
-            desc: "For businesses that need a more complete system with more logic, more control, and more visibility.",
-            featured: true,
-            features: [
-              "Everything in Base",
-              "More modules or sections",
-              "Stronger roles and permissions",
-              "Better flow depth and validations",
-              "Base dashboards or reports",
-              "Stronger operational structure",
-            ],
-          },
-          {
-            name: "Premium",
-            desc: "For businesses that need a more robust internal solution with deeper process support and scalability.",
-            features: [
-              "Everything in Growth",
-              "More complete system architecture",
-              "More advanced internal logic",
-              "Stronger visibility and control structure",
-              "Higher customization by operation",
-              "Better foundation for long-term growth",
-            ],
-          },
-        ]
-      : [
-          {
-            name: "Base",
-            desc: "Para negocios que necesitan un primer sistema interno para organizar claramente un proceso específico.",
-            features: [
-              "Estructura base del sistema",
-              "Pantallas y flujos esenciales",
-              "Formularios y validaciones básicas",
-              "Control inicial de un proceso clave",
-              "Interfaz moderna y responsive",
-              "Mejor base digital para el negocio",
-            ],
-          },
-          {
-            name: "Growth",
-            desc: "Para negocios que necesitan un sistema más completo, con más lógica, más control y más visibilidad.",
-            featured: true,
-            features: [
-              "Todo lo de Base",
-              "Más módulos o secciones",
-              "Mejores roles y permisos",
-              "Mayor profundidad de flujo y validaciones",
-              "Dashboards o reportes base",
-              "Estructura operativa más sólida",
-            ],
-          },
-          {
-            name: "Premium",
-            desc: "Para negocios que necesitan una solución interna más robusta, con mayor soporte al proceso y escalabilidad.",
-            features: [
-              "Todo lo de Growth",
-              "Arquitectura de sistema más completa",
-              "Lógica interna más avanzada",
-              "Mayor estructura de control y visibilidad",
-              "Mayor personalización según la operación",
-              "Mejor base para crecimiento a largo plazo",
-            ],
-          },
-        ];
+      ? {
+          eyebrow: "Investment",
+          title: "$3,000 – $5,000 USD",
+          note: "Final price depends on the type of system required, number of modules, internal logic, validations, roles, reports, and overall operational complexity.",
+          bullets: [
+            "A single clear range, no confusing package structure",
+            "Ideal for businesses that need a real internal system, not a generic workaround",
+            "Built around the actual operation, flow, and control needs of the business",
+            "A scalable foundation that can evolve with more modules, reports, or logic later",
+          ],
+        }
+      : {
+          eyebrow: "Inversión",
+          title: "$3,000 – $5,000 USD",
+          note: "El precio final depende del tipo de sistema requerido, la cantidad de módulos, la lógica interna, las validaciones, los roles, los reportes y la complejidad operativa general.",
+          bullets: [
+            "Un solo rango claro, sin estructura confusa de paquetes",
+            "Ideal para negocios que necesitan un sistema interno real, no una solución genérica improvisada",
+            "Construido alrededor de la operación, flujo y necesidades de control del negocio",
+            "Una base escalable que puede crecer después con más módulos, reportes o lógica",
+          ],
+        };
 
   const faqs =
     lang === "en"
@@ -387,69 +331,66 @@ export default function SistemasAMedidaPageClient() {
       </Section>
 
       <Section
-        id="paquetes"
-        title={lang === "en" ? "Packages" : "Paquetes"}
+        id="inversion"
+        title={lang === "en" ? "Pricing" : "Precio"}
         subtitle={
           lang === "en"
-            ? "Three levels depending on the complexity, depth, and operational impact of the system."
-            : "Tres niveles según la complejidad, profundidad e impacto operativo del sistema."
+            ? "A single range for projects that need a real internal system tailored to the business operation."
+            : "Un solo rango para proyectos que necesitan un sistema interno real, adaptado a la operación del negocio."
         }
         glow
       >
-        <div className="grid gap-5 lg:grid-cols-3">
-          {tiers.map((tier, idx) => (
-            <Reveal key={tier.name} delay={idx * 0.05} y={10}>
-              <div
-                className={`group h-full rounded-3xl border bg-gradient-to-b p-8 transition duration-300 hover:-translate-y-2 hover:scale-[1.02] ${
-                  tier.featured
-                    ? "border-purple-500/30 from-purple-500/10 to-white/4"
-                    : "border-white/10 from-white/8 to-white/4"
-                }`}
-                style={{
-                  boxShadow: tier.featured
-                    ? "0 0 44px rgba(177,77,255,0.16)"
-                    : "0 0 40px rgba(177,77,255,0.06)",
-                }}
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-2xl font-semibold tracking-tight">{tier.name}</h3>
-
-                  {tier.featured ? (
-                    <span className="rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-xs text-purple-200">
-                      {lang === "en" ? "Recommended" : "Recomendado"}
-                    </span>
-                  ) : null}
+        <Reveal y={10}>
+          <div
+            className="overflow-hidden rounded-3xl border border-purple-500/20 bg-gradient-to-b from-purple-500/10 to-white/4 p-8 sm:p-10"
+            style={{ boxShadow: "0 0 44px rgba(177,77,255,0.14)" }}
+          >
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+              <div className="max-w-2xl">
+                <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/55">
+                  {pricing.eyebrow}
                 </div>
 
-                <p className="mt-4 min-h-[92px] text-white/70 leading-relaxed">
-                  {tier.desc}
+                <h3 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
+                  {pricing.title}
+                </h3>
+
+                <p className="mt-4 max-w-xl text-base leading-relaxed text-white/72 sm:text-lg">
+                  {pricing.note}
                 </p>
-
-                <ul className="mt-5 grid gap-3 text-sm text-white/75">
-                  {tier.features.map((feature) => (
-                    <li key={feature} className="flex gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-white/40" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href={`${whatsappHref}%0A%0A${
-                    lang === "en" ? "Package" : "Paquete"
-                  }%20de%20inter%C3%A9s%3A%20${encodeURIComponent(
-                    tier.name
-                  )}%20(%24%20USD)`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-8 inline-flex w-full items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-white/85 transition hover:bg-white/10 hover:text-white"
-                >
-                  {lang === "en" ? "Ask about this package" : "Preguntar por este paquete"}
-                </a>
               </div>
-            </Reveal>
-          ))}
-        </div>
+
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition hover:scale-[1.03] active:scale-[0.98]"
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(177,77,255,0.9), rgba(255,79,216,0.9))",
+                  boxShadow: "0 0 30px rgba(177,77,255,0.20)",
+                }}
+              >
+                {lang === "en" ? "Request a quote" : "Solicitar cotización"}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+            </div>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {pricing.bullets.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-start gap-3 rounded-2xl border border-white/10 bg-black/25 px-4 py-4"
+                >
+                  <div className="mt-0.5 rounded-full border border-white/10 bg-white/5 p-1.5">
+                    <CheckCircle2 className="h-4 w-4 text-purple-200" />
+                  </div>
+                  <span className="text-white/75 leading-relaxed">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </Section>
 
       <Section

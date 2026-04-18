@@ -91,93 +91,74 @@ export default function EcommercePageClient() {
           "Base escalable para crecer después",
         ];
 
-  const tiers =
+  const pricing =
     lang === "en"
-      ? [
-          {
-            name: "Base",
-            desc: "For businesses that need a solid online store to start selling in a more professional way.",
-            features: [
-              "Essential store structure",
-              "Modern visual design",
-              "Responsive version",
-              "Base catalog setup",
-              "Contact or purchase CTA flow",
-              "Basic payment setup depending on scope",
-            ],
-          },
-          {
-            name: "Growth",
-            desc: "For businesses that need a more complete e-commerce experience with better structure and conversion.",
-            featured: true,
-            features: [
-              "Everything in Base",
-              "More store sections and depth",
-              "Better product/catalog organization",
-              "Stronger purchase flow",
-              "Higher visual customization",
-              "Better foundation for marketing and growth",
-            ],
-          },
-          {
-            name: "Premium",
-            desc: "For brands that need a stronger e-commerce solution with more customization and scalability.",
-            features: [
-              "Everything in Growth",
-              "More complete e-commerce architecture",
-              "More advanced store experience",
-              "Stronger branding + conversion focus",
-              "Additional features depending on scope",
-              "Stronger operational and growth foundation",
-            ],
-          },
-        ]
-      : [
-          {
-            name: "Base",
-            desc: "Para negocios que necesitan una tienda online sólida para comenzar a vender de forma más profesional.",
-            features: [
-              "Estructura esencial de tienda",
-              "Diseño moderno",
-              "Versión responsive",
-              "Configuración base de catálogo",
-              "Flujo de contacto o compra",
-              "Configuración básica de pagos según alcance",
-            ],
-          },
-          {
-            name: "Growth",
-            desc: "Para negocios que necesitan una experiencia de e-commerce más completa, mejor estructurada y con mejor conversión.",
-            featured: true,
-            features: [
-              "Todo lo de Base",
-              "Más secciones y profundidad",
-              "Mejor organización de catálogo y productos",
-              "Flujo de compra más sólido",
-              "Mayor personalización visual",
-              "Mejor base para marketing y crecimiento",
-            ],
-          },
-          {
-            name: "Premium",
-            desc: "Para marcas que necesitan una solución de e-commerce más fuerte, más personalizada y lista para escalar.",
-            features: [
-              "Todo lo de Growth",
-              "Arquitectura de tienda más completa",
-              "Experiencia de tienda más avanzada",
-              "Mayor enfoque en branding + conversión",
-              "Funciones extra según alcance",
-              "Base más fuerte para operación y crecimiento",
-            ],
-          },
-        ];
+      ? {
+          eyebrow: "Investment",
+          title: "$2,000 – $2,500 USD",
+          note: "Final price depends on catalog depth, product structure, checkout flow, operational requirements, integrations, and overall customization level.",
+          bullets: [
+            "A single clear range, no confusing package structure",
+            "Ideal for brands that need a stronger and more professional online sales channel",
+            "Custom design and development aligned with the business model",
+            "A scalable e-commerce foundation prepared for future growth",
+          ],
+        }
+      : {
+          eyebrow: "Inversión",
+          title: "$2,000 – $2,500 USD",
+          note: "El precio final depende de la profundidad del catálogo, la estructura de productos, el flujo de compra, las necesidades operativas, las integraciones y el nivel general de personalización.",
+          bullets: [
+            "Un solo rango claro, sin estructura confusa de paquetes",
+            "Ideal para marcas que necesitan un canal de venta online más fuerte y profesional",
+            "Diseño y desarrollo a medida alineado con el modelo de negocio",
+            "Una base de e-commerce escalable preparada para crecer después",
+          ],
+        };
+
+        const portfolioProject =
+        lang === "en"
+          ? {
+              eyebrow: "Portfolio example",
+              badge: "MVP in progress",
+              name: "Beauty distributor e-commerce MVP",
+              description:
+                "A premium e-commerce MVP currently in development for a beauty products distributor. The concept was designed with a dual B2B and B2C approach, allowing the visual experience, catalog structure, and commercial logic to support both retail customers and wholesale opportunities.",
+              description2:
+                "The objective was not just to create a visually attractive store, but to build a stronger digital commerce foundation with room for future growth, better product presentation, and a more structured sales experience.",
+              highlights: [
+                "B2B + B2C oriented structure",
+                "Premium visual direction",
+                "Catalog designed for clearer product exploration",
+                "Foundation prepared for future scaling and integrations",
+              ],
+              cta: "Project in progress",
+              href: "https://mvp-belleza-distribuidora.vercel.app/",
+            }
+          : {
+              eyebrow: "Ejemplo de portafolio",
+              badge: "MVP en construcción",
+              name: "MVP e-commerce para distribuidora de belleza",
+              description:
+                "MVP de e-commerce premium actualmente en desarrollo para una distribuidora de productos de belleza. El concepto fue planteado con un enfoque dual B2B y B2C, permitiendo que la experiencia visual, la estructura del catálogo y la lógica comercial apoyen tanto la venta al cliente final como oportunidades de mayoreo.",
+              description2:
+                "El objetivo no fue solo crear una tienda visualmente atractiva, sino construir una base comercial digital más fuerte, con espacio para crecer después, presentar mejor los productos y ofrecer una experiencia de compra más estructurada.",
+              highlights: [
+                "Estructura orientada a B2B + B2C",
+                "Dirección visual premium",
+                "Catálogo pensado para explorar productos con más claridad",
+                "Base preparada para escalar e integrar más funciones después",
+              ],
+              cta: "Proyecto en construcción",
+              href: "https://mvp-belleza-distribuidora.vercel.app/",
+            };
 
   const faqs =
     lang === "en"
       ? [
           {
             q: "Do you build custom stores or use generic templates?",
-            a: "We prioritize custom solutions aligned with the business and the brand. Depending on the scope, we can define the best route without falling into a generic result.",
+            a: "We prioritize solutions aligned with the business, the brand, and the sales model. Depending on scope, we define the best route without falling into a generic result.",
           },
           {
             q: "Can the store grow later?",
@@ -189,13 +170,13 @@ export default function EcommercePageClient() {
           },
           {
             q: "Can you help with shipping or store operation flow?",
-            a: "Yes. We can consider shipping logic, operational flow, and how the store should support the business realistically.",
+            a: "Yes. We can consider shipping logic, operational flow, and how the store should realistically support the business.",
           },
         ]
       : [
           {
             q: "¿Construyen tiendas a medida o usan plantillas genéricas?",
-            a: "Priorizamos soluciones alineadas con el negocio y la marca. Según el alcance, definimos la mejor ruta sin caer en un resultado genérico.",
+            a: "Priorizamos soluciones alineadas con el negocio, la marca y el modelo de venta. Según el alcance, definimos la mejor ruta sin caer en un resultado genérico.",
           },
           {
             q: "¿La tienda puede crecer después?",
@@ -218,7 +199,10 @@ export default function EcommercePageClient() {
     { icon: Truck, label: includes[6] },
     {
       icon: Search,
-      label: lang === "en" ? "Better browsing experience" : "Mejor experiencia de navegación",
+      label:
+        lang === "en"
+          ? "Better browsing experience"
+          : "Mejor experiencia de navegación",
     },
     { icon: BarChart3, label: includes[7] },
   ];
@@ -301,7 +285,9 @@ export default function EcommercePageClient() {
 
       <Section
         id="problemas"
-        title={lang === "en" ? "What this service solves" : "Qué resuelve este servicio"}
+        title={
+          lang === "en" ? "What this service solves" : "Qué resuelve este servicio"
+        }
         subtitle={
           lang === "en"
             ? "An e-commerce store should not just exist. It should help the business sell better and operate with more clarity."
@@ -317,7 +303,9 @@ export default function EcommercePageClient() {
                   <div className="mt-0.5 rounded-xl border border-white/10 bg-white/5 p-2">
                     <ShieldCheck className="h-5 w-5 text-purple-300" />
                   </div>
-                  <p className="text-[17px] leading-relaxed text-white/75">{item}</p>
+                  <p className="text-[17px] leading-relaxed text-white/75">
+                    {item}
+                  </p>
                 </div>
               </div>
             </Reveal>
@@ -389,69 +377,136 @@ export default function EcommercePageClient() {
       </Section>
 
       <Section
-        id="paquetes"
-        title={lang === "en" ? "Packages" : "Paquetes"}
+        id="inversion"
+        title={lang === "en" ? "Pricing" : "Precio"}
         subtitle={
           lang === "en"
-            ? "Three levels depending on the complexity, structure, and growth ambition of your store."
-            : "Tres niveles según la complejidad, estructura y ambición de crecimiento de tu tienda."
+            ? "A single range for projects that need a stronger, more professional, and scalable online store."
+            : "Un solo rango para proyectos que necesitan una tienda online más fuerte, profesional y escalable."
         }
         glow
       >
-        <div className="grid gap-5 lg:grid-cols-3">
-          {tiers.map((tier, idx) => (
-            <Reveal key={tier.name} delay={idx * 0.05} y={10}>
-              <div
-                className={`group h-full rounded-3xl border bg-gradient-to-b p-8 transition duration-300 hover:-translate-y-2 hover:scale-[1.02] ${
-                  tier.featured
-                    ? "border-purple-500/30 from-purple-500/10 to-white/4"
-                    : "border-white/10 from-white/8 to-white/4"
-                }`}
-                style={{
-                  boxShadow: tier.featured
-                    ? "0 0 44px rgba(177,77,255,0.16)"
-                    : "0 0 40px rgba(177,77,255,0.06)",
-                }}
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-2xl font-semibold tracking-tight">{tier.name}</h3>
-
-                  {tier.featured ? (
-                    <span className="rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-xs text-purple-200">
-                      {lang === "en" ? "Recommended" : "Recomendado"}
-                    </span>
-                  ) : null}
+        <Reveal y={10}>
+          <div
+            className="overflow-hidden rounded-3xl border border-purple-500/20 bg-gradient-to-b from-purple-500/10 to-white/4 p-8 sm:p-10"
+            style={{ boxShadow: "0 0 44px rgba(177,77,255,0.14)" }}
+          >
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+              <div className="max-w-2xl">
+                <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/55">
+                  {pricing.eyebrow}
                 </div>
 
-                <p className="mt-4 min-h-[92px] text-white/70 leading-relaxed">
-                  {tier.desc}
+                <h3 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
+                  {pricing.title}
+                </h3>
+
+                <p className="mt-4 max-w-xl text-base leading-relaxed text-white/72 sm:text-lg">
+                  {pricing.note}
+                </p>
+              </div>
+
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition hover:scale-[1.03] active:scale-[0.98]"
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(177,77,255,0.9), rgba(255,79,216,0.9))",
+                  boxShadow: "0 0 30px rgba(177,77,255,0.20)",
+                }}
+              >
+                {lang === "en" ? "Request a quote" : "Solicitar cotización"}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+            </div>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {pricing.bullets.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-start gap-3 rounded-2xl border border-white/10 bg-black/25 px-4 py-4"
+                >
+                  <div className="mt-0.5 rounded-full border border-white/10 bg-white/5 p-1.5">
+                    <CheckCircle2 className="h-4 w-4 text-purple-200" />
+                  </div>
+                  <span className="text-white/75 leading-relaxed">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </Section>
+
+      <Section
+        id="portafolio"
+        title={lang === "en" ? "Portfolio" : "Portafolio"}
+        subtitle={
+          lang === "en"
+            ? "An example of the kind of e-commerce foundation we can build for brands that need stronger digital sales."
+            : "Un ejemplo del tipo de base e-commerce que podemos construir para marcas que necesitan una venta digital más fuerte."
+        }
+        glow
+      >
+        <Reveal y={10}>
+          <div
+            className="overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-8 sm:p-10"
+            style={{ boxShadow: "0 0 40px rgba(177,77,255,0.07)" }}
+          >
+            <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+              <div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/55">
+                    {portfolioProject.eyebrow}
+                  </div>
+
+                  <div className="inline-flex items-center rounded-full border border-purple-400/20 bg-purple-500/10 px-3 py-1 text-xs text-purple-200">
+                    {portfolioProject.badge}
+                  </div>
+                </div>
+
+                <h3 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
+                  {portfolioProject.name}
+                </h3>
+
+                <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/72 sm:text-lg">
+                  {portfolioProject.description}
                 </p>
 
-                <ul className="mt-5 grid gap-3 text-sm text-white/75">
-                  {tier.features.map((feature) => (
-                    <li key={feature} className="flex gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-white/40" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/65 sm:text-lg">
+                  {portfolioProject.description2}
+                </p>
 
                 <a
-                  href={`${whatsappHref}%0A%0A${
-                    lang === "en" ? "Package" : "Paquete"
-                  }%20de%20inter%C3%A9s%3A%20${encodeURIComponent(
-                    tier.name
-                  )}%20(%24%20USD)`}
+                  href={portfolioProject.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-8 inline-flex w-full items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-white/85 transition hover:bg-white/10 hover:text-white"
+                  className="mt-7 inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-white/85 transition hover:bg-white/10 hover:text-white"
                 >
-                  {lang === "en" ? "Ask about this package" : "Preguntar por este paquete"}
+                  {portfolioProject.cta}
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </div>
-            </Reveal>
-          ))}
-        </div>
+
+              <div className="grid gap-4">
+                {portfolioProject.highlights.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border border-white/10 bg-black/25 px-4 py-4"
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className="mt-0.5 rounded-full border border-white/10 bg-white/5 p-1.5">
+                        <CheckCircle2 className="h-4 w-4 text-purple-200" />
+                      </div>
+                      <span className="text-white/75 leading-relaxed">{item}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </Section>
 
       <Section
@@ -478,7 +533,9 @@ export default function EcommercePageClient() {
                   </div>
 
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold tracking-tight">{item.q}</h3>
+                    <h3 className="text-xl font-semibold tracking-tight">
+                      {item.q}
+                    </h3>
                     <p className="mt-3 text-white/72 leading-relaxed">{item.a}</p>
                   </div>
                 </div>
