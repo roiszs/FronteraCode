@@ -92,86 +92,61 @@ export default function WebsitesLandingPagesPageClient() {
           "Base escalable para crecer después",
         ];
 
-  const tiers =
+  const pricing =
     lang === "en"
-      ? [
-          {
-            name: "Base",
-            desc: "For businesses that need a professional digital presence to start the right way.",
-            features: [
-              "Essential website structure",
-              "Modern design",
-              "Responsive version",
-              "Contact CTA",
-              "Basic WhatsApp or form integration",
-              "Basic technical SEO",
-            ],
-          },
-          {
-            name: "Growth",
-            desc: "For companies that need a more complete website with stronger commercial structure.",
-            featured: true,
-            features: [
-              "Everything in Base",
-              "More sections and depth",
-              "Better content hierarchy",
-              "More strategic conversion approach",
-              "Lead-oriented structure",
-              "Higher visual customization",
-            ],
-          },
-          {
-            name: "Premium",
-            desc: "For brands that need a more robust, custom, and scalable digital experience.",
-            features: [
-              "Everything in Growth",
-              "More complete architecture",
-              "More advanced sections or interactions",
-              "Stronger branding + conversion focus",
-              "Additional functionality depending on scope",
-              "Stronger foundation for future growth",
-            ],
-          },
-        ]
-      : [
-          {
-            name: "Base",
-            desc: "Para negocios que necesitan una presencia digital profesional para comenzar correctamente.",
-            features: [
-              "Estructura esencial del sitio",
-              "Diseño moderno",
-              "Versión responsive",
-              "CTA de contacto",
-              "Integración básica con WhatsApp o formulario",
-              "SEO técnico básico",
-            ],
-          },
-          {
-            name: "Growth",
-            desc: "Para empresas que necesitan una web más completa y con mejor estructura comercial.",
-            featured: true,
-            features: [
-              "Todo lo de Base",
-              "Más secciones y profundidad",
-              "Mejor jerarquía de contenido",
-              "Enfoque más estratégico en conversión",
-              "Estructura pensada para captar leads",
-              "Mayor personalización visual",
-            ],
-          },
-          {
-            name: "Premium",
-            desc: "Para marcas que necesitan una experiencia más robusta, personalizada y lista para escalar.",
-            features: [
-              "Todo lo de Growth",
-              "Arquitectura más completa",
-              "Secciones o interacciones más avanzadas",
-              "Mayor enfoque en branding + conversión",
-              "Funcionalidades extra según alcance",
-              "Base más sólida para crecimiento futuro",
-            ],
-          },
-        ];
+      ? {
+          eyebrow: "Investment",
+          title: "$1,000 – $1,500 USD",
+          note: "Final price depends on scope, number of sections, integrations, and overall level of customization.",
+          bullets: [
+            "A single clear scope, no confusing package structure",
+            "Ideal for websites and landing pages with a professional commercial focus",
+            "Custom design and development aligned with your business",
+            "A solid base that can grow later",
+          ],
+        }
+      : {
+          eyebrow: "Inversión",
+          title: "$1,000 – $1,500 USD",
+          note: "El precio final depende del alcance, número de secciones, integraciones y nivel general de personalización.",
+          bullets: [
+            "Una sola propuesta clara, sin estructura confusa de paquetes",
+            "Ideal para websites y landing pages con enfoque comercial profesional",
+            "Diseño y desarrollo a medida alineado con tu negocio",
+            "Una base sólida que puede crecer después",
+          ],
+        };
+
+  const portfolioProject =
+    lang === "en"
+      ? {
+          eyebrow: "Real project",
+          name: "JC Arizona Landscape",
+          description:
+            "Bilingual website developed for a landscaping and hardscaping company in Arizona, with a stronger commercial structure, clear service presentation, trust signals, and conversion-focused contact paths.",
+          highlights: [
+            "Bilingual structure",
+            "Clear services section",
+            "Trust-oriented presentation",
+            "Lead-focused contact flow",
+          ],
+          cta: "View website",
+          href: "https://www.jcazlandscape.co/",
+        }
+      : {
+          eyebrow: "Proyecto real",
+          name: "JC Arizona Landscape",
+          description:
+            "Website bilingüe desarrollado para una empresa de landscaping y hardscaping en Arizona, con una estructura comercial más sólida, presentación clara de servicios, elementos de confianza y puntos de contacto pensados para convertir.",
+          highlights: [
+            "Estructura bilingüe",
+            "Sección de servicios clara",
+            "Presentación orientada a confianza",
+            "Flujo de contacto enfocado en leads",
+          ],
+          cta: "Ver website",
+          href: "https://www.jcazlandscape.co/",
+        };
 
   const faqs =
     lang === "en"
@@ -387,67 +362,126 @@ export default function WebsitesLandingPagesPageClient() {
       </Section>
 
       <Section
-        id="paquetes"
-        title={lang === "en" ? "Packages" : "Paquetes"}
+        id="inversion"
+        title={lang === "en" ? "Pricing" : "Precio"}
         subtitle={
           lang === "en"
-            ? "Three levels depending on the depth, structure, and ambition of your project."
-            : "Tres niveles según la profundidad, estructura y ambición de tu proyecto."
+            ? "A single range for projects that need a strong, modern, and professional digital presence."
+            : "Un solo rango para proyectos que necesitan una presencia digital sólida, moderna y profesional."
         }
         glow
       >
-        <div className="grid gap-5 lg:grid-cols-3">
-          {tiers.map((tier, idx) => (
-            <Reveal key={tier.name} delay={idx * 0.05} y={10}>
-              <div
-                className={`group h-full rounded-3xl border bg-gradient-to-b p-8 transition duration-300 hover:-translate-y-2 hover:scale-[1.02] ${
-                  tier.featured
-                    ? "border-purple-500/30 from-purple-500/10 to-white/4"
-                    : "border-white/10 from-white/8 to-white/4"
-                }`}
-                style={{
-                  boxShadow: tier.featured
-                    ? "0 0 44px rgba(177,77,255,0.16)"
-                    : "0 0 40px rgba(177,77,255,0.06)",
-                }}
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-2xl font-semibold tracking-tight">{tier.name}</h3>
-
-                  {tier.featured ? (
-                    <span className="rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-xs text-purple-200">
-                      {lang === "en" ? "Recommended" : "Recomendado"}
-                    </span>
-                  ) : null}
+        <Reveal y={10}>
+          <div
+            className="overflow-hidden rounded-3xl border border-purple-500/20 bg-gradient-to-b from-purple-500/10 to-white/4 p-8 sm:p-10"
+            style={{ boxShadow: "0 0 44px rgba(177,77,255,0.14)" }}
+          >
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+              <div className="max-w-2xl">
+                <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/55">
+                  {pricing.eyebrow}
                 </div>
 
-                <p className="mt-4 min-h-[92px] text-white/70 leading-relaxed">
-                  {tier.desc}
+                <h3 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
+                  {pricing.title}
+                </h3>
+
+                <p className="mt-4 max-w-xl text-base leading-relaxed text-white/72 sm:text-lg">
+                  {pricing.note}
+                </p>
+              </div>
+
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition hover:scale-[1.03] active:scale-[0.98]"
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(177,77,255,0.9), rgba(255,79,216,0.9))",
+                  boxShadow: "0 0 30px rgba(177,77,255,0.20)",
+                }}
+              >
+                {lang === "en" ? "Request a quote" : "Solicitar cotización"}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+            </div>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {pricing.bullets.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-start gap-3 rounded-2xl border border-white/10 bg-black/25 px-4 py-4"
+                >
+                  <div className="mt-0.5 rounded-full border border-white/10 bg-white/5 p-1.5">
+                    <CheckCircle2 className="h-4 w-4 text-purple-200" />
+                  </div>
+                  <span className="text-white/75 leading-relaxed">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </Section>
+
+      <Section
+        id="portafolio"
+        title={lang === "en" ? "Portfolio" : "Portafolio"}
+        subtitle={
+          lang === "en"
+            ? "A real example of the type of commercial website we can build for your business."
+            : "Un ejemplo real del tipo de website comercial que podemos construir para tu negocio."
+        }
+        glow
+      >
+        <Reveal y={10}>
+          <div
+            className="overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-8 sm:p-10"
+            style={{ boxShadow: "0 0 40px rgba(177,77,255,0.07)" }}
+          >
+            <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+              <div>
+                <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/55">
+                  {portfolioProject.eyebrow}
+                </div>
+
+                <h3 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
+                  {portfolioProject.name}
+                </h3>
+
+                <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/72 sm:text-lg">
+                  {portfolioProject.description}
                 </p>
 
-                <ul className="mt-5 grid gap-3 text-sm text-white/75">
-                  {tier.features.map((feature) => (
-                    <li key={feature} className="flex gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-white/40" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
                 <a
-                  href={`${whatsappHref}%0A%0A${
-                    lang === "en" ? "Package" : "Paquete"
-                  }%20de%20inter%C3%A9s%3A%20${encodeURIComponent(tier.name)}%20`}
+                  href={portfolioProject.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-8 inline-flex w-full items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-white/85 transition hover:bg-white/10 hover:text-white"
+                  className="mt-7 inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-white/85 transition hover:bg-white/10 hover:text-white"
                 >
-                  {lang === "en" ? "Ask about this package" : "Preguntar por este paquete"}
+                  {portfolioProject.cta}
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </div>
-            </Reveal>
-          ))}
-        </div>
+
+              <div className="grid gap-4">
+                {portfolioProject.highlights.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border border-white/10 bg-black/25 px-4 py-4"
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className="mt-0.5 rounded-full border border-white/10 bg-white/5 p-1.5">
+                        <CheckCircle2 className="h-4 w-4 text-purple-200" />
+                      </div>
+                      <span className="text-white/75 leading-relaxed">{item}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </Section>
 
       <Section
