@@ -92,86 +92,30 @@ export default function DashboardsKpisPageClient() {
           "Construido para acción, no para decorar",
         ];
 
-  const tiers =
+  const pricing =
     lang === "en"
-      ? [
-          {
-            name: "Base",
-            desc: "For businesses that need a first dashboard with clear visibility into key metrics.",
-            features: [
-              "Base dashboard structure",
-              "Essential KPIs",
-              "Core charts and tables",
-              "Basic filters",
-              "Clearer visibility into a specific process or area",
-              "A stronger foundation for data follow-up",
-            ],
-          },
-          {
-            name: "Growth",
-            desc: "For businesses that need deeper visibility, more indicators, and better filtering or operational reading.",
-            featured: true,
-            features: [
-              "Everything in Base",
-              "More KPIs and views",
-              "Better filtering and comparisons",
-              "More complete operational visibility",
-              "Stronger information structure",
-              "Better support for faster decisions",
-            ],
-          },
-          {
-            name: "Premium",
-            desc: "For businesses that need a more robust dashboard system with broader visibility and higher decision value.",
-            features: [
-              "Everything in Growth",
-              "More complete dashboard architecture",
-              "Broader metric structure",
-              "Higher customization by operation",
-              "More powerful reading and follow-up",
-              "Better long-term visibility foundation",
-            ],
-          },
-        ]
-      : [
-          {
-            name: "Base",
-            desc: "Para negocios que necesitan un primer dashboard con visibilidad clara sobre métricas clave.",
-            features: [
-              "Estructura base del dashboard",
-              "KPIs esenciales",
-              "Gráficas y tablas principales",
-              "Filtros básicos",
-              "Mayor visibilidad sobre un proceso o área específica",
-              "Mejor base para seguimiento con datos",
-            ],
-          },
-          {
-            name: "Growth",
-            desc: "Para negocios que necesitan mayor profundidad de visibilidad, más indicadores y mejor lectura operativa.",
-            featured: true,
-            features: [
-              "Todo lo de Base",
-              "Más KPIs y vistas",
-              "Mejores filtros y comparaciones",
-              "Visibilidad operativa más completa",
-              "Estructura de información más sólida",
-              "Mayor soporte para decisiones rápidas",
-            ],
-          },
-          {
-            name: "Premium",
-            desc: "Para negocios que necesitan un sistema de dashboards más robusto, con mayor amplitud de visibilidad y valor de decisión.",
-            features: [
-              "Todo lo de Growth",
-              "Arquitectura de dashboard más completa",
-              "Estructura de métricas más amplia",
-              "Mayor personalización por operación",
-              "Lectura y seguimiento más potente",
-              "Mejor base de visibilidad a largo plazo",
-            ],
-          },
-        ];
+      ? {
+          eyebrow: "Investment",
+          title: "$3,000 – $5,000 USD",
+          note: "Final price depends on KPI depth, number of views, filters, data structure, business logic, and the overall complexity of the dashboard solution.",
+          bullets: [
+            "A single clear range, no confusing package structure",
+            "Ideal for businesses that need clearer visibility and stronger decision support",
+            "Built around the real metrics, flows, and operational questions of the business",
+            "A scalable dashboard foundation that can grow later with more indicators, filters, and views",
+          ],
+        }
+      : {
+          eyebrow: "Inversión",
+          title: "$3,000 – $5,000 USD",
+          note: "El precio final depende de la profundidad de KPIs, cantidad de vistas, filtros, estructura de datos, lógica de negocio y complejidad general de la solución de dashboard.",
+          bullets: [
+            "Un solo rango claro, sin estructura confusa de paquetes",
+            "Ideal para negocios que necesitan más visibilidad y mejor soporte para decidir",
+            "Construido alrededor de métricas reales, flujos y preguntas operativas del negocio",
+            "Una base escalable de dashboard que puede crecer después con más indicadores, filtros y vistas",
+          ],
+        };
 
   const faqs =
     lang === "en"
@@ -387,69 +331,66 @@ export default function DashboardsKpisPageClient() {
       </Section>
 
       <Section
-        id="paquetes"
-        title={lang === "en" ? "Packages" : "Paquetes"}
+        id="inversion"
+        title={lang === "en" ? "Pricing" : "Precio"}
         subtitle={
           lang === "en"
-            ? "Three levels depending on visibility depth, KPI structure, and decision value."
-            : "Tres niveles según profundidad de visibilidad, estructura de KPIs y valor para decisión."
+            ? "A single range for projects that need clearer visibility, stronger KPIs, and better decision support."
+            : "Un solo rango para proyectos que necesitan más visibilidad, KPIs más sólidos y mejor soporte para decidir."
         }
         glow
       >
-        <div className="grid gap-5 lg:grid-cols-3">
-          {tiers.map((tier, idx) => (
-            <Reveal key={tier.name} delay={idx * 0.05} y={10}>
-              <div
-                className={`group h-full rounded-3xl border bg-gradient-to-b p-8 transition duration-300 hover:-translate-y-2 hover:scale-[1.02] ${
-                  tier.featured
-                    ? "border-purple-500/30 from-purple-500/10 to-white/4"
-                    : "border-white/10 from-white/8 to-white/4"
-                }`}
-                style={{
-                  boxShadow: tier.featured
-                    ? "0 0 44px rgba(177,77,255,0.16)"
-                    : "0 0 40px rgba(177,77,255,0.06)",
-                }}
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-2xl font-semibold tracking-tight">{tier.name}</h3>
-
-                  {tier.featured ? (
-                    <span className="rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-xs text-purple-200">
-                      {lang === "en" ? "Recommended" : "Recomendado"}
-                    </span>
-                  ) : null}
+        <Reveal y={10}>
+          <div
+            className="overflow-hidden rounded-3xl border border-purple-500/20 bg-gradient-to-b from-purple-500/10 to-white/4 p-8 sm:p-10"
+            style={{ boxShadow: "0 0 44px rgba(177,77,255,0.14)" }}
+          >
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+              <div className="max-w-2xl">
+                <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/55">
+                  {pricing.eyebrow}
                 </div>
 
-                <p className="mt-4 min-h-[92px] text-white/70 leading-relaxed">
-                  {tier.desc}
+                <h3 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
+                  {pricing.title}
+                </h3>
+
+                <p className="mt-4 max-w-xl text-base leading-relaxed text-white/72 sm:text-lg">
+                  {pricing.note}
                 </p>
-
-                <ul className="mt-5 grid gap-3 text-sm text-white/75">
-                  {tier.features.map((feature) => (
-                    <li key={feature} className="flex gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-white/40" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href={`${whatsappHref}%0A%0A${
-                    lang === "en" ? "Package" : "Paquete"
-                  }%20de%20inter%C3%A9s%3A%20${encodeURIComponent(
-                    tier.name
-                  )}%20(%24%20USD)`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-8 inline-flex w-full items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-white/85 transition hover:bg-white/10 hover:text-white"
-                >
-                  {lang === "en" ? "Ask about this package" : "Preguntar por este paquete"}
-                </a>
               </div>
-            </Reveal>
-          ))}
-        </div>
+
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition hover:scale-[1.03] active:scale-[0.98]"
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(177,77,255,0.9), rgba(255,79,216,0.9))",
+                  boxShadow: "0 0 30px rgba(177,77,255,0.20)",
+                }}
+              >
+                {lang === "en" ? "Request a quote" : "Solicitar cotización"}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+            </div>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {pricing.bullets.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-start gap-3 rounded-2xl border border-white/10 bg-black/25 px-4 py-4"
+                >
+                  <div className="mt-0.5 rounded-full border border-white/10 bg-white/5 p-1.5">
+                    <CheckCircle2 className="h-4 w-4 text-purple-200" />
+                  </div>
+                  <span className="text-white/75 leading-relaxed">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </Section>
 
       <Section
