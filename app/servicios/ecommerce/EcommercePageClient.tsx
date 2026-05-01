@@ -116,42 +116,42 @@ export default function EcommercePageClient() {
           ],
         };
 
-        const portfolioProject =
-        lang === "en"
-          ? {
-              eyebrow: "Portfolio example",
-              badge: "MVP in progress",
-              name: "Beauty distributor e-commerce MVP",
-              description:
-                "A premium e-commerce MVP currently in development for a beauty products distributor. The concept was designed with a dual B2B and B2C approach, allowing the visual experience, catalog structure, and commercial logic to support both retail customers and wholesale opportunities.",
-              description2:
-                "The objective was not just to create a visually attractive store, but to build a stronger digital commerce foundation with room for future growth, better product presentation, and a more structured sales experience.",
-              highlights: [
-                "B2B + B2C oriented structure",
-                "Premium visual direction",
-                "Catalog designed for clearer product exploration",
-                "Foundation prepared for future scaling and integrations",
-              ],
-              cta: "Project in progress",
-              href: "https://mvp-belleza-distribuidora.vercel.app/",
-            }
-          : {
-              eyebrow: "Ejemplo de portafolio",
-              badge: "MVP en construcción",
-              name: "MVP e-commerce para distribuidora de belleza",
-              description:
-                "MVP de e-commerce premium actualmente en desarrollo para una distribuidora de productos de belleza. El concepto fue planteado con un enfoque dual B2B y B2C, permitiendo que la experiencia visual, la estructura del catálogo y la lógica comercial apoyen tanto la venta al cliente final como oportunidades de mayoreo.",
-              description2:
-                "El objetivo no fue solo crear una tienda visualmente atractiva, sino construir una base comercial digital más fuerte, con espacio para crecer después, presentar mejor los productos y ofrecer una experiencia de compra más estructurada.",
-              highlights: [
-                "Estructura orientada a B2B + B2C",
-                "Dirección visual premium",
-                "Catálogo pensado para explorar productos con más claridad",
-                "Base preparada para escalar e integrar más funciones después",
-              ],
-              cta: "Proyecto en construcción",
-              href: "https://mvp-belleza-distribuidora.vercel.app/",
-            };
+  const portfolioProject =
+    lang === "en"
+      ? {
+          eyebrow: "Portfolio example",
+          badge: "Real example",
+          name: "SupplyCore Industrial",
+          description:
+            "B2B e-commerce developed for companies that purchase industrial supplies. The project includes a product catalog, advanced filters, quote request flow, business portal, order tracking, frequent products, and an admin panel to manage quotes, orders, clients, and inventory.",
+          description2:
+            "A platform designed to show how FronteraCode can build more complete commercial solutions than a traditional online store.",
+          highlights: [
+            "B2B-oriented structure",
+            "Advanced catalog and filters",
+            "Quote flow and business portal",
+            "Administrative control for operation and follow-up",
+          ],
+          cta: "View project",
+          href: "https://supplycore-industrial.vercel.app/",
+        }
+      : {
+          eyebrow: "Ejemplo de portafolio",
+          badge: "Ejemplo real",
+          name: "SupplyCore Industrial",
+          description:
+            "E-commerce B2B desarrollado para empresas que compran suministros industriales. El proyecto integra catálogo de productos, filtros avanzados, flujo de cotización, portal empresarial, seguimiento de pedidos, productos frecuentes y panel administrativo para gestionar cotizaciones, órdenes, clientes e inventario.",
+          description2:
+            "Una plataforma diseñada para mostrar cómo FronteraCode puede construir soluciones comerciales más completas que una tienda en línea tradicional.",
+          highlights: [
+            "Estructura orientada a B2B",
+            "Catálogo avanzado con filtros",
+            "Flujo de cotización y portal empresarial",
+            "Control administrativo para operación y seguimiento",
+          ],
+          cta: "Ver proyecto",
+          href: "https://supplycore-industrial.vercel.app/",
+        };
 
   const faqs =
     lang === "en"
@@ -439,6 +439,75 @@ export default function EcommercePageClient() {
         </Reveal>
       </Section>
 
+      <Section
+        id="portafolio"
+        title={lang === "en" ? "Portfolio" : "Portafolio"}
+        subtitle={
+          lang === "en"
+            ? "An example of the kind of e-commerce foundation we can build for brands that need stronger digital sales."
+            : "Un ejemplo del tipo de base e-commerce que podemos construir para marcas que necesitan una venta digital más fuerte."
+        }
+        glow
+      >
+        <Reveal y={10}>
+          <div
+            className="overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-8 sm:p-10"
+            style={{ boxShadow: "0 0 40px rgba(177,77,255,0.07)" }}
+          >
+            <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+              <div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/55">
+                    {portfolioProject.eyebrow}
+                  </div>
+
+                  <div className="inline-flex items-center rounded-full border border-purple-400/20 bg-purple-500/10 px-3 py-1 text-xs text-purple-200">
+                    {portfolioProject.badge}
+                  </div>
+                </div>
+
+                <h3 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
+                  {portfolioProject.name}
+                </h3>
+
+                <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/72 sm:text-lg">
+                  {portfolioProject.description}
+                </p>
+
+                <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/65 sm:text-lg">
+                  {portfolioProject.description2}
+                </p>
+
+                <a
+                  href={portfolioProject.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-7 inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-white/85 transition hover:bg-white/10 hover:text-white"
+                >
+                  {portfolioProject.cta}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
+              </div>
+
+              <div className="grid gap-4">
+                {portfolioProject.highlights.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border border-white/10 bg-black/25 px-4 py-4"
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className="mt-0.5 rounded-full border border-white/10 bg-white/5 p-1.5">
+                        <CheckCircle2 className="h-4 w-4 text-purple-200" />
+                      </div>
+                      <span className="text-white/75 leading-relaxed">{item}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </Section>
 
       <Section
         id="faq"
