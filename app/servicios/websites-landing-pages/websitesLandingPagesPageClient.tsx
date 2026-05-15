@@ -141,10 +141,7 @@ export default function WebsitesLandingPagesPageClient() {
             name: "FrameHaus Studio",
             description:
               "FrameHaus Studio is a premium bilingual website for a photography and video studio, designed to present services, portfolio, packages, and session requests inside an elegant, modern, and professional visual experience.",
-            description2:
-              "The project was developed with a commercial focus, not just a visual one. Its structure allows potential clients to discover the studio’s services, explore previous work, compare packages, and submit a session request through a clear and well-organized form.",
-            description3:
-              "The design combines a dark, editorial, and sophisticated aesthetic with realistic imagery, soft animations, responsive navigation, and a bilingual experience in English and Spanish. The intention was to create a website that felt like a real platform for a professional creative business, not a generic landing page.",
+            
             highlights: [
               "Bilingual structure",
               "Premium editorial visual direction",
@@ -177,10 +174,7 @@ export default function WebsitesLandingPagesPageClient() {
             name: "FrameHaus Studio",
             description:
               "FrameHaus Studio es un website premium bilingüe para un estudio de fotografía y video, diseñado para presentar servicios, portafolio, paquetes y solicitudes de sesión dentro de una experiencia visual elegante, moderna y profesional.",
-            description2:
-              "El proyecto fue desarrollado con enfoque comercial, no solo visual. Su estructura permite que un cliente potencial pueda conocer los servicios del estudio, explorar trabajos anteriores, comparar paquetes y enviar una solicitud de sesión desde un formulario claro y bien organizado.",
-            description3:
-              "El diseño combina una estética oscura, editorial y sofisticada con imágenes realistas, animaciones suaves, navegación responsive y una experiencia bilingüe en español e inglés. La intención fue crear un website que se sintiera como una plataforma real para un negocio creativo profesional, no como una landing genérica.",
+            
             highlights: [
               "Estructura bilingüe",
               "Dirección visual premium y editorial",
@@ -188,7 +182,7 @@ export default function WebsitesLandingPagesPageClient() {
               "Website comercial construido para un negocio creativo real",
             ],
             cta: "Ver proyecto",
-            href: "#",
+            href: "https://framehaus-studio.vercel.app/",
           },
         ];
 
@@ -505,17 +499,7 @@ export default function WebsitesLandingPagesPageClient() {
                       {project.description}
                     </p>
 
-                    {"description2" in project && project.description2 ? (
-                      <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/65 sm:text-lg">
-                        {project.description2}
-                      </p>
-                    ) : null}
-
-                    {"description3" in project && project.description3 ? (
-                      <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/65 sm:text-lg">
-                        {project.description3}
-                      </p>
-                    ) : null}
+                    
 
                     <a
                       href={project.href}
