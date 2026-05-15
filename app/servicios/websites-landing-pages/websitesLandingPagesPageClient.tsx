@@ -117,36 +117,80 @@ export default function WebsitesLandingPagesPageClient() {
           ],
         };
 
-  const portfolioProject =
+  const portfolioProjects =
     lang === "en"
-      ? {
-          eyebrow: "Real project",
-          name: "JC Arizona Landscape",
-          description:
-            "Bilingual website developed for a landscaping and hardscaping company in Arizona, with a stronger commercial structure, clear service presentation, trust signals, and conversion-focused contact paths.",
-          highlights: [
-            "Bilingual structure",
-            "Clear services section",
-            "Trust-oriented presentation",
-            "Lead-focused contact flow",
-          ],
-          cta: "View website",
-          href: "https://www.jcazlandscape.co/",
-        }
-      : {
-          eyebrow: "Proyecto real",
-          name: "JC Arizona Landscape",
-          description:
-            "Website bilingüe desarrollado para una empresa de landscaping y hardscaping en Arizona, con una estructura comercial más sólida, presentación clara de servicios, elementos de confianza y puntos de contacto pensados para convertir.",
-          highlights: [
-            "Estructura bilingüe",
-            "Sección de servicios clara",
-            "Presentación orientada a confianza",
-            "Flujo de contacto enfocado en leads",
-          ],
-          cta: "Ver website",
-          href: "https://www.jcazlandscape.co/",
-        };
+      ? [
+          {
+            eyebrow: "Real project",
+            badge: "Featured project",
+            name: "JC Arizona Landscape",
+            description:
+              "Bilingual website developed for a landscaping and hardscaping company in Arizona, with a stronger commercial structure, clear service presentation, trust signals, and conversion-focused contact paths.",
+            highlights: [
+              "Bilingual structure",
+              "Clear services section",
+              "Trust-oriented presentation",
+              "Lead-focused contact flow",
+            ],
+            cta: "View website",
+            href: "https://www.jcazlandscape.co/",
+          },
+          {
+            eyebrow: "Real project",
+            badge: "Featured project",
+            name: "FrameHaus Studio",
+            description:
+              "FrameHaus Studio is a premium bilingual website for a photography and video studio, designed to present services, portfolio, packages, and session requests inside an elegant, modern, and professional visual experience.",
+            description2:
+              "The project was developed with a commercial focus, not just a visual one. Its structure allows potential clients to discover the studio’s services, explore previous work, compare packages, and submit a session request through a clear and well-organized form.",
+            description3:
+              "The design combines a dark, editorial, and sophisticated aesthetic with realistic imagery, soft animations, responsive navigation, and a bilingual experience in English and Spanish. The intention was to create a website that felt like a real platform for a professional creative business, not a generic landing page.",
+            highlights: [
+              "Bilingual structure",
+              "Premium editorial visual direction",
+              "Portfolio, packages, and session request flow",
+              "Commercial website built for a real creative business",
+            ],
+            cta: "View project",
+            href: "https://framehaus-studio.vercel.app/",
+          },
+        ]
+      : [
+          {
+            eyebrow: "Proyecto real",
+            badge: "Proyecto destacado",
+            name: "JC Arizona Landscape",
+            description:
+              "Website bilingüe desarrollado para una empresa de landscaping y hardscaping en Arizona, con una estructura comercial más sólida, presentación clara de servicios, elementos de confianza y puntos de contacto pensados para convertir.",
+            highlights: [
+              "Estructura bilingüe",
+              "Sección de servicios clara",
+              "Presentación orientada a confianza",
+              "Flujo de contacto enfocado en leads",
+            ],
+            cta: "Ver website",
+            href: "https://www.jcazlandscape.co/",
+          },
+          {
+            eyebrow: "Proyecto real",
+            badge: "Proyecto destacado",
+            name: "FrameHaus Studio",
+            description:
+              "FrameHaus Studio es un website premium bilingüe para un estudio de fotografía y video, diseñado para presentar servicios, portafolio, paquetes y solicitudes de sesión dentro de una experiencia visual elegante, moderna y profesional.",
+            description2:
+              "El proyecto fue desarrollado con enfoque comercial, no solo visual. Su estructura permite que un cliente potencial pueda conocer los servicios del estudio, explorar trabajos anteriores, comparar paquetes y enviar una solicitud de sesión desde un formulario claro y bien organizado.",
+            description3:
+              "El diseño combina una estética oscura, editorial y sofisticada con imágenes realistas, animaciones suaves, navegación responsive y una experiencia bilingüe en español e inglés. La intención fue crear un website que se sintiera como una plataforma real para un negocio creativo profesional, no como una landing genérica.",
+            highlights: [
+              "Estructura bilingüe",
+              "Dirección visual premium y editorial",
+              "Portafolio, paquetes y flujo de solicitud de sesión",
+              "Website comercial construido para un negocio creativo real",
+            ],
+            cta: "Ver proyecto",
+            href: "#",
+          },
+        ];
 
   const faqs =
     lang === "en"
@@ -429,59 +473,81 @@ export default function WebsitesLandingPagesPageClient() {
         title={lang === "en" ? "Portfolio" : "Portafolio"}
         subtitle={
           lang === "en"
-            ? "A real example of the type of commercial website we can build for your business."
-            : "Un ejemplo real del tipo de website comercial que podemos construir para tu negocio."
+            ? "Real examples of the type of commercial websites we can build for your business."
+            : "Ejemplos reales del tipo de websites comerciales que podemos construir para tu negocio."
         }
         glow
       >
-        <Reveal y={10}>
-          <div
-            className="overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-8 sm:p-10"
-            style={{ boxShadow: "0 0 40px rgba(177,77,255,0.07)" }}
-          >
-            <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-              <div>
-                <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/55">
-                  {portfolioProject.eyebrow}
-                </div>
-
-                <h3 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
-                  {portfolioProject.name}
-                </h3>
-
-                <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/72 sm:text-lg">
-                  {portfolioProject.description}
-                </p>
-
-                <a
-                  href={portfolioProject.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-7 inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-white/85 transition hover:bg-white/10 hover:text-white"
-                >
-                  {portfolioProject.cta}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
-              </div>
-
-              <div className="grid gap-4">
-                {portfolioProject.highlights.map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-2xl border border-white/10 bg-black/25 px-4 py-4"
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="mt-0.5 rounded-full border border-white/10 bg-white/5 p-1.5">
-                        <CheckCircle2 className="h-4 w-4 text-purple-200" />
+        <div className="grid gap-6">
+          {portfolioProjects.map((project, idx) => (
+            <Reveal key={project.name} delay={idx * 0.06} y={10}>
+              <div
+                className="overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/8 to-white/4 p-8 sm:p-10"
+                style={{ boxShadow: "0 0 40px rgba(177,77,255,0.07)" }}
+              >
+                <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/55">
+                        {project.eyebrow}
                       </div>
-                      <span className="text-white/75 leading-relaxed">{item}</span>
+
+                      <div className="inline-flex items-center rounded-full border border-purple-400/20 bg-purple-500/10 px-3 py-1 text-xs text-purple-200">
+                        {project.badge}
+                      </div>
                     </div>
+
+                    <h3 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
+                      {project.name}
+                    </h3>
+
+                    <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/72 sm:text-lg">
+                      {project.description}
+                    </p>
+
+                    {"description2" in project && project.description2 ? (
+                      <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/65 sm:text-lg">
+                        {project.description2}
+                      </p>
+                    ) : null}
+
+                    {"description3" in project && project.description3 ? (
+                      <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/65 sm:text-lg">
+                        {project.description3}
+                      </p>
+                    ) : null}
+
+                    <a
+                      href={project.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-7 inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-white/85 transition hover:bg-white/10 hover:text-white"
+                    >
+                      {project.cta}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </a>
                   </div>
-                ))}
+
+                  <div className="grid gap-4">
+                    {project.highlights.map((item) => (
+                      <div
+                        key={item}
+                        className="rounded-2xl border border-white/10 bg-black/25 px-4 py-4"
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="mt-0.5 rounded-full border border-white/10 bg-white/5 p-1.5">
+                            <CheckCircle2 className="h-4 w-4 text-purple-200" />
+                          </div>
+                          <span className="text-white/75 leading-relaxed">{item}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </Reveal>
+            </Reveal>
+          ))}
+        </div>
       </Section>
 
       <Section
