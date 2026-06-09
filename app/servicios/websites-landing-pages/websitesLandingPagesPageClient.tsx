@@ -96,7 +96,7 @@ export default function WebsitesLandingPagesPageClient() {
     lang === "en"
       ? {
           eyebrow: "Investment",
-          title: "$1,000 – $1,500 USD",
+          title: "$500 – $1,500 USD",
           note: "Final price depends on scope, number of sections, integrations, and overall level of customization.",
           bullets: [
             "A single clear scope, no confusing package structure",
@@ -107,7 +107,7 @@ export default function WebsitesLandingPagesPageClient() {
         }
       : {
           eyebrow: "Inversión",
-          title: "$1,000 – $1,500 USD",
+          title: "$8,500 – $25,500 MXN",
           note: "El precio final depende del alcance, número de secciones, integraciones y nivel general de personalización.",
           bullets: [
             "Una sola propuesta clara, sin estructura confusa de paquetes",
