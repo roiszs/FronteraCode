@@ -96,7 +96,7 @@ export default function DashboardsKpisPageClient() {
     lang === "en"
       ? {
           eyebrow: "Investment",
-          title: "$3,000 – $5,000 USD",
+          title: "We adapt to your needs and budget",
           note: "Final price depends on KPI depth, number of views, filters, data structure, business logic, and the overall complexity of the dashboard solution.",
           bullets: [
             "A single clear range, no confusing package structure",
@@ -107,7 +107,7 @@ export default function DashboardsKpisPageClient() {
         }
       : {
           eyebrow: "Inversión",
-          title: "$3,000 – $5,000 USD",
+          title: "Nos adaptamos a tus necesidades y presupuesto",
           note: "El precio final depende de la profundidad de KPIs, cantidad de vistas, filtros, estructura de datos, lógica de negocio y complejidad general de la solución de dashboard.",
           bullets: [
             "Un solo rango claro, sin estructura confusa de paquetes",

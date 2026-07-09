@@ -96,7 +96,7 @@ export default function SistemasAMedidaPageClient() {
     lang === "en"
       ? {
           eyebrow: "Investment",
-          title: "$3,000 – $5,000 USD",
+          title: "We adapt to your needs and budget",
           note: "Final price depends on the type of system required, number of modules, internal logic, validations, roles, reports, and overall operational complexity.",
           bullets: [
             "A single clear range, no confusing package structure",
@@ -107,7 +107,7 @@ export default function SistemasAMedidaPageClient() {
         }
       : {
           eyebrow: "Inversión",
-          title: "$3,000 – $5,000 USD",
+          title: "Nos adaptamos a tus necesidades y presupuesto",
           note: "El precio final depende del tipo de sistema requerido, la cantidad de módulos, la lógica interna, las validaciones, los roles, los reportes y la complejidad operativa general.",
           bullets: [
             "Un solo rango claro, sin estructura confusa de paquetes",

@@ -95,7 +95,7 @@ export default function EcommercePageClient() {
     lang === "en"
       ? {
           eyebrow: "Investment",
-          title: "$2,000 – $2,500 USD",
+          title: "We adapt to your needs and budget",
           note: "Final price depends on catalog depth, product structure, checkout flow, operational requirements, integrations, and overall customization level.",
           bullets: [
             "A single clear range, no confusing package structure",
@@ -106,7 +106,7 @@ export default function EcommercePageClient() {
         }
       : {
           eyebrow: "Inversión",
-          title: "$34,000 – $42,500 MXN",
+          title: "Nos adaptamos a tus necesidades y presupuesto",
           note: "El precio final depende de la profundidad del catálogo, la estructura de productos, el flujo de compra, las necesidades operativas, las integraciones y el nivel general de personalización.",
           bullets: [
             "Un solo rango claro, sin estructura confusa de paquetes",
